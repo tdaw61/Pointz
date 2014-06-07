@@ -1,0 +1,29 @@
+<div class="root">
+    <div class="container">
+        <span>
+            <%= link_to 'New User', new_user_path %>
+        </span>
+        <div class="row">
+
+            <div class="content span10" style="*float:right;">
+
+                <%
+                   @users.each do |user|
+                %>
+                        <h1><%= user.name %></h1>
+                        <span>
+                            <p style="float: left; margin-left: 340px" >
+                                <%= link_to 'Edit this User', edit_user_path(user), :class => "btn btn-medium btn-warning" %>
+                            </p>
+                            <p style="float: right; margin-right: 310px; margin-top: 10px">
+                                <%= link_to 'Destroy this User', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-medium btn-warning" %>
+                            </p>
+                            <p style="clear:both"></p>
+                        </span>
+                        <hr />
+                <% end %>
+
+            </div><!-- content div -->
+        </div>
+    </div><!-- end container div -->
+</div><!-- end root div -->
