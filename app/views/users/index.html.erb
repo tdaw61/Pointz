@@ -1,18 +1,10 @@
-<div class="root">
-    <div class="container">
-        <span>
-            <%= link_to 'New User', new_user_path %>
-        </span>
-        <div class="row">
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
 
-            <div class="content span10" style="*float:right;">
-                <%= will_paginate %>
+<%= will_paginate %>
 
-                <%= render @users %>
+<ul class="users">
+    <%= render @users %>
+</ul>
 
-                <%= will_paginate %>
-
-            </div><!-- content div -->
-        </div>
-    </div><!-- end container div -->
-</div><!-- end root div -->
+<%= will_paginate %>

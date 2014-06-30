@@ -2,11 +2,14 @@
     <%= gravatar_for user, size: 52 %>
     <%= link_to user.name, user %>
     <span>
-        <p style="float: left; margin-left: 340px">
-         <%= link_to 'Edit this User', edit_user_path(user), :class => "btn btn-medium btn-warning" %>
+        <p >
+         <%= link_to 'Edit this User', edit_user_path(user), :class => "btn" %>
         </p>
-        <p style="float: right; margin-right: 310px; margin-top: 10px">
-            <%= link_to 'Destroy this User', user, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-medium btn-warning" %>
+        <p>
+            <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to 'Destroy this User', user, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn" %>
+            <% end %>
+
         </p>
         <p style="clear:both"></p>
     </span>

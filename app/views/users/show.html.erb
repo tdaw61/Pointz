@@ -1,6 +1,20 @@
-<p>
-    Username :
-    <%= @user.name %>
-</p>
-
-<%= link_to 'back to users' , users_path %>
+<% provide(:title, @user.name) %>
+<div class="row">
+    <aside class="span4">
+        <section>
+            <h1>
+                <%= gravatar_for @user %>
+                <%= @user.name %>
+            </h1>
+        </section>
+    </aside>
+    <div class="span8">
+        <% if @user.userposts.any? %>
+            <h3>Userposts (<%= @user.userposts.count %>)</h3>
+            <ol class="microposts">
+                <%= render @userposts %>
+            </ol>
+            <%= will_paginate @userposts %>
+        <% end %>
+    </div>
+</div>

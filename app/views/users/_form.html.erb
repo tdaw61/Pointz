@@ -1,8 +1,6 @@
 
 <div class="row">
     <div class="span6 offset3">
-        <h1>Sign up</h1>
-
 
         <%= form_for(@user) do |f| %>
             <% if @user.errors.any? %>
@@ -21,20 +19,20 @@
                 <%= f.label :name %><br>
                 <%= f.text_field :name %>
             </p>
-<p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-</p>
+            <p>
+                <%= f.label :email %><br>
+                <%= f.text_field :email %>
+            </p>
 
-<p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-</p>
+            <p>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+            </p>
 
-<p>
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation %><br>
-</p>
+            <p>
+                <%= f.label :password_confirmation, "Confirmation" %>
+                <%= f.password_field :password_confirmation %><br>
+            </p>
 
 
             <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
