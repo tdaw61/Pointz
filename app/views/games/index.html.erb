@@ -1,0 +1,14 @@
+<%= provide(:title, current_user.name + " Games") %>
+
+<h1> <%= current_user.name %>'s Games </h1>
+
+<%= link_to "New Game", new_game_url %>
+
+<%= will_paginate %>
+
+<ul class="games">
+    <%= render @games %>
+</ul>
+
+
+<%= will_paginate %>

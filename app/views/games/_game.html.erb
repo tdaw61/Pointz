@@ -1,0 +1,7 @@
+<h1> <%= link_to game.name , game %> </h1>
+
+<%= current_user.name %>
+
+<%= link_to 'destroy this game' , game, method: :delete,
+            data: { confirm: "You sure?" },
+            title: game.name %>
