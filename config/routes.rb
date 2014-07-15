@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :userposts
+  resources :games
 
 
   match '/help',    to: 'static_pages#help',    via: 'get'
@@ -10,6 +11,12 @@ Rails.application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/games/:id/add_user', to: 'games#add_user_save',      via: 'post', as: 'add_user_save'
+  get '/games/:id/add_user' => 'games#add_user', via: 'get', as: 'add_user'
+  get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
+  post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
+
+  # match '/add_user', to: 'games#add_user_save', via: 'post'
 
   root :to => 'users#home', via: 'get'
 
