@@ -5,7 +5,7 @@ class UserpostsController < ApplicationController
     @userpost = current_user.userposts.build(userpost_params)
     respond_to do |format|
       if @userpost.save
-        format.html { redirect_to root_url, notice: 'post was successfully created.' }
+        format.html { redirect_to :back, notice: 'post was successfully created.' }
         # format.json { render root_url, status: :created, location: @userpost }
       else
         format.html { render root_url }

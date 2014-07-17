@@ -34,6 +34,8 @@ class GamesController < ApplicationController
     # @gameUserPoints = Score.find_by_game_id(params[:id])
     # @gameUserPoints.find :game_id
     @gameUserPoints = Score.all
+    @userpost  = current_user.userposts.build
+
   end
 
   #When the user wants to change the point value of another player
