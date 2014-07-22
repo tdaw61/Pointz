@@ -6,7 +6,8 @@ class Score < ActiveRecord::Base
   # validates_presence_of :points
 
   def username
-    User.find(:user_id)
+    user = User.find(self.user_id)
+    user.name
   end
 
 end

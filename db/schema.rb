@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701070315) do
+ActiveRecord::Schema.define(version: 20140721022125) do
+
+  create_table "event_votes", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.boolean  "vote"
+    t.integer  "user_point_value"
+    t.integer  "event_id"
+    t.boolean  "has_voted"
+    t.integer  "game_event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "game_events", force: true do |t|
     t.integer  "point_value"

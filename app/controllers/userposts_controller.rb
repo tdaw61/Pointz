@@ -3,12 +3,13 @@ class UserpostsController < ApplicationController
 
   def create
     @userpost = current_user.userposts.build(userpost_params)
+    @userpost.game_id = params[:game][:id]
     respond_to do |format|
       if @userpost.save
-        format.html { redirect_to :back, notice: 'post was successfully created.' }
+        format.html { redirect_to request.referer, notice: 'post was successfully created.' }
         # format.json { render root_url, status: :created, location: @userpost }
       else
-        format.html { render root_url }
+        format.html { render :back }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -29,5 +30,6 @@ class UserpostsController < ApplicationController
   private
   def userpost_params
     params.require(:userpost).permit(:data)
+    # params.require(:game).permit(:id)
   end
 end

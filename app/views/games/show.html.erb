@@ -1,15 +1,7 @@
 <% if signed_in? %>
+    <h1> <%= @game.name %> </h1>
     <div class="row">
-        <aside class="span4">
-            <section>
-                <%= render 'shared/user_info' %>
-            </section>
-            <section>
-                <%= render 'shared/userpost_form' %>
-            </section>
-        </aside>
-        <div class="span6">
-            <h1> <%= @game.name %> </h1>
+        <aside class="span5">
 
             <%= link_to 'add user to game', add_user_url %>
             <%= link_to 'Edit game settings', edit_game_path %>
@@ -25,20 +17,29 @@
                 </tr>
                 </thead>
 
-                <% @gameUserPoints.each do |gameUserPoint| %>
+                <% @scores.each do |score| %>
 
                     <tr>
-                        <td><%= gameUserPoint.user_id %></td>
-                        <td><%= gameUserPoint.points %></td>
+                        <td><%= score.username %></td>
+                        <td><%= score.points %></td>
                         <td><%= link_to "create event", create_event_url %></td>
                     </tr>
                 <% end %>
 
             </table>
-        </div>
-        <div class="span2">
-            hey there
+        </aside>
+        <div class="span6">
+            <section>
+                <%= render 'shared/feed' %>
+            </section>
 
+            <section>
+                <%= render 'shared/userpost_form' %>
+            </section>
+
+        </div>
+        <div class="span1">
+            hey there
         </div>
     </div>
 

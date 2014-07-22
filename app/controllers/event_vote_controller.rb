@@ -1,0 +1,2 @@
+class EventVoteController < ApplicationController
+end
