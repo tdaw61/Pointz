@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/games/:id/add_user' => 'games#add_user', via: 'get', as: 'add_user'
   get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
   post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
-
+  post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
   # match '/add_user', to: 'games#add_user_save', via: 'post'
 
   root :to => 'users#home', via: 'get'

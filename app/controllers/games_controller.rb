@@ -7,28 +7,10 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.paginate(page: params[:page])
+    @games = current_user.games.paginate(page: params[:page])
   end
 
-  def add_user
-  end
 
-  def add_user_save
-    user = User.find(params[:user_id])
-    if(user)
-      scores = Score.new
-      scores.game_id = params[:id]
-      scores.user_id = params[:user_id]
-      scores.points = 0
-      if scores.save!
-        @scores = Score.where(game_id: params[:id], user_id: params[:user_id])
-        redirect_to @game
-      else
-        render add_user_url
-      end
-    end
-
-  end
 
   def show
     # @gameUserPoints = Score.find_by_game_id(params[:id])
@@ -37,48 +19,9 @@ class GamesController < ApplicationController
     @user_feed_items = Userpost.where(game_id: params[:id])
     @game_event_feed_items = GameEvent.where(game_id: params[:id])
     @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at)
-    @game_votes = EventVote.where(game_id: params[:id], user_id: current_user.id, has_voted: false)
+    @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id).joined_includes_values
     @userpost  = current_user.userposts.build
 
-  end
-
-  #When the user wants to change the point value of another player
-  def create_event
-    @gameEvent = GameEvent.new
-  end
-
-  #saving new user event
-  def save_event
-    @gameEvent = GameEvent.new(game_event_params)
-    @gameEvent.game_id = params[:id]
-    @gameEvent.user_id = params[:user_id]
-    if @gameEvent.save
-
-      #create votes for each user in the game
-      @users = Game.find(params[:id]).users
-      @users.each do |user|
-        eventVote = EventVote.new
-        eventVote.game_event_id = @gameEvent.id
-        eventVote.user_id = user.id
-        eventVote.game_id = params[:id]
-        eventVote.has_voted = false
-        eventVote.user_point_value = params[:point_value]
-        eventVote.save
-      end
-      #for now just straight update the points for the user
-      score = Score.where(game_id: params[:id], user_id: params[:user_id]).first
-
-      #refactor this into score
-      score.points += params[:point_value].to_i
-
-      score.save
-
-      @scores = Score.where(game_id: params[:id])
-      # render :show
-      redirect_to :action => :show, :id => params[:id]
-    else
-      render :create_event
-    end
   end
 
   def edit
@@ -90,6 +33,14 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+
+        #Add new score for current user
+        score = Score.new
+        score.user_id = current_user.id
+        score.game_id = @game.id
+        score.points = 0
+        score.save
+
         format.html { redirect_to @game}
         format.json { render :show, status: :created, location: @game}
       else
@@ -117,6 +68,96 @@ class GamesController < ApplicationController
       render 'games/show'
     end
 
+  end
+
+
+  def save_vote
+    event_vote = EventVote.find_by(id: params[:event_vote_id])
+    event_vote.vote = params[:vote]
+    event_vote.has_voted = 1
+    if(params[:vote].to_i == 1)
+       yes_votes = event_vote.game_event.yes_votes
+       yes_votes+=1
+       event_vote.game_event.update_attribute(:yes_votes ,  yes_votes)
+    end
+    if event_vote.game_event.has_passed?
+      score = Score.where(game_id: params[:id], user_id: params[:user_id]).first
+
+      #refactor this into score
+      score.points += params[:point_value].to_i
+
+      score.save
+    end
+    event_vote.save
+
+
+    redirect_to game_url
+  end
+
+  #saving new user event
+  def save_event
+    @game_event = GameEvent.new(game_event_params)
+    @game_event.target_user_id = params[:user_id]
+    @game_event.game_id = params[:id]
+    @game_event.user_id = current_user.id
+    @game_event.yes_votes = 1
+    if @game_event.save
+
+
+      #create votes for each user in the game
+      @users = Game.find(params[:id]).users.to_a
+
+      @users.each do |user|
+        event_vote = EventVote.new
+
+        event_vote.target_user_id = params[:user_id]
+        event_vote.game_event_id = @game_event.id
+        event_vote.user_id = user.id
+        event_vote.game_id = params[:id]
+        if(user.id == current_user.id)
+          event_vote.vote = 1
+          event_vote.has_voted = true
+        else
+          event_vote.has_voted = false
+        end
+        event_vote.user_point_value = params[:point_value]
+        event_vote.save
+      end
+      #for now just straight update the points for the user
+
+
+      @scores = Score.where(game_id: params[:id])
+
+      # render :show
+      redirect_to :action => :show, :id => params[:id]
+    else
+      render :create_event
+    end
+  end
+
+  def add_user
+  end
+
+  def add_user_save
+    user = User.find(params[:user_id])
+    if(user)
+      scores = Score.new
+      scores.game_id = params[:id]
+      scores.user_id = params[:user_id]
+      scores.points = 0
+      if scores.save!
+        @scores = Score.where(game_id: params[:id], user_id: params[:user_id])
+        redirect_to @game
+      else
+        render add_user_url
+      end
+    end
+
+  end
+
+  #When the user wants to change the point value of another player
+  def create_event
+    @game_event = GameEvent.new
   end
 
 
