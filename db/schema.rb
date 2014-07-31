@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725023359) do
+ActiveRecord::Schema.define(version: 20140731062046) do
 
   create_table "event_votes", force: true do |t|
     t.integer  "game_id"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20140725023359) do
   end
 
   create_table "scores", force: true do |t|
-    t.integer  "points"
-    t.integer  "game_id",    null: false
-    t.integer  "user_id",    null: false
+    t.integer  "points",     default: 0
+    t.integer  "game_id",                null: false
+    t.integer  "user_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
