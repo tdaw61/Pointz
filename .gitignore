@@ -14,3 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/ManPoints.iml
+/.idea/workspace.xml
+
+/.idea/*

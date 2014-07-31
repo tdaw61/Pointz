@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   has_many :scores
   has_many :users, :through => :scores
-  # has_and_belongs_to_many :users
+  has_many :userposts
   has_many :game_events, dependent: :destroy
 
 

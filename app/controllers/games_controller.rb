@@ -10,16 +10,12 @@ class GamesController < ApplicationController
     @games = current_user.games.paginate(page: params[:page])
   end
 
-
-
   def show
-    # @gameUserPoints = Score.find_by_game_id(params[:id])
-    # @gameUserPoints.find :game_id
-    @scores = Score.where(game_id: params[:id])
-    @user_feed_items = Userpost.where(game_id: params[:id])
-    @game_event_feed_items = GameEvent.where(game_id: params[:id])
+    @scores = @game.scores
+    @user_feed_items = @game.userposts
+    @game_event_feed_items = @game.game_events
     @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at)
-    @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id).joined_includes_values
+    @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
   end
@@ -33,13 +29,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-
-        #Add new score for current user
-        score = Score.new
-        score.user_id = current_user.id
-        score.game_id = @game.id
-        score.points = 0
-        score.save
+        @game.scores.create!({:user_id => current_user.id, :game_id => @game.id})
 
         format.html { redirect_to @game}
         format.json { render :show, status: :created, location: @game}

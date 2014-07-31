@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :userposts
-  resources :games
+  resources :games do
+    resource :game_events
+  end
 
 
   match '/help',    to: 'static_pages#help',    via: 'get'
