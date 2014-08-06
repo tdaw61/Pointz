@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731062046) do
+ActiveRecord::Schema.define(version: 20140803072645) do
 
   create_table "event_votes", force: true do |t|
     t.integer  "game_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140731062046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "target_user_id"
-    t.integer  "yes_votes"
+    t.integer  "yes_votes",      default: 1
   end
 
   add_index "game_events", ["game_id"], name: "index_game_events_on_game_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140731062046) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.boolean  "super_user",      default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

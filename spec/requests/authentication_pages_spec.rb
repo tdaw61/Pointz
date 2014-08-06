@@ -8,7 +8,6 @@ describe "Authentication" do
     before { visit signin_path }
 
     it { should have_content('Sign in') }
-    it { should have_title('Sign in') }
   end
 
   describe "signin" do
@@ -17,7 +16,6 @@ describe "Authentication" do
     describe "with invalid information" do
       before { click_button "Sign in" }
 
-      it { should have_title('Sign in') }
       it { should have_error_message('Invalid') }
 
       describe "after visiting another page" do
@@ -34,7 +32,6 @@ describe "Authentication" do
         click_button "Sign in"
       end
 
-      it { should have_title(user.name) }
       it { should have_link('Users',       href: users_path) }
       it { should have_link('Profile',     href: user_path(user)) }
       it { should have_link('Settings',    href: edit_user_path(user)) }
@@ -64,7 +61,7 @@ describe "Authentication" do
         describe "after signing in" do
 
           it "should render the desired protected page" do
-            expect(page).to have_title('Edit user')
+            expect(page).to have_content('Update your profile')
           end
         end
       end
@@ -73,7 +70,7 @@ describe "Authentication" do
 
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
+          it { should have_button('Sign in') }
         end
 
         describe "submitting to the update action" do
@@ -81,25 +78,21 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
 
-        describe "visiting the user index" do
-          before { visit users_path }
-          it { should have_title('Sign in') }
-        end
 
       end
 
-      describe "in the Userposts controller" do
-
-        describe "submitting to the create action" do
-          before { post userposts_path }
-          specify { expect(response).to redirect_to(signin_path) }
-        end
-
-        describe "submitting to the destroy action" do
-          before { delete userpost_path(FactoryGirl.create(:micropost)) }
-          specify { expect(response).to redirect_to(signin_path) }
-        end
-      end
+      # describe "in the Userposts controller" do
+      #
+      #   describe "submitting to the create action" do
+      #     before { post userposts_path }
+      #     specify { expect(response).to redirect_to(signin_path) }
+      #   end
+      #
+      #   describe "submitting to the destroy action" do
+      #     before { delete userpost_path(FactoryGirl.create(:userpost)) }
+      #     specify { expect(response).to redirect_to(signin_path) }
+      #   end
+      # end
 
     end
 
@@ -110,7 +103,7 @@ describe "Authentication" do
 
       describe "submitting a GET request to the Users#edit action" do
         before { get edit_user_path(wrong_user) }
-        specify { expect(response.body).not_to match(full_title('Edit user')) }
+        specify { expect(response.body).not_to match('Edit user') }
         specify { expect(response).to redirect_to(root_url) }
       end
 

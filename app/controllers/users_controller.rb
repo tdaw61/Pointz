@@ -8,13 +8,18 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(page: params[:page])
+    if current_user.super_user?
+      @users = User.paginate(page: params[:page])
+    else
+      render '/public/404'
+    end
   end
 
   def home
     if signed_in?
       @userpost  = current_user.userposts.build
       @feed_items = current_user.userposts.paginate(page: params[:page])
+      @scores = current_user.scores
     end
   end
 
@@ -22,6 +27,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @userposts = @user.userposts.paginate(page: params[:page])
+    @games = @user.games
   end
 
   # GET /users/new

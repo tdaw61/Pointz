@@ -14,4 +14,25 @@ FactoryGirl.define do
     data "Lorem ipsum"
     user
   end
+
+  factory :game do
+    name "RSpec game"
+  end
+
+  factory :score do
+    game
+    user
+  end
+
+  factory :game_event do
+
+  end
+
+  factory :event_vote do
+    points 1
+    game
+    user
+    game_event
+  end
+
 end

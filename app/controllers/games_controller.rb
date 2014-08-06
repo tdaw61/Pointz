@@ -43,7 +43,7 @@ class GamesController < ApplicationController
   def update
     if @game.update(game_params)
       @scores = Score.where(game_id: params[:id])
-      render 'games/show'
+      render @game
     else
       render edit
     end
@@ -53,24 +53,24 @@ class GamesController < ApplicationController
   def destroy
     if(@game.destroy)
       @games = Game.paginate(page: params[:page])
-      render 'games/index'
+      render games_path
     else
-      render 'games/show'
+      render @game
     end
 
   end
 
 
   def save_vote
-    event_vote = EventVote.find_by(id: params[:event_vote_id])
+    event_vote = EventVote.find(params[:event_vote_id])
     event_vote.vote = params[:vote]
     event_vote.has_voted = 1
     if(params[:vote].to_i == 1)
-       yes_votes = event_vote.game_event.yes_votes
-       yes_votes+=1
+       yes_votes = event_vote.game_event.yes_votes+=1
        event_vote.game_event.update_attribute(:yes_votes ,  yes_votes)
     end
     if event_vote.game_event.has_passed?
+      event_vote.
       score = Score.where(game_id: params[:id], user_id: params[:user_id]).first
 
       #refactor this into score
@@ -81,7 +81,7 @@ class GamesController < ApplicationController
     event_vote.save
 
 
-    redirect_to game_url
+    redirect_to game_path
   end
 
   #saving new user event
@@ -139,7 +139,7 @@ class GamesController < ApplicationController
         @scores = Score.where(game_id: params[:id], user_id: params[:user_id])
         redirect_to @game
       else
-        render add_user_url
+        render add_user_path
       end
     end
 

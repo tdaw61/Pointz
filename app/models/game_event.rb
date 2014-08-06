@@ -2,6 +2,8 @@ class GameEvent < ActiveRecord::Base
   belongs_to :game
   belongs_to :user
 
+  has_many :event_votes
+
   validates_presence_of :point_value
 
   def has_passed?

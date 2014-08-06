@@ -11,7 +11,8 @@ def make_users
                        email:    "tester@test.com",
                        password: "foobar",
                        password_confirmation: "foobar",
-                       admin: true)
+                       admin: true,
+                       super_user: false )
   99.times do |n|
     name  = Faker::Name.name
     email = "test-#{n+1}@test.com"
