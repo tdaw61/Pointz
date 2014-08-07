@@ -3,6 +3,7 @@ class GameEventsController < ApplicationController
   def new
     @game_event = GameEvent.new
     @game = Game.find(params[:game_id])
+    @users = @game.users
   end
 
   def create

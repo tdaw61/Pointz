@@ -16,7 +16,7 @@
 
     <p>
         <%= f.label :target_user_id %><br>
-        <%= f.text_field :target_user_id %>
+        <%= f.collection_select :target_user_id, @users, :id, :name  %>
 
         <%= f.label "points to +/-" %><br>
         <%= f.text_field :point_value %>
