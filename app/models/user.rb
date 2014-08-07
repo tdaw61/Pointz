@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :userposts, dependent: :destroy
   has_many :scores
   has_many :games, :through => :scores
+  has_many :event_votes
+  has_many :game_events
 
   before_create :create_remember_token
   before_save { self.email = email.downcase }
@@ -21,6 +23,18 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  # def self.open_votes
+  #   self.event_votes.where(has_voted: false)
+  # end
+
+  def open_votes
+    self.event_votes.where(has_voted: false).count
+  end
+
+  def open_votes_by_game game
+    self.event_votes.where(game_id: game.id, has_voted: false).count
   end
 
   private

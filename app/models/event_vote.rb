@@ -34,5 +34,13 @@ class EventVote < ActiveRecord::Base
     vote
   end
 
+  def cast_vote params
+    self.vote = params[:vote]
+    self.has_voted = 1
+    if(params[:vote].to_i == 1)
+      yes_votes = self.game_event.yes_votes+=1
+      self.game_event.update_attribute(:yes_votes ,  yes_votes)
+    end
+  end
 
 end

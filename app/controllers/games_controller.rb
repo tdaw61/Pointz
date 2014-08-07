@@ -63,18 +63,16 @@ class GamesController < ApplicationController
 
   def save_vote
     event_vote = EventVote.find(params[:event_vote_id])
-    event_vote.vote = params[:vote]
-    event_vote.has_voted = 1
-    if(params[:vote].to_i == 1)
-       yes_votes = event_vote.game_event.yes_votes+=1
-       event_vote.game_event.update_attribute(:yes_votes ,  yes_votes)
-    end
-    if event_vote.game_event.has_passed?
-      event_vote.
-      score = Score.where(game_id: params[:id], user_id: params[:user_id]).first
+    event_vote.cast_vote params
 
-      #refactor this into score
-      score.points += params[:point_value].to_i
+    if event_vote.game_event.has_passed?
+      score = Score.where(game_id: params[:id], user_id: event_vote.target_user_id).first
+
+      #TODO
+      #set up for users to vote with a new point value, keep value and average and maybe throw out outliers.
+      # score.points += params[:point_value].to_i
+
+      score.points += event_vote.game_event.point_value
 
       score.save
     end

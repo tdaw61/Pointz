@@ -11,8 +11,8 @@
 
             <tr>
                 <td><%= link_to score.game.name , score.game %></td>
-                <td><%= score.username %></td>
                 <td><%= score.points %></td>
+                <td><%= current_user.open_votes_by_game score.game %></td>
             </tr>
         <% end %>
 
