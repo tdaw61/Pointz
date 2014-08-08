@@ -82,65 +82,21 @@ class GamesController < ApplicationController
     redirect_to game_path
   end
 
-  #saving new user event
-  def save_event
-    @game_event = GameEvent.new(game_event_params)
-    @game_event.target_user_id = params[:user_id]
-    @game_event.game_id = params[:id]
-    @game_event.user_id = current_user.id
-    @game_event.yes_votes = 1
-    if @game_event.save
-
-
-      #create votes for each user in the game
-      @users = Game.find(params[:id]).users.to_a
-
-      @users.each do |user|
-        event_vote = EventVote.new
-
-        event_vote.target_user_id = params[:user_id]
-        event_vote.game_event_id = @game_event.id
-        event_vote.user_id = user.id
-        event_vote.game_id = params[:id]
-        if(user.id == current_user.id)
-          event_vote.vote = 1
-          event_vote.has_voted = true
-        else
-          event_vote.has_voted = false
-        end
-        event_vote.user_point_value = params[:point_value]
-        event_vote.save
-      end
-      #for now just straight update the points for the user
-
-
-      @scores = Score.where(game_id: params[:id])
-
-      # render :show
-      redirect_to :action => :show, :id => params[:id]
-    else
-      render :create_event
-    end
-  end
 
   def add_user
   end
 
   def add_user_save
-    user = User.find(params[:user_id])
-    if(user)
-      scores = Score.new
-      scores.game_id = params[:id]
-      scores.user_id = params[:user_id]
-      scores.points = 0
-      if scores.save!
-        @scores = Score.where(game_id: params[:id], user_id: params[:user_id])
-        redirect_to @game
-      else
-        render add_user_path
-      end
-    end
+    user = User.find_by email: params[:email]
 
+    if(user)
+      score = Score.find_or_create_by(game_id: params[:id], user_id: user.id)
+      @scores = Score.where(game_id: params[:id], user_id: user.id)
+      redirect_to @game
+    else
+      flash[:error] = "not a valid user"
+      render :add_user
+    end
   end
 
   #When the user wants to change the point value of another player
