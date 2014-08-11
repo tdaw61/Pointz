@@ -14,7 +14,7 @@ class GamesController < ApplicationController
     @scores = @game.scores
     @user_feed_items = @game.userposts
     @game_event_feed_items = @game.game_events
-    @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at)
+    @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
     @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
@@ -90,12 +90,17 @@ class GamesController < ApplicationController
     user = User.find_by email: params[:email]
 
     if(user)
-      score = Score.find_or_create_by(game_id: params[:id], user_id: user.id)
+      begin
+        Score.create!(game_id: params[:id], user_id: user.id)
+        rescue ActiveRecord::RecordNotUnique => e
+          flash.alert = user.email + ' is already in the game'
+          redirect_to :add_user and return
+      end
       @scores = Score.where(game_id: params[:id], user_id: user.id)
       redirect_to @game
     else
-      flash[:error] = "not a valid user"
-      render :add_user
+      flash.alert = "not a valid user"
+      redirect_to :add_user
     end
   end
 
