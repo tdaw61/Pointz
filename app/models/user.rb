@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :games, :through => :scores
   has_many :event_votes
   has_many :game_events
+  has_many :leagues, :through => :scores
 
   before_create :create_remember_token
   before_save { self.email = email.downcase }
@@ -25,9 +26,6 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  # def self.open_votes
-  #   self.event_votes.where(has_voted: false)
-  # end
 
   def open_votes
     self.event_votes.where(has_voted: false).count

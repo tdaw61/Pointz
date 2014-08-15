@@ -3,6 +3,7 @@ class Game < ActiveRecord::Base
   has_many :users, :through => :scores
   has_many :userposts
   has_many :game_events, dependent: :destroy
+  belongs_to :league
 
 
   validates_presence_of :name

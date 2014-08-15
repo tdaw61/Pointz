@@ -5,22 +5,31 @@ Rails.application.routes.draw do
   resources :games do
     resource :game_events
   end
+  resources :leagues
+
+  root :to => 'users#home', via: 'get'
 
 
+  #generic static pages
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+
+  #User login/session
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+
+  #games/events/votes
   match '/games/:id/add_user', to: 'games#add_user_save',      via: 'post', as: 'add_user_save'
   get '/games/:id/add_user' => 'games#add_user', via: 'get', as: 'add_user'
   get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
   post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
   post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
-  # match '/add_user', to: 'games#add_user_save', via: 'post'
 
-  root :to => 'users#home', via: 'get'
+  #leagues
+  get '/leagues/join_league' => 'leagues#join_league', via: 'get', as: 'join_league'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
