@@ -16,6 +16,11 @@ class GameEventsController < ApplicationController
       @users.each do |user|
         event_vote = @game_event.event_votes.create_vote_for_game user, params, current_user.id
         event_vote.save
+
+        if@game_event.game.users.count == 1
+          score = Score.find_by(game_id: params[:game_id], user_id: user.id)
+          score.update_attribute(:points, params[:point_value])
+        end
       end
 
       redirect_to :controller => :games , :action => :show, :id => params[:game_id]

@@ -71,6 +71,7 @@ class GamesController < ApplicationController
       #TODO
       #set up for users to vote with a new point value, keep value and average and maybe throw out outliers.
       # score.points += params[:point_value].to_i
+      score.update_score @game_event.point_value
 
       score.points += event_vote.game_event.point_value
 
