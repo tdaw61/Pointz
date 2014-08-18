@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   has_many :games, :through => :scores
   has_many :event_votes
   has_many :game_events
-  has_many :leagues, :through => :scores
+  has_many :league_users
+  has_many :leagues, :through => :league_users
 
   before_create :create_remember_token
   before_save { self.email = email.downcase }

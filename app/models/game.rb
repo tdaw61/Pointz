@@ -14,4 +14,8 @@ class Game < ActiveRecord::Base
       users.find(user_id)
   end
 
+  def leader
+    self.include("scores").where(maximum("points")).name
+  end
+
 end

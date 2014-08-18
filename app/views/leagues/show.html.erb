@@ -1,3 +1,9 @@
 <h1> Welcome to <%= @league.name %></h1>
 
+<% @league.games.each do |game| %>
 
+    <p> <%= game.name %> </p></br>
+    <p> <%= game.leader %> </p></br>
+
+
+<% end %>

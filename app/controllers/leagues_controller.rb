@@ -9,8 +9,10 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.new(league_params)
+    # @league.league_users.build({:user_id => current_user.id, :league_id => @league.id})
     if @league.save!
-      render @league
+      @league.league_users << LeagueUser.new(:user_id => current_user.id, :league_id => @league.id)
+      redirect_to action: 'show', id: @league.id
     else
       render :new
     end
@@ -21,6 +23,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
+    @league_users = @league.users
 
   end
 
