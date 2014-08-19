@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :userposts
-  resources :games do
-    resource :game_events
+  resources :leagues do
+    resources :games, shallow: true do
+      resource :game_events
+    end
   end
-  resources :leagues
 
   root :to => 'users#home', via: 'get'
 
@@ -21,10 +22,10 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   #games/events/votes
-  match '/games/:id/add_user', to: 'games#add_user_save',      via: 'post', as: 'add_user_save'
-  get '/games/:id/add_user' => 'games#add_user', via: 'get', as: 'add_user'
-  get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
-  post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
+  match '/leagues/:id/add_user', to: 'leagues#add_user_save',      via: 'post', as: 'add_user_save'
+  get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
+  # get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
+  # post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
   post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
 
   #leagues

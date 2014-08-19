@@ -10,4 +10,10 @@ class Score < ActiveRecord::Base
     user.name
   end
 
+  def create_for_league users, game_id
+    users.each do |user|
+      self.create!({:user_id => user.id, :game_id =>   game_id})
+    end
+  end
+
 end
