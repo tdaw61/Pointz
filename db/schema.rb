@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815202701) do
+ActiveRecord::Schema.define(version: 20140818011838) do
 
   create_table "event_votes", force: true do |t|
     t.integer  "game_id"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20140815202701) do
     t.datetime "updated_at"
     t.integer  "league_id"
   end
+
+  create_table "league_users", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "league_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "league_users", ["league_id"], name: "index_league_users_on_league_id"
+  add_index "league_users", ["user_id", "league_id"], name: "index_league_users_on_user_id_and_league_id", unique: true
+  add_index "league_users", ["user_id"], name: "index_league_users_on_user_id"
 
   create_table "leagues", force: true do |t|
     t.string   "name"

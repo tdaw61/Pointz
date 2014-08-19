@@ -3,7 +3,8 @@ class GamesController < ApplicationController
 
 
   def new
-    @game = Game.new
+    league = League.find(params[:league_id])
+    @game = league.games.build
   end
 
   def index
@@ -25,11 +26,14 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
+    league = League.find(params[:league_id])
+    @game = league.games.new(game_params)
 
     respond_to do |format|
       if @game.save
-        @game.scores.create!({:user_id => current_user.id, :game_id => @game.id})
+        league.users.each do |user|
+          @game.scores.create!({:user_id => user.id, :game_id => @game.id})
+        end
 
         format.html { redirect_to @game}
         format.json { render :show, status: :created, location: @game}
@@ -84,26 +88,7 @@ class GamesController < ApplicationController
   end
 
 
-  def add_user
-  end
 
-  def add_user_save
-    user = User.find_by email: params[:email]
-
-    if(user)
-      begin
-        Score.create!(game_id: params[:id], user_id: user.id)
-        rescue ActiveRecord::RecordNotUnique => e
-          flash.alert = user.email + ' is already in the game'
-          redirect_to :add_user and return
-      end
-      @scores = Score.where(game_id: params[:id], user_id: user.id)
-      redirect_to @game
-    else
-      flash.alert = "not a valid user"
-      redirect_to :add_user
-    end
-  end
 
   #When the user wants to change the point value of another player
   def create_event
