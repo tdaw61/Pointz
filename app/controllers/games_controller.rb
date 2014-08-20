@@ -19,6 +19,10 @@ class GamesController < ApplicationController
     @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
+    #TODO move this to ajax call and expand on game_event creation
+    @game_event = @game.game_events.build
+    @users = @game.users
+
   end
 
   def edit

@@ -1,3 +1,3 @@
 $(".feed").html("<%= escape_javascript(render('shared/feed')) %>")
 
-$(".userpost_form").replaceWith('<%=j render('shared/userpost_form') %>')
+$(".userpost_form").html('<%=escape_javascript(render('shared/userpost_form')) %>')
