@@ -25,7 +25,7 @@ class EventVote < ActiveRecord::Base
 
         :user_id => user.id,
         :user_point_value => params[:game_event][:point_value].to_i})
-    if(user.id == current_user_id)
+    if user.id == current_user_id
       vote.vote = 1
       vote.has_voted = true
     else

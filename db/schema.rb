@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818011838) do
+ActiveRecord::Schema.define(version: 20140820231114) do
 
   create_table "event_votes", force: true do |t|
-    t.integer  "game_id"
-    t.integer  "user_id"
+    t.integer  "game_id",          null: false
+    t.integer  "user_id",          null: false
     t.boolean  "vote"
     t.integer  "user_point_value"
     t.integer  "event_id"
@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20140818011838) do
   end
 
   create_table "game_events", force: true do |t|
-    t.integer  "point_value"
+    t.integer  "point_value",                null: false
     t.string   "data"
-    t.integer  "game_id"
-    t.integer  "user_id"
+    t.integer  "game_id",                    null: false
+    t.integer  "user_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "target_user_id"
+    t.integer  "target_user_id",             null: false
     t.integer  "yes_votes",      default: 1
   end
 
@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20140818011838) do
   create_table "games", force: true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string   "name"
+    t.string   "name",       null: false
     t.string   "motto"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "league_id"
+    t.integer  "league_id",  null: false
   end
 
   create_table "league_users", force: true do |t|
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140818011838) do
   add_index "league_users", ["user_id"], name: "index_league_users_on_user_id"
 
   create_table "leagues", force: true do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 20140818011838) do
   add_index "scores", ["game_id", "user_id"], name: "index_scores_on_game_id_and_user_id", unique: true
 
   create_table "userposts", force: true do |t|
-    t.string   "data"
-    t.integer  "user_id"
-    t.integer  "game_id"
+    t.string   "data",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "game_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140818011838) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "email"
+    t.string   "email",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"

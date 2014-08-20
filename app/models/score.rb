@@ -3,7 +3,7 @@ class Score < ActiveRecord::Base
   belongs_to :game
   belongs_to :user
 
-  validates_presence_of :points
+  validates_presence_of :points, :game_id, :user_id
 
   def username
     user = User.find(self.user_id)
