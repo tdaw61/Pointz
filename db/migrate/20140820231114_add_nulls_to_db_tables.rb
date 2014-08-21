@@ -3,7 +3,6 @@ class AddNullsToDbTables < ActiveRecord::Migration
     change_column_null :leagues, :name, false
     change_column_null :userposts, :data, false
     change_column_null :userposts, :user_id, false
-    change_column_null :userposts, :game_id, false
     change_column_null :users, :email, false
     change_column_null :games, :league_id, false
     change_column_null :games, :name, false
