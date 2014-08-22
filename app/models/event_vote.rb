@@ -26,18 +26,17 @@ class EventVote < ActiveRecord::Base
         :user_id => user.id,
         :user_point_value => params[:game_event][:point_value].to_i})
     if user.id == current_user_id
-      vote.vote = 1
-      vote.has_voted = true
+      vote.cast_vote 1
     else
       vote.has_voted = false
     end
-    vote
+    vote.save!
   end
 
-  def cast_vote params
-    self.vote = params[:vote]
+  def cast_vote yes_no
+    self.vote = yes_no
     self.has_voted = 1
-    if(params[:vote].to_i == 1)
+    if yes_no == 1
       yes_votes = self.game_event.yes_votes+=1
       self.game_event.update_attribute(:yes_votes ,  yes_votes)
     end

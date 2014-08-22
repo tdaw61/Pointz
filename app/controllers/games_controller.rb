@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :destroy, :update, :add_user, :add_user_save, :create_event, :save_event]
+  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event]
 
 
   def new
@@ -59,7 +59,7 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    if(@game.destroy)
+    if @game.destroy
       @games = Game.paginate(page: params[:page])
       render games_path
     else
@@ -71,22 +71,11 @@ class GamesController < ApplicationController
 
   def save_vote
     event_vote = EventVote.find(params[:event_vote_id])
-    event_vote.cast_vote params
+    event_vote.cast_vote params[:vote]
 
     if event_vote.game_event.has_passed?
-      score = Score.where(game_id: params[:id], user_id: event_vote.target_user_id).first
-
-      #TODO
-      #set up for users to vote with a new point value, keep value and average and maybe throw out outliers.
-      # score.points += params[:point_value].to_i
-      score.update_score @game_event.point_value
-
-      score.points += event_vote.game_event.point_value
-
-      score.save
+      Score.update_score event_vote.game_id, event_vote.user_id, event_vote.game_event.point_value
     end
-    event_vote.save
-
 
     redirect_to game_path
   end
