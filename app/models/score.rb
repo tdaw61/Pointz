@@ -17,7 +17,7 @@ class Score < ActiveRecord::Base
   end
 
   def self.update_score(game_id, target_user_id, point_value)
-    self.where(:game_id => game_id, :user_id => target_user_id).first.update_attribute(:point_value, point_value)
+    self.where(:game_id => game_id, :user_id => target_user_id).first.update_attribute(:points, point_value)
   end
 
 end

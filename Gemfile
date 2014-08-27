@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.1.0'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
-gem 'bootstrap-sass', '2.3.2.0'
+
+# gem 'bootstrap-sass', '2.3.2.0'
+gem 'twitter-bootstrap-rails'
 gem 'twitter'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'

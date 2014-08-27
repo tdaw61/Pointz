@@ -71,7 +71,7 @@ class GamesController < ApplicationController
 
   def save_vote
     event_vote = EventVote.find(params[:event_vote_id])
-    event_vote.cast_vote params[:vote]
+    event_vote.cast_vote params[:vote].to_i
 
     if event_vote.game_event.has_passed?
       Score.update_score event_vote.game_id, event_vote.user_id, event_vote.game_event.point_value

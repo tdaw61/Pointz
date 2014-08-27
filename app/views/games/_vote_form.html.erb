@@ -1,5 +1,5 @@
 <div>
-    <h1> Start a vote: </h1>
+    <h5> Start a vote: </h5>
 
     <%= form_for ([@game, @game_event]) do |f| %>
 
@@ -16,13 +16,13 @@
         <% end %>
 
         <p>
-            <%= f.label :target_user_id %><br>
+            <%= f.label :target_user_id %>
             <%= f.collection_select :target_user_id, @users, :id, :name %>
 
-            <%= f.label "points to +/-" %><br>
+            <%= f.label "points to +/-" %>
             <%= f.text_field :point_value %>
 
-            <%= f.label "reason for the points" %><br>
+            <%= f.label "reason for the points" %>
             <%= f.text_field :data %>
 
             <%= f.hidden_field :game_id, :value => @game.id %>
