@@ -10,6 +10,8 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
+.topbar
+
 /* universal */
 
 .container {
@@ -73,14 +75,14 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: whitesmoke;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
   }
 }
@@ -273,5 +275,55 @@ aside {
 }
 
 .feed {
+  background-color: white;
+
+}
+
+.navbar-inverse .navbar-inner{
+  background: rgb(143,2,34); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(143,2,34,1) 43%, rgba(109,0,25,1) 66%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(43%,rgba(143,2,34,1)), color-stop(66%,rgba(109,0,25,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f0222', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+.navbar-inverse .brand,
+.navbar-inverse .nav > li > a {
+  color: whitesmoke;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.user-info {
+  background-color: black;
+  padding-top: 15px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
+  -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
+  border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
+  border-top: 1px solid $grayLighter;
+
+  &:first-child {
+    border: 0;
+    padding-top: 0;
+  }
+  span {
+    display: block;
+    margin-bottom: 3px;
+    line-height: 1;
+  }
+
+  h1 {
+    font-size: 1.4em;
+    text-align: left;
+    letter-spacing: -1px;
+    margin-bottom: 3px;
+    margin-top: 0px;
+  }
 
 }

@@ -1,15 +1,14 @@
 <% if signed_in? %>
     <div class="row">
-        <aside class="span4">
-            <section>
+        <div class="span4">
+            <section class="user-info">
                 <%= render 'shared/user_info' %>
             </section>
             <section>
                 <%= render 'game_table' %>
             </section>
-        </aside>
+        </div>
         <div class="span8">
-            <p class="center">What's Happening</p>
             <%= render 'shared/feed' %>
         </div>
     </div>
