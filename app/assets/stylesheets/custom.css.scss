@@ -3,6 +3,9 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$tableBackgroundHover: #ea2236;
+$tableBackground: #ea2236;
+$tableBackgroundAccent: #ea2235;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -349,4 +352,14 @@ aside {
 .game-table{
   padding-top: 20px;
 
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #f00;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+  background-color: #f00;
 }
