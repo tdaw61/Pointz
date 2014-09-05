@@ -4,13 +4,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 
 gem 'bootstrap-sass', '2.3.2.0'
-# gem "therubyracer"
-# gem "less-rails"
-# gem 'twitter-bootstrap-rails'
 gem 'twitter'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'faker'
+gem 'compass'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
