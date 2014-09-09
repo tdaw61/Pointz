@@ -13,7 +13,6 @@ $tableBackgroundAccent: #ea2235;
   box-sizing: border-box;
 }
 
-.topbar
 
 /* universal */
 
@@ -26,8 +25,8 @@ html {
 }
 
 body {
-  padding-top: 60px;
-  background: #eaeaea;
+  padding-top: 40px;
+  background: #f1f1f1;
 }
 
 section {
@@ -187,9 +186,12 @@ aside {
 }
 
 .profile_avatar {
-  margin: -20px;
+//  display: inline-block;
+  height: 0px;
+  margin: -35px;
+  padding-left: 45px;
   border-radius: 6px;
-  padding-left: 20px;
+//  padding-left: 20px;
   background: transparent;
 }
 
@@ -287,19 +289,23 @@ aside {
 
 .feed {
   background-color: white;
+  border: 1px solid black;
+  padding-left: 20px;
+  -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
+  -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
+  border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
 
 }
 
 .navbar-inverse .navbar-inner{
-  background: rgb(143,2,34); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(143,2,34,1) 43%, rgba(109,0,25,1) 66%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(43%,rgba(143,2,34,1)), color-stop(66%,rgba(109,0,25,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(143,2,34,1) 43%,rgba(109,0,25,1) 66%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f0222', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
-
+  background: rgb(219,0,0); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(219,0,0,1) 0%, rgba(181,3,0,1) 24%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(219,0,0,1)), color-stop(24%,rgba(181,3,0,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(219,0,0,1) 0%,rgba(181,3,0,1) 24%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(219,0,0,1) 0%,rgba(181,3,0,1) 24%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(219,0,0,1) 0%,rgba(181,3,0,1) 24%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(219,0,0,1) 0%,rgba(181,3,0,1) 24%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db0000', endColorstr='#b50300',GradientType=0 ); /* IE6-9 */
 }
 
 
@@ -329,10 +335,11 @@ aside {
 
 .user-info .topframe {
   height: 60px;
-  background: rgb(143, 2, 34);
+//  background: rgb(143, 2, 34);
+  background: #B50300;
 }
 
-.profile_stats {
+.profile_container {
   padding-top: 15px;
   padding-left: 5px;
   padding-bottom: 10px;
@@ -351,15 +358,31 @@ aside {
 
 .game-table{
   padding-top: 20px;
+}
+
+
+
+.table-striped{
+  bgcolor: black;
+  background: black;
+  border: 1px solid black;
+  >thead>tr {
+    background-color: #B50300;
+    color: white;
+  }
+}
+
+
+.row {
+  padding-top: 20px;
 
 }
 
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-  background-color: #f00;
+.profile_name {
+  padding-top: 20px;
+
 }
 
-.table-striped>tbody>tr:nth-child(even)>td,
-.table-striped>tbody>tr:nth-child(even)>th {
-  background-color: #f00;
+.profile_stats {
+
 }

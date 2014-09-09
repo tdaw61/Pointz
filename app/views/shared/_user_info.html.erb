@@ -1,11 +1,13 @@
 <div class="profile_avatar">
-    <%= link_to gravatar_for(current_user, size: 50), current_user %>
+    <%= link_to gravatar_for(current_user, size: 60), current_user %>
 </div>
-<div>
-
+<div class="profile_name">
     <h1>
         <%= current_user.name %>
     </h1>
+</div>
+<div class="profile_stats">
+
 <span>
   <%= link_to "view my profile", current_user %>
 </span>
