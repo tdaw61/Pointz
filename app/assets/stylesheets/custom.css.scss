@@ -1,3 +1,5 @@
+
+
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -6,6 +8,10 @@ $grayMediumLight: #eaeaea;
 $tableBackgroundHover: #ea2236;
 $tableBackground: #ea2236;
 $tableBackgroundAccent: #ea2235;
+$navbarBackgroundHighlight: black;
+$navbarInverseBackground: black;
+$navbarInverseBackgroundHighlight: black;
+$navbarInverseBrandColor: black;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -323,6 +329,7 @@ aside {
   -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
   border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
   border: 1px solid black;
+  scroll: false;
 
   h1 {
     font-size: 1.4em;
@@ -380,9 +387,53 @@ aside {
 
 .profile_name {
   padding-top: 20px;
-
+  a{
+    color: black;
+  }
 }
 
 .profile_stats {
+  ul{
+    box-sizing: border-box;
+    font-size: 12px;
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+    display: table;
+
+    li {
+      display:table-cell;
+    }
+  }
+
+
+  .navbar-inverse .nav > li > a:focus,
+  .navbar-inverse .nav > li > a:hover {
+    background: rgb(143, 2, 34); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+    color: blueviolet;
+  }
+
+  .navbar-inverse .nav .active > a,
+  .navbar-inverse .nav .active > a:hover,
+  .navbar-inverse .nav .active > a:focus {
+    color: blueviolet;
+    background: rgb(143, 2, 34); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+  }
+
+
+
+
 
 }

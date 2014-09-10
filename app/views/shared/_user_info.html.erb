@@ -3,19 +3,14 @@
 </div>
 <div class="profile_name">
     <h1>
-        <%= current_user.name %>
+        <%= link_to current_user.name, current_user %>
     </h1>
 </div>
 <div class="profile_stats">
-
-<span>
-  <%= link_to "view my profile", current_user %>
-</span>
-<span>
-  <%= pluralize(current_user.games.count, "game") %>
-    <p>votes created: <%= current_user.game_events.count %></p>
-  <p>votes to cast:  <%= current_user.open_votes %></p>
-
-</span>
+<ul>
+    <li><%= link_to "leagues" , leagues_path %> </li>
+    <li> votes created: <%= current_user.game_events.count %></li>
+    <li> open votes:  <%= current_user.open_votes %></li>
+</ul>
 
 </div>
