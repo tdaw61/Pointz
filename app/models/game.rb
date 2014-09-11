@@ -18,4 +18,8 @@ class Game < ActiveRecord::Base
     self.include("scores").where(maximum("points")).name
   end
 
+  def ordered_scores
+    scores.order('points DESC')
+  end
+
 end

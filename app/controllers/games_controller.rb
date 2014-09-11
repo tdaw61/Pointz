@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @scores = @game.scores
+    @scores = @game.ordered_scores
     @user_feed_items = @game.userposts
     @game_event_feed_items = @game.game_events
     @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse

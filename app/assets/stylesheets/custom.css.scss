@@ -1,17 +1,18 @@
-
+$tableBorder: black;
+$grayMediumLight: #eaeaea;
+$tableBackgroundHover: #ffffff;
+$tableBackground: #FFFFFF;
+$tableBackgroundAccent: #FFFFFF;
+$navbarBackgroundHighlight: black;
+$navbarInverseBackground: black;
+$navbarInverseBackgroundHighlight: black;
+$navbarInverseBrandColor: black;
 
 @import "bootstrap";
 
 /* mixins, variables, etc. */
 
-$grayMediumLight: #eaeaea;
-$tableBackgroundHover: #ea2236;
-$tableBackground: #ea2236;
-$tableBackgroundAccent: #ea2235;
-$navbarBackgroundHighlight: black;
-$navbarInverseBackground: black;
-$navbarInverseBackgroundHighlight: black;
-$navbarInverseBrandColor: black;
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
