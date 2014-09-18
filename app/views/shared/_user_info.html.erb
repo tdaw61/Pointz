@@ -7,10 +7,20 @@
     </h1>
 </div>
 <div class="profile_stats">
-<ul>
-    <li><%= link_to "leagues" , leagues_path %> </li>
-    <li> votes created: <%= current_user.game_events.count %></li>
-    <li> open votes:  <%= current_user.open_votes %></li>
-</ul>
+    <table style="width: 100%;">
+        <tbody>
+            <tr>
+                <td> <%= link_to "leagues:", leagues_path %> </td>
+                <td> votes created: </td>
+                <td> open votes: </td>
+            </tr>
+            <tr>
+                <td> <%= 0 %></td>
+                <td> <%= current_user.game_events.count %> </td>
+                <td> <%= current_user.open_votes %> </td>
+            </tr>
+        </tbody>
+
+    </table>
 
 </div>

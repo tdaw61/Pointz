@@ -1,26 +1,21 @@
-<% if @leagues.count == 0 %>
-    <p> you are currently in no leagues</p>
+<div class="row">
+    <div class="span12">
 
-<% else %>
-    <!--<table class="table table-striped table-bordered table-condensed table-hover">-->
-    <!--<thead>-->
-    <!--<tr>-->
-    <!--<th>Name</th>-->
+        <% if @leagues.count == 0 %>
+            <p> you are currently in no leagues</p>
 
-    <!--</tr>-->
-    <!--</thead>-->
+        <% else %>
 
-    <!--</table>-->
-    <div>
-        <% @leagues.each do |league| %>
+            <div>
+                <% @leagues.each do |league| %>
+                    <%= render 'leagues/index_table', league: league %>
+                <% end %>
 
-            <p><%= link_to league.name, league_path(league) %></p></br>
-
+            </div>
         <% end %>
 
+        <%= link_to "Create a league now!", new_league_path %>
+        <%= link_to "Join a league", join_league_path %>
     </div>
-<% end %>
 
-<%= link_to "Create a league now!", new_league_path %>
-<%= link_to "Join a league", join_league_path %>
-
+</div>

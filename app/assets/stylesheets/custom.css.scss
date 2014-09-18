@@ -23,6 +23,19 @@ $navbarInverseBrandColor: black;
 
 /* universal */
 
+a{
+  color: #0452AE;
+}
+
+a:focus{
+  color: #0452AE;
+}
+
+a:hover{
+  color: #0452AE;
+}
+
+
 .container {
   width: 1170px;
 }
@@ -319,122 +332,251 @@ aside {
 
 
 .navbar-inverse .brand,
-.navbar-inverse .nav > li > a {
-  color: whitesmoke;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08);
-}
+.navbar-inverse .nav > li > {
+  a {
+    color: whitesmoke;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08);
+  }
 
-.user-info {
-  background: white;
-  -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
-  -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
-  border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
-  border: 1px solid black;
-  scroll: false;
+  a:hover{
 
-  h1 {
-    font-size: 1.4em;
-    text-align: left;
-    letter-spacing: -1px;
-    margin-bottom: 3px;
-    margin-top: 0px;
+    background: rgb(143, 2, 34); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f0222', endColorstr='#6d0019', GradientType=0); /* IE6-9 */
+  }
+
+  a:focus{
+
+    background: rgb(143, 2, 34); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f0222', endColorstr='#6d0019', GradientType=0); /* IE6-9 */
   }
 }
 
-.user-info .topframe {
-  height: 60px;
-//  background: rgb(143, 2, 34);
-  background: #B50300;
-}
+  .user-info {
+    background: white;
+    -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
+    -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
+    border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
+    border: 1px solid black;
+    scroll: false;
+    height: 175px;
 
-.profile_container {
-  padding-top: 15px;
-  padding-left: 5px;
-  padding-bottom: 10px;
-}
-
-.button {
-  background: rgb(143, 2, 34); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f0222', endColorstr='#6d0019', GradientType=0); /* IE6-9 */
-}
-
-.game-table{
-  padding-top: 20px;
-}
-
-
-
-.table-striped{
-  bgcolor: black;
-  background: black;
-  border: 1px solid black;
-  >thead>tr {
-    background-color: #B50300;
-    color: white;
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
   }
-}
 
-
-.row {
-  padding-top: 20px;
-
-}
-
-.profile_name {
-  padding-top: 20px;
-  a{
-    color: black;
+  .user-info .topframe {
+    height: 60px;
+    //  background: rgb(143, 2, 34);
+    background: #B50300;
   }
-}
 
-.profile_stats {
-  ul{
-    box-sizing: border-box;
-    font-size: 12px;
-    list-style-type: none;
-    margin: 0px;
-    padding: 20px;
-    display: table;
+  .profile_container {
+    padding-top: 15px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+  }
 
-    li {
-      display:table-cell;
+  .button {
+    background: rgb(143, 2, 34); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f0222', endColorstr='#6d0019', GradientType=0); /* IE6-9 */
+  }
+
+  .game-table{
+    padding-top: 20px;
+  }
+
+
+
+  .table-striped{
+    border: 1px solid black;
+    >thead>tr {
+      background-color: #B50300;
+      color: white;
     }
   }
 
 
-  .navbar-inverse .nav > li > a:focus,
-  .navbar-inverse .nav > li > a:hover {
-    background: rgb(143, 2, 34); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
-    color: blueviolet;
+  .row {
+    padding-top: 20px;
+
   }
 
-  .navbar-inverse .nav .active > a,
-  .navbar-inverse .nav .active > a:hover,
-  .navbar-inverse .nav .active > a:focus {
-    color: blueviolet;
-    background: rgb(143, 2, 34); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+  .profile_name {
+    padding-top: 20px;
+    a{
+      color: black;
+    }
   }
 
+  .profile_stats {
+    ul{
+      box-sizing: border-box;
+      font-size: 12px;
+      list-style-type: none;
+      margin: 0px;
+      padding: 20px;
+      display: table;
+
+      li {
+        display:table-cell;
+      }
+    }
+
+
+    .navbar-inverse .nav > li > a:focus,
+    .navbar-inverse .nav > li > a:hover {
+      background: rgb(143, 2, 34); /* Old browsers */
+      background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+      background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+    }
+
+    .navbar-inverse .nav .active > a,
+    .navbar-inverse .nav .active > a:hover,
+    .navbar-inverse .nav .active > a:focus {
+      background: rgb(143, 2, 34); /* Old browsers */
+      background: -moz-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(143, 2, 34, 1)), color-stop(66%, rgba(109, 0, 25, 1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* IE10+ */
+      background: linear-gradient(to bottom, rgba(143, 2, 34, 1) 43%, rgba(109, 0, 25, 1) 66%); /* W3C */
+    }
+
+
+    .navbar .nav > li {
+      float: left;
+      background: black;
+
+    }
+
+    .navbar-inverse .nav li .dropdown .open > .dropdown-toggle,
+    .navbar-inverse .nav li .dropdown .active > .dropdown-toggle,
+    .navbar-inverse .nav li .dropdown .open.active > .dropdown-toggle {
+      background-color: #ff0000;
+      color: white;
+    }
+
+    .username{
+      font-size: 15px;
+      font-style: bold;
+
+    }
+
+
+}
+
+
+
+.league_overview{
+
+}
+
+.round-border{
+  background: red;
+  border-radius:10px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+}
 
 
 
 
+.table-bordered {
+
+  // Prevent a double border
+  caption + thead tr:first-child th,
+  caption + tbody tr:first-child th,
+  caption + tbody tr:first-child td,
+  colgroup + thead tr:first-child th,
+  colgroup + tbody tr:first-child th,
+  colgroup + tbody tr:first-child td,
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0;
+  }
+  // For first th/td in the first row in the first thead or tbody
+  thead:first-child tr:first-child > th:first-child,
+  tbody:first-child tr:first-child > td:first-child,
+  tbody:first-child tr:first-child > th:first-child {
+    @include border-top-left-radius($baseBorderRadius);
+  }
+  // For last th/td in the first row in the first thead or tbody
+  thead:first-child tr:first-child > th:last-child,
+  tbody:first-child tr:first-child > td:last-child,
+  tbody:first-child tr:first-child > th:last-child {
+    @include border-top-right-radius($baseBorderRadius);
+  }
+  // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
+  thead:last-child tr:last-child > th:first-child,
+  tbody:last-child tr:last-child > td:first-child,
+  tbody:last-child tr:last-child > th:first-child,
+  tfoot:last-child tr:last-child > td:first-child,
+  tfoot:last-child tr:last-child > th:first-child {
+    @include border-bottom-left-radius($baseBorderRadius);
+  }
+  // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
+  thead:last-child tr:last-child > th:last-child,
+  tbody:last-child tr:last-child > td:last-child,
+  tbody:last-child tr:last-child > th:last-child,
+  tfoot:last-child tr:last-child > td:last-child,
+  tfoot:last-child tr:last-child > th:last-child {
+    @include border-bottom-right-radius($baseBorderRadius);
+  }
+
+  // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
+  tfoot + tbody:last-child tr:last-child td:first-child {
+    @include border-bottom-left-radius(0);
+  }
+  tfoot + tbody:last-child tr:last-child td:last-child {
+    @include border-bottom-right-radius(0);
+  }
+
+  // Special fixes to round the left border on the first td/th
+  caption + thead tr:first-child th:first-child,
+  caption + tbody tr:first-child td:first-child,
+  colgroup + thead tr:first-child th:first-child,
+  colgroup + tbody tr:first-child td:first-child {
+    @include border-top-left-radius($baseBorderRadius);
+  }
+  caption + thead tr:first-child th:last-child,
+  caption + tbody tr:first-child td:last-child,
+  colgroup + thead tr:first-child th:last-child,
+  colgroup + tbody tr:first-child td:last-child {
+    @include border-top-right-radius($baseBorderRadius);
+  }
+
+}
+
+.table-bordered th,
+.table-bordered td {
+   border-left: none;
+   vertical-align: middle;
 }
