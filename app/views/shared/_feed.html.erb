@@ -1,5 +1,5 @@
 <% if @feed_items.any? %>
-    <div >
+    <div class="feed feed-left feed-top">
         <h5> What's Happening</h5>
         <ol class="userposts">
             <%= render partial: 'shared/feed_item', collection: @feed_items %>

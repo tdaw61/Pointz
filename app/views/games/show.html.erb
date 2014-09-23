@@ -3,74 +3,23 @@
     <h2> <%= link_to @game.league.name, @game.league %> </h2>
     <div class="row">
         <aside class="span5">
-
-            <%= link_to 'add user to game', add_user_url %>
-            <%= link_to 'Edit game settings', edit_game_path %>
-            <%= link_to 'destroy this game', @game, method: :delete,
-                        data: {confirm: "You sure?"},
-                        title: @game.name %>
-            <table class="table table-striped table-condensed table-hover table-bordered">
-                <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Points</th>
-
-                </tr>
-                </thead>
-
-                <% @scores.each do |score| %>
-
-                    <tr>
-                        <td><%= score.username %></td>
-                        <td><%= score.points %></td>
-                    </tr>
-                <% end %>
-
-            </table>
+            <%= render 'points_table' %>
         </aside>
         <div class="span5">
 
-            <section class="userpost_form">
+            <section class="feed">
                 <%= render 'shared/userpost_form' %>
             </section>
 
-            <section class="feed">
                 <%= render 'shared/feed' %>
-            </section>
 
         </div>
         <div class="span4">
 
             <%= render 'vote_form' %>
 
-            <table class="table table-striped table-bordered table-condensed table-hover">
-                <p>Votes Pending</p>
-                <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Points</th>
-                    <th>Status</th>
-                    <th>You Voted</th>
+            <%= render 'event_vote/vote_table' %>
 
-                </tr>
-                </thead>
-
-                <% @event_votes.each do |event_vote| %>
-
-                    <tr>
-                        <td><%= event_vote.username %></td>
-                        <td><%= event_vote.user_point_value %></td>
-                        <td><%= event_vote.game_event.yes_votes %> / <%= @game.users.count %> </td>
-                        <% if event_vote.has_voted? %>
-                            <td>  <%= event_vote.vote_string %></td>
-                        <% else %>
-                            <td><%= link_to "Yes", save_vote_path(:vote => 1, :event_vote_id => event_vote.id), method: :post %>
-                            | <%= link_to "No", save_vote_path(:vote => 0, :event_vote_id => event_vote.id), method: :post %></td>
-                        <% end %>
-                    </tr>
-                <% end %>
-
-            </table>
         </div>
     </div>
 
