@@ -1,4 +1,4 @@
-<div class="userpost-form feed-left">
+<div class="userpost-form feed-left" id="userpost-form">
     <%= form_for(Userpost.new, remote: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div >

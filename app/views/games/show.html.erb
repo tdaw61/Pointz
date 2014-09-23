@@ -7,22 +7,24 @@
         </aside>
         <div class="span5">
 
-            <section class="feed">
+            <section class="status-content">
                 <%= render 'shared/userpost_form' %>
             </section>
 
+            <div class="feed feed-left feed-top" id="feed">
                 <%= render 'shared/feed' %>
+            </div>
 
         </div>
         <div class="span4">
 
-            <%= render 'vote_form' %>
 
             <%= render 'event_vote/vote_table' %>
 
+            <%= render 'vote_form' %>
+
+
         </div>
     </div>
-
-
 
 <% end %>
