@@ -1,6 +1,9 @@
 <% if signed_in? %>
-    <h1> <%= @game.name %> </h1>
-    <h2> <%= link_to @game.league.name, @game.league %> </h2>
+    <div class="game-header">
+        <h1> <%= @game.name %> </h1>
+        <h2> <%= link_to @game.league.name, @game.league %> </h2>
+    </div>
+
     <div class="row">
         <aside class="span5">
             <%= render 'points_table' %>

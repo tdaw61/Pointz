@@ -5,10 +5,7 @@ $tableBackground: #FFFFFF;
 $tableBackgroundAccent: #FFFFFF;
 $btnDangerBackground: #B50300;
 $btnDangerBackgroundHighlight: #6d0019;
-//$navbarBackgroundHighlight: black;
-//$navbarInverseBackground: black;
-//$navbarInverseBackgroundHighlight: black;
-//$navbarInverseBrandColor: black;
+
 
 @import "bootstrap";
 
@@ -589,4 +586,32 @@ aside {
 
 .no-margin{
   margin: 1px;
+}
+
+td
+{
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .td-centered{
+    text-align: center;
+  }
+}
+
+input[type="text"]{
+  margin: 1px;
+}
+
+.container .game-header{
+  width: 100%;
+  background: #777777;
+  overflow-x: visible;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0px;
+  padding: 0px;
 }

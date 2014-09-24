@@ -14,12 +14,12 @@
 
         <tr>
             <td><%= event_vote.username %></td>
-            <td><%= event_vote.user_point_value %></td>
-            <td><%= event_vote.game_event.yes_votes %> / <%= @game.users.count %> </td>
+            <td class="td-centered"><%= event_vote.user_point_value %></td>
+            <td class="td-centered"><%= event_vote.game_event.yes_votes %> / <%= @game.users.count %> </td>
             <% if event_vote.has_voted? %>
-                <td>  <%= event_vote.vote_string %></td>
+                <td class="td-centered">  <%= event_vote.vote_string %></td>
             <% else %>
-                <td><%= link_to "Yes", save_vote_path(:vote => 1, :event_vote_id => event_vote.id), method: :post %>
+                <td class="td-centered"><%= link_to "Yes", save_vote_path(:vote => 1, :event_vote_id => event_vote.id), method: :post %>
                     | <%= link_to "No", save_vote_path(:vote => 0, :event_vote_id => event_vote.id), method: :post %></td>
             <% end %>
         </tr>
