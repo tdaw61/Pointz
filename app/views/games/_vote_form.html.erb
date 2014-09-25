@@ -14,7 +14,7 @@
             </div>
         <% end %>
 
-
+        <h4>Start a new vote:</h4>
         <p>
             <%= f.label :target_user_id %>
             <%= f.collection_select :target_user_id, @users, :id, :name,{}, {:class => "no-margin"} %>
@@ -29,7 +29,7 @@
             <%= f.hidden_field :user_id, :value => current_user.id %>
         </p>
 
-        <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Create vote", class: "btn btn-small btn-primary btn-danger" %>
     <% end %>
 
 

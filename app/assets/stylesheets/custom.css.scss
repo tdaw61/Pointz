@@ -588,17 +588,20 @@ aside {
   margin: 1px;
 }
 
-td
+td.cell-centered
 {
+
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  .td-centered{
-    text-align: center;
-  }
+  text-align: center;
 }
+
+th.cell-centered{
+  text-align: center;
+}
+
 
 input[type="text"]{
   margin: 1px;
@@ -614,4 +617,8 @@ input[type="text"]{
   background-size: cover;
   margin: 0px;
   padding: 0px;
+}
+
+.table-fixed{
+  table-layout: fixed;
 }
