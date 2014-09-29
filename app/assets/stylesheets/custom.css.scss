@@ -12,6 +12,7 @@ $btnDangerBackgroundHighlight: #6d0019;
 /* mixins, variables, etc. */
 
 
+$gridColumnWidth: $gridColumnWidth1200;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -36,7 +37,6 @@ a:hover{
 
 
 .container {
-  width: 1170px;
 }
 
 html {
@@ -313,6 +313,7 @@ aside {
 }
 
 .feed{
+  border: 1px solid #d2d2d2;
   padding-top:10px;
   background-color: white;
   -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
@@ -322,6 +323,7 @@ aside {
 }
 
 .status-content{
+  border: 1px solid #d2d2d2;
   background-color: white;
   -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
   -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
@@ -632,4 +634,13 @@ input[type="text"]{
 .overflow-hidden{
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.leagues-table{
+  width: 100%;
+  height: 100px;
+  tr th {
+    background: #b4b4b4;
+    colspan: 2;
+  }
 }
