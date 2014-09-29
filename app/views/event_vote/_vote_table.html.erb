@@ -13,8 +13,8 @@
     <% @event_votes.each do |event_vote| %>
 
         <tr>
-            <td><%= event_vote.username %></td>
-            <td class="cell-centered"><%= event_vote.user_point_value %></td>
+            <td class="overflow-hidden"><%= event_vote.username %></td>
+            <td class="cell-centered "><%= event_vote.user_point_value %></td>
             <td class="cell-centered"><%= event_vote.game_event.yes_votes %> / <%= @game.users.count %> </td>
             <% if event_vote.has_voted? %>
                 <td class="cell-centered">  <%= event_vote.vote_string %></td>
