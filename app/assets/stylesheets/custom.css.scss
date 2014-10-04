@@ -12,7 +12,7 @@ $btnDangerBackgroundHighlight: #6d0019;
 /* mixins, variables, etc. */
 
 
-$gridColumnWidth: $gridColumnWidth1200;
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -37,6 +37,7 @@ a:hover{
 
 
 .container {
+  width: 1200px;
 }
 
 html {
@@ -643,4 +644,16 @@ input[type="text"]{
     background: #b4b4b4;
     colspan: 2;
   }
+}
+
+.container{
+
+.league-container{
+  background: white;
+  height: 500px;
+}
+}
+
+.league-overview{
+  margin: 15px;
 }

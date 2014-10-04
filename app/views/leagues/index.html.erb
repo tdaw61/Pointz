@@ -1,10 +1,11 @@
-<div class="row">
+<div class="row league-container">
     <div class="span12">
 
         <% if @leagues.count == 0 %>
             <p> you are currently in no leagues</p>
 
         <% else %>
+            <h1> << <%= current_user.name %>'s Leagues >> </h1>
 
             <div>
                 <% @leagues.each do |league| %>
