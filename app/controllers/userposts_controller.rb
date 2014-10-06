@@ -26,7 +26,7 @@ class UserpostsController < ApplicationController
     @userpost = Userpost.find(params[:id])
     respond_to do |format|
       if @userpost.destroy!
-        format.html { redirect_to root_url, notice: 'post deleted' }
+        format.html { redirect_to root_url, notice: 'post deletedgae' }
         # format.json {render root_url, status: :deleted, location: }
       else
         render user.root_url
