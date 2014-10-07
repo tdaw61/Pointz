@@ -10,8 +10,12 @@
     </tr>
     </thead>
 
-    <% @event_votes.each do |event_vote| %>
-
+    <% if @event_votes.empty? %>
+        <tr>
+            <td colspan="4" class="cell-centered">There are no open events to vote on</td>
+        </tr>
+    <% else %>
+        <% @event_votes.each do |event_vote| %>
         <tr>
             <td class="overflow-hidden"><%= event_vote.username %></td>
             <td class="cell-centered "><%= event_vote.user_point_value %></td>
@@ -19,10 +23,11 @@
             <% if event_vote.has_voted? %>
                 <td class="cell-centered">  <%= event_vote.vote_string %></td>
             <% else %>
-                <td class="cell-centered"><%= link_to "Yes", save_vote_path(:vote => 1, :event_vote_id => event_vote.id), method: :post %>
-                    | <%= link_to "No", save_vote_path(:vote => 0, :event_vote_id => event_vote.id), method: :post %></td>
+                <td class="cell-centered"><%= link_to "Yes", save_vote_path(:vote => 1, :event_vote_id => event_vote.id, :id => @game.id), method: :post %>
+                    | <%= link_to "No", save_vote_path(:vote => 0, :event_vote_id => event_vote.id, :id => @game.id), method: :post %></td>
             <% end %>
         </tr>
+        <% end %>
     <% end %>
 
 </table>

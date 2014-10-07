@@ -22,6 +22,8 @@ class GameEventsController < ApplicationController
       respond_to do |format|
         @event_votes = EventVote.where(game_id: params[:game_id], user_id: current_user.id)
         @game = Game.find(params[:game_id])
+        @game_event = GameEvent.new
+        @users = @game.users
         format.html{ redirect_to :controller => :games , :action => :show, :id => params[:game_id] }
         format.js
       end
