@@ -16,12 +16,18 @@ class GamesController < ApplicationController
     @user_feed_items = @game.userposts
     @game_event_feed_items = @game.game_events
     @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
+    @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
     @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
     #TODO move this to ajax call and expand on game_event creation
     @game_event = @game.game_events.build
     @users = @game.users
+    respond_to do |format|
+      format.js
+      format.html
+    end
+
 
   end
 

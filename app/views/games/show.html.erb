@@ -8,14 +8,18 @@
         <aside class="span5">
             <%= render 'points_table' %>
         </aside>
-        <div class="span5">
+        <div class="span6">
 
             <section class="status-content">
-                <%= render 'shared/userpost_form' %>
+                <div class="userpost-form feed-left" id="userpost-form">
+                    <%= render 'shared/userpost_form' %>
+                </div>
             </section>
 
             <div class="feed feed-left feed-top" id="feed">
                 <%= render 'shared/feed' %>
+
+
             </div>
 
         </div>

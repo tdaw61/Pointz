@@ -1,14 +1,14 @@
-<div class="userpost-form feed-left" id="userpost-form">
+<!--<div class="userpost-form feed-left" id="userpost-form">-->
     <%= form_for(Userpost.new, remote: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div >
             <%= f.text_area :data, placeholder: "What's happening" %>
         </div>
         <%= hidden_field :game, :id %>
-        <%= f.submit "Post", class: "btn btn-small btn-primary btn-danger btn-right" %>
+        <%= f.submit "Post", class: "btn btn-small btn-primary btn-danger btn-right", id: "userpost-btn" %>
     <% end %>
 
     <script>
         $("#userpost_data").autogrow();
     </script>
-</div>
+<!--</div>-->

@@ -9,6 +9,8 @@ $btnDangerBackgroundHighlight: #6d0019;
 
 @import "bootstrap";
 
+$gridRowWidth: $gridRowWidth1200;
+
 /* mixins, variables, etc. */
 
 
@@ -321,6 +323,7 @@ aside {
   -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
   border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
   padding-right: 10px;
+  padding-bottom: 10px;
 }
 
 .status-content{
@@ -656,4 +659,10 @@ input[type="text"]{
 
 .league-overview{
   margin: 15px;
+}
+
+ li #infinte-scrolling {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
 }
