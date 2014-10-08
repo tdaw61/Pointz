@@ -13,7 +13,7 @@ class UserpostsController < ApplicationController
         @user_feed_items = @game.userposts
         @game_event_feed_items = @game.game_events
         @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
-        @feed_items.paginate(page: params[:page], per_page: 15)
+        @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
 
         format.html { redirect_to request.referer, notice: 'post was successfully created.' }
         format.js
