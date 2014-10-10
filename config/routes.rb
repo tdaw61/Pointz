@@ -26,7 +26,15 @@ Rails.application.routes.draw do
   get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
   # get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
   # post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
+
+  #games
   post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
+  match  '/games/:id/paginate' => 'games#paginate', via: 'get'
+
+  match  '/paginate' => 'userposts#paginate', via: 'get'
+
+  #users
+  match '/users/paginate' => 'users#paginate', via: 'get'
 
   #leagues
   get '/leagues/join_league' => 'leagues#join_league', via: 'get', as: 'join_league'

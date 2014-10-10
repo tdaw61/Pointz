@@ -33,12 +33,31 @@ class UserpostsController < ApplicationController
     @userpost = Userpost.find(params[:id])
     respond_to do |format|
       if @userpost.destroy!
-        format.html { redirect_to root_url, notice: 'post deletedgae' }
+        format.html { redirect_to :back, notice: 'post deleted' }
         # format.json {render root_url, status: :deleted, location: }
       else
         render user.root_url
       end
     end
+  end
+
+  def paginate
+    if params[:id].nil?
+      @feed_items = current_user.userposts.paginate(page: params[:page])
+    else
+      @game = Game.find(params[:id])
+      @user_feed_items = @game.userposts
+      @game_event_feed_items = @game.game_events
+      @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
+      @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
+    end
+    respond_to do |format|
+      format.js {render 'userposts/paginate'}
+    end
+  end
+
+  def show
+
   end
 
   private
