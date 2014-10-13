@@ -666,3 +666,53 @@ input[type="text"]{
   margin: 0px;
   text-align: center;
 }
+
+.userpost-stats li{
+  text-decoration: none;
+  display: inline;
+  border: none;
+}
+
+input[type="text"] {
+   margin: 0px;
+}
+
+.block{
+  display: block;
+}
+
+.start-date{
+  float: left;
+  padding-right: 50px;
+}
+
+.end-date{
+  padding-right: 28px;
+  width: 189px;
+}
+
+.input-append{
+
+  margin-bottom: 10px;
+  vertical-align: middle;
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.date-input{
+  height: 55px;
+  display: block;
+}
+
+.game-form{
+  width: 700px;
+  background: white;
+  border: 1px solid #808080;
+  padding: 20px;
+
+  input{
+    max-width: 300px;
+    padding-top: 5px;
+  }
+}
+

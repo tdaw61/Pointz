@@ -19,6 +19,8 @@ class GameEventsController < ApplicationController
         Score.update_score params[:game_id], params[:target_user_id], params[:point_value]
       end
 
+      @game_event.create_userpost
+
       respond_to do |format|
         @event_votes = EventVote.where(game_id: params[:game_id], user_id: current_user.id)
         @game = Game.find(params[:game_id])

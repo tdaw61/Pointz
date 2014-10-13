@@ -7,8 +7,16 @@
             <th>Votes Pending</th>
         </tr>
         </thead>
+        <% if @scores.empty?  %>
+            <tr>
+                <td colspan="4"> You have no leagues yet. <%= link_to "Start one now", new_league_path %> </td>
+            </tr>
 
-        <% @scores.each do |score| %>
+
+        <%
+           else
+           @scores.each do |score|
+        %>
 
             <tr>
                 <td><%= link_to score.game.league.name, score.game.league %></td>
@@ -16,7 +24,11 @@
                 <td><%= score.points %></td>
                 <td><%= current_user.open_votes_by_game score.game %></td>
             </tr>
-        <% end %>
+        <%
+           end
+        end
+        %>
+
 
     </table>
 

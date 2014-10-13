@@ -9,6 +9,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'compass'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

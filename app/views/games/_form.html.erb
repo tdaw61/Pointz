@@ -1,43 +1,55 @@
-
 <div class="row">
-    <div class="span6 offset3">
+    <div class="span12  ">
+        <div class="game-form" >
 
-        <%= form_for([@game.league, @game]) do |f| %>
-            <% if @game.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+            <h1>Create New Game </h1>
 
-                    <ul>
-                        <% @game.errors.full_messages.each do |message| %>
-                            <li><%= message %></li>
-                        <% end %>
-                    </ul>
+            <p> * Required field </p>
+
+            <%= form_for([@game.league, @game]) do |f| %>
+                <% if @game.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+                        <ul>
+                            <% @game.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+
+                <div class="form-group">
+                    <div class="col-sm-3"><label>First name</label><input type="text" class="form-control" placeholder="First"></div>
+                    <div class="col-sm-3"><label>Last name</label><input type="text" class="form-control" placeholder="Last"></div>
                 </div>
+
+                <%= f.label :name, "*Name" %>
+                <%= f.text_field :name %>
+
+                <%= f.label :motto %>
+                <%= f.text_field :motto %>
+
+                <div class="input-append date-input ">
+
+                    <div class="start-date ">
+                        <%= f.label :start_date %>
+                        <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
+                        <span class="add-on datepicker-icon"><i data-behaviour="datepicker" class="icon-calendar"></i> </span>
+                    </div>
+
+                    <div class="end-date ">
+                        <%= f.label :end_date %>
+                        <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker", :size => "16" %>
+                        <span class="add-on datepicker-icon" data-behaviour="datepicker"><i data-behaviour="datepicker" class="icon-calendar"></i> </span>
+                    </div>
+
+                </div>
+
+                <%= f.submit "Create game", class: "btn btn-large btn-primary btn-danger block" %>
             <% end %>
 
-            <p>
-                <%= f.label :name %><br>
-                <%= f.text_field :name %>
-            </p>
-            <p>
-                <%= f.label :motto %><br>
-                <%= f.text_field :motto %>
-            </p>
-
-            <p>
-                <%= f.label :start_date %>
-                <%= f.date_select :start_date%>
-            </p>
-
-            <p>
-                <%= f.label :end_date %>
-                <%= f.date_select :end_date%><br>
-            </p>
-
-
-            <%= f.submit "Create game", class: "btn btn-large btn-primary" %>
-        <% end %>
-
+        </div>
     </div>
-</div>
 
+</div>

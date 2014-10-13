@@ -27,9 +27,11 @@
         Legends live here.
     </h2>
 
-    <%= link_to "Sign up now!", 'users/new', class: "btn btn-large btn-primary" %>
+    <%= link_to "Sign up now!", 'users/new', class: "btn btn-large btn-primary btn-danger" %></br>
+
+    <p>Already sign up? <%= link_to "sign in", signin_path%> </p>
+
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 
 <% end %>

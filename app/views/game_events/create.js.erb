@@ -1,2 +1,2 @@
-$("#votes-table").html("<%= render 'event_vote/vote_table' %>");
-$(".vote-form").html("<%= render 'games/vote_form' %>");
+$("#votes-table").html("<%= escape_javascript(render 'event_vote/vote_table') %>");
+$(".vote-form").html("<%= escape_javascript(render 'games/vote_form') %>");

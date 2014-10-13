@@ -15,4 +15,6 @@
 //= require bootstrap
 //= require turbolinks
 //= require autogrow.min
+//= require bootstrap-datepicker
 //= require_tree .
+
