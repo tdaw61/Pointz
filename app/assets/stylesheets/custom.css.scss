@@ -713,6 +713,22 @@ input[type="text"] {
   input{
     max-width: 300px;
     padding-top: 5px;
+    vertical-align: inherit;
   }
+
+  label{
+    padding-top: 5px;
+    font-weight: bold;
+  }
+
+
+
+  .btn{
+    margin-top: 10px;
+  }
+}
+
+.inline{
+  display: inline;
 }
 

@@ -19,10 +19,6 @@
                     </div>
                 <% end %>
 
-                <div class="form-group">
-                    <div class="col-sm-3"><label>First name</label><input type="text" class="form-control" placeholder="First"></div>
-                    <div class="col-sm-3"><label>Last name</label><input type="text" class="form-control" placeholder="Last"></div>
-                </div>
 
                 <%= f.label :name, "*Name" %>
                 <%= f.text_field :name %>
@@ -32,21 +28,32 @@
 
                 <div class="input-append date-input ">
 
-                    <div class="start-date ">
-                        <%= f.label :start_date %>
-                        <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
-                        <span class="add-on datepicker-icon"><i data-behaviour="datepicker" class="icon-calendar"></i> </span>
-                    </div>
 
                     <div class="end-date ">
-                        <%= f.label :end_date %>
+                        <span><%= f.label :end_date, "End Date (Optional) - The game will end at this date." %></span>
                         <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker", :size => "16" %>
                         <span class="add-on datepicker-icon" data-behaviour="datepicker"><i data-behaviour="datepicker" class="icon-calendar"></i> </span>
                     </div>
 
                 </div>
 
-                <%= f.submit "Create game", class: "btn btn-large btn-primary btn-danger block" %>
+                <span><%= f.label :score_cap , "Score Cap (Optional) - The game will end when a user hits this cap."%> </span>
+                <%= f.text_field :score_cap %>
+
+                <div >
+                    <span><%= f.label :point_tiers, "Fixed point system (Optional) - This will make +/- 5 the greatest point value for a single vote." %> </span>
+                    <div>
+                        <span>Fixed Scoring</span>
+                        <%= radio_button :game, :point_tiers, 'point tiers', :checked => true %>
+                    </div>
+                    <div>
+                        <span>Free Scoring </span>
+                        <%= radio_button :game, :point_tiers, 'free scoring' %>
+                    </div>
+                </div>
+
+
+                <%= f.submit "Create game", class: "btn btn-large btn-primary btn-danger block padding-top" %>
             <% end %>
 
         </div>
