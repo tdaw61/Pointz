@@ -65,6 +65,8 @@ class GamesController < ApplicationController
   end
 
   def destroy
+    #TODO Modal popover for deleting? - This would be much cooler than the ugly chrome one.
+
     if @game.destroy
       @games = Game.paginate(page: params[:page])
       render games_path

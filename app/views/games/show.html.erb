@@ -1,12 +1,19 @@
 <% if signed_in? %>
     <div class="game-header">
-        <h1> <%= @game.name %> </h1>
-        <h2> <%= link_to @game.league.name, @game.league %> </h2>
+        <h1> <%= link_to @game.league.name, @game.league %> >> <%= @game.name %> </h1>
     </div>
 
     <div class="row">
         <aside class="span5">
             <%= render 'points_table' %>
+
+            <%= render 'game_settings' %>
+
+            <%= link_to 'Edit game settings', edit_game_path, class:  "btn btn-small btn-primary btn-danger " %>
+            <%= link_to 'end this game', @game, method: :delete,
+                        data: {confirm: "You sure?"},
+                        title: @game.name,
+                        class: "btn btn-small btn-primary btn-danger"%>
         </aside>
         <div class="span6">
 

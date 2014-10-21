@@ -16,8 +16,3 @@
     <% end %>
 
 </table>
-<%= link_to 'Edit game settings', edit_game_path, class:  "btn btn-small btn-primary btn-danger" %>
-<%= link_to 'end this game', @game, method: :delete,
-            data: {confirm: "You sure?"},
-            title: @game.name,
-            class: "btn btn-small btn-primary btn-danger"%>
