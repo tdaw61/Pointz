@@ -19,8 +19,13 @@
             <%= f.label :target_user_id %>
             <%= f.collection_select :target_user_id, @users, :id, :name,{}, {:class => "no-margin"} %>
 
-            <%= f.label "points to +/-" %>
-            <%= f.text_field :point_value, class: "no-margin" %>
+            <% if @game.point_tiers == 1 %>
+                <%= f.label "points to +/-" %>
+                <%= f.text_field :point_value, class: "no-margin" %>
+            <% else %>
+                <%= f.label "points to +/-" %>
+                <%= f.select :point_value, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], class: "no-margin" %>
+            <% end %>
 
             <%= f.label "reason for the points" %>
             <%= f.text_field :data, class: "no-margin" %>

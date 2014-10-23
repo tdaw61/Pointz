@@ -752,6 +752,20 @@ input[type="text"] {
   padding-top: 10px;
 }
 
-.opacity-fifty{
-  opacity: .5;
+.opacity-thirtyfive{
+  opacity: .35;
+}
+
+
+.white-bordered{
+  background: white;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.del-link{
+  margin-right: 15%;
+  margin-left: auto;
+  display: block;
 }
