@@ -398,6 +398,7 @@ aside {
     border: 1px solid black;
     scroll: false;
     height: 175px;
+    margin-bottom: 30px;
 
     h1 {
       font-size: 1.4em;
@@ -408,10 +409,11 @@ aside {
     }
   }
 
-  .user-info .topframe {
+  .topframe {
     height: 60px;
-    //  background: rgb(143, 2, 34);
     background: #B50300;
+    color: white;
+    padding-left: 20px;
   }
 
   .profile_container {
@@ -431,7 +433,6 @@ aside {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8f0222', endColorstr='#6d0019', GradientType=0); /* IE6-9 */
   }
 
-  .game-table,
   .league-users{
     padding-top: 20px;
   }
@@ -646,10 +647,8 @@ input[type="text"]{
 .leagues-table{
   width: 100%;
   height: 100px;
-  tr th {
-    background: #b4b4b4;
-    colspan: 2;
-  }
+  background: white;
+  border: 1px solid grey;
 }
 
 .container{
@@ -769,3 +768,5 @@ input[type="text"] {
   margin-left: auto;
   display: block;
 }
+
+

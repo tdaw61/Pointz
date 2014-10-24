@@ -22,4 +22,8 @@ class Game < ActiveRecord::Base
     scores.order('points DESC')
   end
 
+  def points user
+    scores.find(user.id).points
+  end
+
 end

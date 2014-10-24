@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141015022701) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "target_user_id",             null: false
-    t.integer  "yes_votes",      default: 0
+    t.integer  "yes_votes",      default: 1
   end
 
   add_index "game_events", ["game_id"], name: "index_game_events_on_game_id"

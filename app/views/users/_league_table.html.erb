@@ -1,0 +1,25 @@
+<div class="topframe">
+    <span>Your Current Leagues <i class="icon-chevron-down icon-white"></i></span>
+</div>
+<div class="leagues-table">
+
+        <% if @leagues.empty?  %>
+          <p> You have no leagues yet. <%= link_to "Start one now", new_league_path %></p>
+
+
+
+        <%
+           else
+           @leagues.each do |league|
+        %>
+                <%= link_to league.name, league %>
+                <% league.games.each do |game| %>
+                <%= link_to game.name, game%>
+                <%= game.points current_user %>
+                <% end %>
+
+        <%
+           end
+        end
+        %>
+</div>

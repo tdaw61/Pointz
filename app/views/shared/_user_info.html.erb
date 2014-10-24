@@ -1,3 +1,8 @@
+
+<div class="topframe">
+</div>
+<div class="profile_container">
+
 <div class="profile_avatar">
     <%= link_to gravatar_for(current_user, size: 60), current_user %>
 </div>
@@ -15,7 +20,7 @@
                 <td> open votes: </td>
             </tr>
             <tr>
-                <td> <%= 0 %></td>
+                <td> <%= current_user.leagues.count %></td>
                 <td> <%= current_user.game_events.count %> </td>
                 <td> <%= current_user.open_votes %> </td>
             </tr>
@@ -23,4 +28,5 @@
 
     </table>
 
+</div>
 </div>

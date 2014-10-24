@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if signed_in?
       @userpost  = current_user.userposts.build
       @feed_items = current_user.userposts.paginate(page: params[:page])
-      @scores = current_user.scores
+      @leagues = current_user.leagues
     end
   end
 
