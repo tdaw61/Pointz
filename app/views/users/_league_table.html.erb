@@ -1,25 +1,40 @@
 <div class="topframe">
-    <span>Your Current Leagues <i class="icon-chevron-down icon-white"></i></span>
+    <div>Your Current Leagues <i class="icon-chevron-down icon-white"></i></div>
+    <div class="pts-header">Pts  Pos</div>
 </div>
 <div class="leagues-table">
-
-        <% if @leagues.empty?  %>
-          <p> You have no leagues yet. <%= link_to "Start one now", new_league_path %></p>
+    <ul class="leagues-list">
 
 
+        <% if @leagues.empty? %>
+            <li> You have no leagues yet. <%= link_to "Start one now", new_league_path %></li>
 
         <%
            else
-           @leagues.each do |league|
+             @leagues.each do |league|
         %>
-                <%= link_to league.name, league %>
-                <% league.games.each do |game| %>
-                <%= link_to game.name, game%>
-                <%= game.points current_user %>
-                <% end %>
+                <li>
 
-        <%
-           end
-        end
-        %>
+                    <div class="league-title">
+                        <%= link_to league.name, league %>
+                    </div>
+
+                    <% league.games.each do |game| %>
+                        <div class="inline game-title">
+                            <%= link_to game.name, game %>
+                        </div>
+                        <div class="float-right pts-pos-entry">
+                            <%= game.points current_user %>
+
+                        </div>
+
+                    <div style="clear: both; height: 1px"></div>
+                    <% end %>
+                </li>
+
+            <%
+               end
+               end
+            %>
+    </ul>
 </div>

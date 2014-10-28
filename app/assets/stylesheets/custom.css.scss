@@ -13,7 +13,7 @@ $gridRowWidth: $gridRowWidth1200;
 
 /* mixins, variables, etc. */
 
-
+/* TODO refactor custom.css to individual css files */
 
 
 @mixin box_sizing {
@@ -64,6 +64,19 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+.inline{
+  display: inline;
 }
 
 /* typography */
@@ -645,10 +658,9 @@ input[type="text"]{
 }
 
 .leagues-table{
-  width: 100%;
-  height: 100px;
   background: white;
   border: 1px solid grey;
+  padding-left: 10px;
 }
 
 .container{
@@ -730,9 +742,7 @@ input[type="text"] {
   }
 }
 
-.inline{
-  display: inline;
-}
+
 
 .game-settings{
   border-radius: 6px;
@@ -767,6 +777,33 @@ input[type="text"] {
   margin-right: 15%;
   margin-left: auto;
   display: block;
+}
+
+.leagues-list{
+  list-style: none;
+  margin: 0;
+  li{
+    border-top: 1px solid lightgrey;
+    margin-right: 5px;
+  }
+}
+
+.pts-header{
+  margin-right: 5px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.league-title{
+  font-weight: bold;
+}
+
+.game-title{
+  margin-left: 7px;
+}
+
+.pts-pos-entry{
+  margin-right: 5px;
 }
 
 

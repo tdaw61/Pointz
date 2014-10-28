@@ -23,7 +23,12 @@ class Game < ActiveRecord::Base
   end
 
   def points user
-    scores.find(user.id).points
+    self.scores.where(:user_id => user.id).first.points
+  end
+
+  def position user
+    scores = self.scores
+    scores.order(points: :desc).where(user_id: user.id)
   end
 
 end

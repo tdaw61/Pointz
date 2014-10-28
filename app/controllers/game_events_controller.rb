@@ -7,7 +7,10 @@ class GameEventsController < ApplicationController
   end
 
   def create
+
+    #TODO refactor the create event. Move logic into model & correctly ajax back response.
     @game_event = GameEvent.new(game_event_params)
+    # @game_event.init_votes
     if @game_event.save
 
       #create votes for each user in the game
@@ -25,6 +28,7 @@ class GameEventsController < ApplicationController
         @event_votes = EventVote.where(game_id: params[:game_id], user_id: current_user.id)
         @game = Game.find(params[:game_id])
         @game_event = GameEvent.new
+        @scores = @game.scores
         @users = @game.users
         format.html{ redirect_to :controller => :games , :action => :show, :id => params[:game_id] }
         format.js

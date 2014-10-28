@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def home
+    #TODO refactor feed items for game items. they look ugly
     if signed_in?
       @userpost  = current_user.userposts.build
       @feed_items = current_user.userposts.paginate(page: params[:page])
