@@ -10,4 +10,8 @@ class Userpost < ActiveRecord::Base
     User.find(self.target_user_id).name
   end
 
+  def target_user
+    User.find(self.target_user_id)
+  end
+
 end

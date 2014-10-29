@@ -19,7 +19,7 @@ class GameEventsController < ApplicationController
       end
 
       if @game_event.has_passed?
-        Score.update_score params[:game_id], params[:target_user_id], params[:point_value]
+        Score.update_score @game_event
       end
 
       @game_event.create_userpost
@@ -30,6 +30,8 @@ class GameEventsController < ApplicationController
         @game_event = GameEvent.new
         @scores = @game.scores
         @users = @game.users
+        @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
+
         format.html{ redirect_to :controller => :games , :action => :show, :id => params[:game_id] }
         format.js
       end

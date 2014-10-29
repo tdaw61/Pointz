@@ -46,10 +46,8 @@ class UserpostsController < ApplicationController
       @feed_items = current_user.userposts.paginate(page: params[:page])
     else
       @game = Game.find(params[:id])
-      @user_feed_items = @game.userposts
-      @game_event_feed_items = @game.game_events
-      @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
-      @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
+      @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
+
     end
     respond_to do |format|
       format.js {render 'userposts/paginate'}

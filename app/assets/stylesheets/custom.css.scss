@@ -711,6 +711,10 @@ input[type="text"] {
   vertical-align: middle;
   font-size: 0;
   white-space: nowrap;
+
+  .add-on{
+    padding-bottom: 5px;
+  }
 }
 
 .date-input{
@@ -776,7 +780,7 @@ input[type="text"] {
 .del-link{
   margin-right: 15%;
   margin-left: auto;
-  display: block;
+  float: right;
 }
 
 .leagues-list{
@@ -806,4 +810,23 @@ input[type="text"] {
   margin-right: 5px;
 }
 
+.feed-item-text{
+  padding: 0px;
+  margin: 0px;
+  line-height: 20px;
+}
 
+.feed-item-header{
+  color: grey;
+  font-size: 13px;
+}
+
+.feed-item-content{
+  color: black;
+  font-size: 14px;
+}
+
+.feed-item-footer{
+  color: grey;
+  font-size: 13px;
+}
