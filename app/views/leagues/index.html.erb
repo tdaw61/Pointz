@@ -1,5 +1,4 @@
 <div class="row league-container">
-    <div class="span12">
 
         <% if @leagues.count == 0 %>
             <p> you are currently in no leagues</p>
@@ -15,8 +14,9 @@
             </div>
         <% end %>
 
-        <%= link_to "Create a league now!", new_league_path %>
-        <%= link_to "Join a league", join_league_path %>
-    </div>
+        <div class="">
+            <%= link_to "Create a league now!", new_league_path, class: "btn btn-primary btn-small btn-danger" %>
+            <%= link_to "Join a league", join_league_path, class: "btn btn-primary btn-small btn-danger" %>
+        </div>
 
 </div>

@@ -79,6 +79,18 @@ textarea {
   display: inline;
 }
 
+.no-margin{
+  margin: 1px;
+}
+
+.margin-left{
+  margin-left: 10px;
+}
+
+.margin-right{
+  margin-right: 10px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -504,72 +516,72 @@ aside {
 
 
 
-.table-bordered {
-
-  // Prevent a double border
-  caption + thead tr:first-child th,
-  caption + tbody tr:first-child th,
-  caption + tbody tr:first-child td,
-  colgroup + thead tr:first-child th,
-  colgroup + tbody tr:first-child th,
-  colgroup + tbody tr:first-child td,
-  thead:first-child tr:first-child th,
-  tbody:first-child tr:first-child th,
-  tbody:first-child tr:first-child td {
-    border-top: 0;
-  }
-  // For first th/td in the first row in the first thead or tbody
-  thead:first-child tr:first-child > th:first-child,
-  tbody:first-child tr:first-child > td:first-child,
-  tbody:first-child tr:first-child > th:first-child {
-    @include border-top-left-radius($baseBorderRadius);
-  }
-  // For last th/td in the first row in the first thead or tbody
-  thead:first-child tr:first-child > th:last-child,
-  tbody:first-child tr:first-child > td:last-child,
-  tbody:first-child tr:first-child > th:last-child {
-    @include border-top-right-radius($baseBorderRadius);
-  }
-  // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
-  thead:last-child tr:last-child > th:first-child,
-  tbody:last-child tr:last-child > td:first-child,
-  tbody:last-child tr:last-child > th:first-child,
-  tfoot:last-child tr:last-child > td:first-child,
-  tfoot:last-child tr:last-child > th:first-child {
-    @include border-bottom-left-radius($baseBorderRadius);
-  }
-  // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
-  thead:last-child tr:last-child > th:last-child,
-  tbody:last-child tr:last-child > td:last-child,
-  tbody:last-child tr:last-child > th:last-child,
-  tfoot:last-child tr:last-child > td:last-child,
-  tfoot:last-child tr:last-child > th:last-child {
-    @include border-bottom-right-radius($baseBorderRadius);
-  }
-
-  // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
-  tfoot + tbody:last-child tr:last-child td:first-child {
-    @include border-bottom-left-radius(0);
-  }
-  tfoot + tbody:last-child tr:last-child td:last-child {
-    @include border-bottom-right-radius(0);
-  }
-
-  // Special fixes to round the left border on the first td/th
-  caption + thead tr:first-child th:first-child,
-  caption + tbody tr:first-child td:first-child,
-  colgroup + thead tr:first-child th:first-child,
-  colgroup + tbody tr:first-child td:first-child {
-    @include border-top-left-radius($baseBorderRadius);
-  }
-  caption + thead tr:first-child th:last-child,
-  caption + tbody tr:first-child td:last-child,
-  colgroup + thead tr:first-child th:last-child,
-  colgroup + tbody tr:first-child td:last-child {
-    @include border-top-right-radius($baseBorderRadius);
-  }
-
-}
+//.table-bordered {
+//
+//  // Prevent a double border
+//  caption + thead tr:first-child th,
+//  caption + tbody tr:first-child th,
+//  caption + tbody tr:first-child td,
+//  colgroup + thead tr:first-child th,
+//  colgroup + tbody tr:first-child th,
+//  colgroup + tbody tr:first-child td,
+//  thead:first-child tr:first-child th,
+//  tbody:first-child tr:first-child th,
+//  tbody:first-child tr:first-child td {
+//    border-top: 0;
+//  }
+//  // For first th/td in the first row in the first thead or tbody
+//  thead:first-child tr:first-child > th:first-child,
+//  tbody:first-child tr:first-child > td:first-child,
+//  tbody:first-child tr:first-child > th:first-child {
+//    @include border-top-left-radius($baseBorderRadius);
+//  }
+//  // For last th/td in the first row in the first thead or tbody
+//  thead:first-child tr:first-child > th:last-child,
+//  tbody:first-child tr:first-child > td:last-child,
+//  tbody:first-child tr:first-child > th:last-child {
+//    @include border-top-right-radius($baseBorderRadius);
+//  }
+//  // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
+//  thead:last-child tr:last-child > th:first-child,
+//  tbody:last-child tr:last-child > td:first-child,
+//  tbody:last-child tr:last-child > th:first-child,
+//  tfoot:last-child tr:last-child > td:first-child,
+//  tfoot:last-child tr:last-child > th:first-child {
+//    @include border-bottom-left-radius($baseBorderRadius);
+//  }
+//  // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
+//  thead:last-child tr:last-child > th:last-child,
+//  tbody:last-child tr:last-child > td:last-child,
+//  tbody:last-child tr:last-child > th:last-child,
+//  tfoot:last-child tr:last-child > td:last-child,
+//  tfoot:last-child tr:last-child > th:last-child {
+//    @include border-bottom-right-radius($baseBorderRadius);
+//  }
+//
+//  // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
+//  tfoot + tbody:last-child tr:last-child td:first-child {
+//    @include border-bottom-left-radius(0);
+//  }
+//  tfoot + tbody:last-child tr:last-child td:last-child {
+//    @include border-bottom-right-radius(0);
+//  }
+//
+//  // Special fixes to round the left border on the first td/th
+//  caption + thead tr:first-child th:first-child,
+//  caption + tbody tr:first-child td:first-child,
+//  colgroup + thead tr:first-child th:first-child,
+//  colgroup + tbody tr:first-child td:first-child {
+//    @include border-top-left-radius($baseBorderRadius);
+//  }
+//  caption + thead tr:first-child th:last-child,
+//  caption + tbody tr:first-child td:last-child,
+//  colgroup + thead tr:first-child th:last-child,
+//  colgroup + tbody tr:first-child td:last-child {
+//    @include border-top-right-radius($baseBorderRadius);
+//  }
+//
+//}
 
 .table-bordered th,
 .table-bordered td {
@@ -610,9 +622,7 @@ aside {
 
 }
 
-.no-margin{
-  margin: 1px;
-}
+
 
 td.cell-centered
 {
@@ -667,8 +677,7 @@ input[type="text"]{
 
 .league-container{
   background: white;
-  height: 500px;
-}
+ }
 }
 
 .league-overview{

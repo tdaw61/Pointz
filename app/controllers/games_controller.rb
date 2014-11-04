@@ -12,10 +12,11 @@ class GamesController < ApplicationController
   end
 
   def show
-    #TODO event votes are always showing. Need to close out events that are dead. 
+    #TODO event votes are always showing. Need to close out events that are dead.
+    #TODO add filter for game events vs regular userposts.
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
-    @event_votes = @game.event_votesEventVote.where(game_id: params[:id], user_id: current_user.id)
+    @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
     #TODO move this to ajax call and expand on game_event creation

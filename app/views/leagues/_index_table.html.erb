@@ -1,14 +1,25 @@
 <div class="league-overview">
 
-    <a class="b-link-fade b-animate-go" href="#">
-        <img src="../../assets/images/portfolio/port01.jpg" width="230" height="230">
+    <div class="gravatar">
+
+    <a class="b-link-fade b-animate-go" href="<%= league_path(league) %> ">
+        <%= gravatar_for(current_user, {size: 230}) %>
 
         <div class="b-wrapper">
-            <h4 class="b-from-left b-animate b-delay03" style="margin-top: 83px"> Sweet stuff here </h4>
+            <h4 class="b-from-left b-animate b-delay03" style="margin-top: 130px"> <%= league.name %> </h4>
 
-            <p class="b-from-right b-animate b-delay03"> Bout that Bass</p>
+            <p class="b-from-right b-animate b-delay03"> </p>
         </div>
     </a>
+    </div>
+
+    <div>
+        <h3><%= link_to league.name, league %></h3>
+        <p># of games: <%=league.games.count %></p>
+        <p># of users: <%=league.users.count %></p>
+        <p>Date created: <%= time_tag league.created_at, pubdate: true%> </p>
+    </div>
+    <div style="clear: both"></div>
 
 </div>
 
