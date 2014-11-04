@@ -1,4 +1,9 @@
 class GamesController < ApplicationController
+  #TODO make sure users are logged in to view pages
+  #TODO testing suite
+  #TODO email users on signup
+  #TODO images and editing for leagues
+
   before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event]
 
 
@@ -12,11 +17,18 @@ class GamesController < ApplicationController
   end
 
   def show
+    #TODO calculate position of player in game
     #TODO event votes are always showing. Need to close out events that are dead.
-    #TODO add filter for game events vs regular userposts.
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
-    @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
+    game_events = @game.game_events
+    @event_votes = Array.new
+    game_events.each do |game_event|
+      if !game_event.has_passed?
+        @event_votes += game_event.event_votes
+      end
+    end
+    # @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
     #TODO move this to ajax call and expand on game_event creation

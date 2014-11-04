@@ -439,6 +439,9 @@ aside {
     background: #B50300;
     color: white;
     padding-left: 20px;
+    .game{
+      height: 20px;
+    }
   }
 
   .profile_container {
@@ -677,10 +680,24 @@ input[type="text"]{
 
 .league-container{
   background: white;
+  padding: 15px;
  }
 }
 
+.league-info{
+  padding-left: 10px;
+  p{
+    padding:0px;
+    margin: 0px;
+  }
+  a{
+    color: black;
+  }
+}
+
 .league-overview{
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
   margin: 15px;
 }
 
@@ -792,7 +809,7 @@ input[type="text"] {
   float: right;
 }
 
-.leagues-list{
+.leagues-list, .games-list{
   list-style: none;
   margin: 0;
   li{
@@ -838,4 +855,10 @@ input[type="text"] {
 .feed-item-footer{
   color: grey;
   font-size: 13px;
+}
+
+.games-table{
+  background: white;
+  border: 1px solid #808080;
+  margin-bottom: 10px;
 }

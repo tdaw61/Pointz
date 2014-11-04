@@ -24,6 +24,8 @@ class LeaguesController < ApplicationController
   def show
     @league_users = @league.users
     @games = @league.games
+    @feed_items = @league.feed_items
+    @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
 
   end
 

@@ -3,17 +3,17 @@
     <div class="gravatar">
 
     <a class="b-link-fade b-animate-go" href="<%= league_path(league) %> ">
-        <%= gravatar_for(current_user, {size: 230}) %>
+        <%= gravatar_for(current_user, {size: 150}) %>
 
         <div class="b-wrapper">
-            <h4 class="b-from-left b-animate b-delay03" style="margin-top: 130px"> <%= league.name %> </h4>
+            <h4 class="b-from-left b-animate b-delay03" style="margin: 0px;"> <%= league.name %> </h4>
 
             <p class="b-from-right b-animate b-delay03"> </p>
         </div>
     </a>
     </div>
 
-    <div>
+    <div class="league-info">
         <h3><%= link_to league.name, league %></h3>
         <p># of games: <%=league.games.count %></p>
         <p># of users: <%=league.users.count %></p>
