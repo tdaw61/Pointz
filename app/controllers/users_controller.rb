@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  #TODO user show is boring. Need to decide what to do.
+  #TODO create user needs a form template.
+  #TODO figure out why flash events show up everywhere
   before_action :set_user, only: [:show, :destroy]
   before_action :signed_in_user, only: [:edit, :index, :update]
   before_action :correct_user, only: [:edit, :update]

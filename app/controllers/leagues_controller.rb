@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  #TODO edit league settings page
+  #TODO add new user to league needs format, possibly basic edit/new form in css would be helpful
   before_action :set_league, only: [:show, :edit, :destroy, :add_user]
 
 
@@ -44,18 +46,24 @@ class LeaguesController < ApplicationController
   def add_user_save
     user = User.find_by email: params[:email]
 
+
+    user = User.find_by email: params[:email]
+
     if (user)
       begin
         LeagueUser.create!(league_id: params[:id], user_id: user.id)
+        EmailSender.join_league(user)
       rescue ActiveRecord::RecordNotUnique => e
         flash.alert = user.email + ' is already in the game'
         redirect_to :add_user and return
       end
+
       redirect_to :action => :show, id: params[:id]
     else
       flash.alert = "not a valid user"
       redirect_to :add_user
     end
+
   end
 
 
