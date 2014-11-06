@@ -1,4 +1,5 @@
 class League < ActiveRecord::Base
+  #TODO still need league settings page with admin settings, picture upload, motto change.
 
   has_many :league_users
   has_many :users, :through => :league_users
@@ -16,6 +17,11 @@ class League < ActiveRecord::Base
       feed_items += game.userposts
     end
     feed_items
+  end
+
+  def admin(user)
+    #TODO decide if league admin
+    true
   end
 
 end

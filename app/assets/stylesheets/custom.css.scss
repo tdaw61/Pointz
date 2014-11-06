@@ -91,6 +91,10 @@ textarea {
   margin-right: 10px;
 }
 
+.margin-bottom{
+  margin-bottom: 20px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -423,8 +427,7 @@ aside {
     border: 1px solid black;
     scroll: false;
     height: 175px;
-    margin-bottom: 30px;
-
+    margin-bottom: 2px;
     h1 {
       font-size: 1.4em;
       text-align: left;
@@ -788,7 +791,11 @@ input[type="text"] {
 }
 
 .padding-top {
-  padding-top: 10px;
+  padding-top: 20px;
+}
+
+.padding-bottom {
+  padding-bottom: 20px;
 }
 
 .opacity-thirtyfive{

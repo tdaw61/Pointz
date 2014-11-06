@@ -2,14 +2,15 @@ class EmailSender < ActionMailer::Base
 
   default from: "tdaw61@gmail.com"
 
-    def join_league(user)
-
+    def join_league(user, league, current_user)
       @user = user
       @url  = 'http://0.0.0.0:3000/'
-      mail(to: 'tdaw6134@yahoo.com', subject: 'Welcome to ManPoints').deliver
+      subject = current_user.name + " invites you to join " + league.name
+      mail(to: 'tdaw6134@yahoo.com', subject: subject).deliver
     end
 
-    def send_test
-      mail(to: 'tdaw61@gmail.com', subject: 'Welcome to ManPoints')
+    def welcome(user)
+      @user = user
+      mail(to: 'tdaw6134@yahoo.com', subject: 'Welcome to ManPoints')
     end
 end

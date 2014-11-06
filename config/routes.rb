@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   #games/events/votes
-  match '/leagues/:id/add_user', to: 'leagues#add_user_save',      via: 'post', as: 'add_user_save'
-  get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
+  # match '/leagues/:id/add_user', to: 'leagues#add_user_save',      via: 'post', as: 'add_user_save'
+  # get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
   # get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
   # post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
 
@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
   #leagues
   get '/leagues/join_league' => 'leagues#join_league', via: 'get', as: 'join_league'
+  get '/leagues/remove_user' => 'leagues#remove_user', via: 'post', as: 'remove_user'
+  match '/leagues/:id/add_user', to: 'leagues#add_user_save', via: 'post', as: 'add_user_save'
+  get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -18,7 +18,7 @@ class GamesController < ApplicationController
 
   def show
     #TODO calculate position of player in game
-    #TODO event votes are always showing. Need to close out events that are dead.
+    #TODO show event history option
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
     game_events = @game.game_events
@@ -31,7 +31,6 @@ class GamesController < ApplicationController
     # @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
     @userpost  = current_user.userposts.build
 
-    #TODO move this to ajax call and expand on game_event creation
     @game_event = @game.game_events.build
     @users = @game.users
     respond_to do |format|

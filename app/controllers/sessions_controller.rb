@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-  #TODO Create nice login layout
   end
 
   def create
