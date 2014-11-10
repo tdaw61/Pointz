@@ -21,7 +21,6 @@
                     <tr>
                         <td><%= link_to user.name, user_path %> </td>
                         <% if @league.admin(current_user) %>
-                        <!--<td><a href="<%= remove_user(user)%>"><i class="icon-remove"></i></a></td>-->
                             <% end %>
                     </tr>
                 <% end %>

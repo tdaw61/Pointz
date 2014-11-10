@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
   #TODO make sure users are logged in to view pages
   #TODO testing suite
-  #TODO email users on signup
   #TODO images and editing for leagues
 
   before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event]
@@ -92,11 +91,13 @@ class GamesController < ApplicationController
     event_vote.cast_vote params[:vote].to_i
 
     if event_vote.game_event.has_passed?
-      Score.update_score event_vote.game_id, event_vote.user_id, event_vote.game_event.point_value
+      Score.update_score event_vote
     end
 
     redirect_to game_path
   end
+
+
 
 
 

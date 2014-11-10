@@ -1,0 +1,2 @@
+module EventVotesHelper
+end

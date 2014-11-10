@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  #TODO user show is boring. Need to decide what to do.
-  #TODO create user needs a form template.
   #TODO figure out why flash events show up everywhere
   before_action :set_user, only: [:show, :destroy]
   before_action :signed_in_user, only: [:edit, :index, :update]
@@ -19,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def home
-    #TODO refactor feed items for game items. they look ugly
     if signed_in?
       @userpost  = current_user.userposts.build
       @feed_items = current_user.userposts.paginate(page: params[:page])
@@ -32,6 +29,8 @@ class UsersController < ApplicationController
   def show
     @userposts = @user.userposts.paginate(page: params[:page])
     @games = @user.games
+    @feed_items = @user.userposts.paginate(page: params[:page])
+    @leagues = @user.leagues
   end
 
   # GET /users/new

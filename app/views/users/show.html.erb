@@ -1,23 +1,16 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-    <div class="span4 user-info">
-        <div class="topframe">
-        </div>
-        <div class="profile_container">
-            <div class="profile_avatar">
-                <%= link_to gravatar_for(@user, size: 60), @user %>
-            </div>
-            <p class="profile_name"><%= @user.name %></p>
+    <div class="span4 ">
 
+        <div class="user-info">
+            <%= render 'shared/user_info' %>
+        </div>
+        <div class="padding-top">
+            <%= render 'league_table' %>
         </div>
     </div>
-    <div class="span8 feed">
-        <% if @user.userposts.any? %>
-            <h3>Userposts (<%= @user.userposts.count %>)</h3>
-            <ol class="userposts">
-                <%= render @userposts %>
-            </ol>
-            <%= will_paginate @userposts %>
-        <% end %>
+
+    <div class="span8">
+        <%= render 'shared/feed' %>
     </div>
 </div>

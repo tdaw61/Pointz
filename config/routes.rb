@@ -29,7 +29,8 @@ Rails.application.routes.draw do
 
   #games
   post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
-  match  '/games/:id/paginate' => 'games#paginate', via: 'get'
+  # match  '/games/:id/paginate' => 'games#paginate', via: 'get'
+  match  '/games/:id/show_events_history', to: 'event_votes#show_events_history', via: 'get', as: 'show_events_history'
 
   match  '/paginate' => 'userposts#paginate', via: 'get'
 

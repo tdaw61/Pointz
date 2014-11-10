@@ -60,6 +60,7 @@ class GameEventsController < ApplicationController
     puts "yeah"
   end
 
+
   private
 
   def game_event_params
