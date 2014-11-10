@@ -7,6 +7,8 @@ class GameEventsController < ApplicationController
   end
 
   def create
+    #TODO ajax call for creating vote double borders new vote table
+    #TODO vote saving with no data causes error that doesn't do anything
 
     #TODO refactor the create event. Move logic into model & correctly ajax back response.
     @game_event = GameEvent.new(game_event_params)
