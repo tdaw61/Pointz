@@ -22,7 +22,6 @@ class EventVote < ActiveRecord::Base
     vote = self.new({
         :target_user_id => params[:game_event][:target_user_id],
         :game_id => params[:game_event][:game_id].to_i,
-
         :user_id => user.id,
         :user_point_value => params[:game_event][:point_value].to_i})
     if user.id == current_user_id
@@ -39,6 +38,12 @@ class EventVote < ActiveRecord::Base
     if yes_no == 1
       yes_votes = self.game_event.yes_votes+=1
       self.game_event.update_attribute(:yes_votes ,  yes_votes)
+    end
+
+    #check if game event is now passing
+    if (game_event.yes_votes.to_f / game_event.game.users.count.to_f).to_f > 0.5 || game_event.game.users.count == 1
+      self.game_event.update_attribute(:active,  false)
+      game_event.active = false
     end
   end
 

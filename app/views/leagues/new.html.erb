@@ -1,23 +1,26 @@
-<%= form_for(@league) do |f| %>
-    <% if @league.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= pluralize(@league.errors.count, "error") %> prohibited this league from being saved:</h2>
+<div class='league-form margin-top'>
+    <%= form_for(@league) do |f| %>
+        <% if @league.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@league.errors.count, "error") %> prohibited this league from being saved:</h2>
 
-            <ul>
-                <% @league.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
+                <ul>
+                    <% @league.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <h1> New League </h1>
+
+        <p>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </p>
+
+
+        <%= f.submit "Create league", class: "btn btn-large btn-primary btn-danger" %>
+
     <% end %>
 
-    <p>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </p>
-
-
-    <%= f.submit "Create league" , class: "btn btn-large btn-primary btn-danger" %>
-
-<% end %>
-
+</div>

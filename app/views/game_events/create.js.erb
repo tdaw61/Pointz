@@ -1,4 +1,4 @@
 $("#votes-table").html("<%= escape_javascript(render 'event_vote/vote_table') %>");
-$(".vote-form").html("<%= escape_javascript(render 'games/vote_form') %>");
+$(".vote-form").replaceWith("<%= escape_javascript(render 'games/vote_form') %>");
 $("#scores-table").html("<%= escape_javascript(render 'games/points_table') %>");
 $(".feed").html("<%= escape_javascript(render('shared/feed')) %>");

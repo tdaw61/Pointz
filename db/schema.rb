@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106081348) do
+ActiveRecord::Schema.define(version: 20141112215329) do
 
   create_table "event_votes", force: true do |t|
     t.integer  "game_id",          null: false
@@ -27,14 +27,15 @@ ActiveRecord::Schema.define(version: 20141106081348) do
   end
 
   create_table "game_events", force: true do |t|
-    t.integer  "point_value",                null: false
+    t.integer  "point_value",                   null: false
     t.string   "data"
-    t.integer  "game_id",                    null: false
-    t.integer  "user_id",                    null: false
+    t.integer  "game_id",                       null: false
+    t.integer  "user_id",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "target_user_id",             null: false
+    t.integer  "target_user_id",                null: false
     t.integer  "yes_votes",      default: 0
+    t.boolean  "active",         default: true
   end
 
   add_index "game_events", ["game_id"], name: "index_game_events_on_game_id"
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20141106081348) do
     t.string   "type"
     t.integer  "points"
     t.integer  "target_user_id"
+    t.string   "picture"
   end
 
   add_index "userposts", ["user_id", "created_at"], name: "index_userposts_on_user_id_and_created_at"

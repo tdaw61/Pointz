@@ -1,9 +1,24 @@
-<!--<div class="userpost-form feed-left" id="userpost-form">-->
-    <%= form_for(Userpost.new, remote: true) do |f| %>
+    <%= form_for(Userpost.new, html:{ multipart: true, class: 'no-margin no-padding'}) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div >
             <%= f.text_area :data, placeholder: "What's happening" %>
         </div>
+        <%= f.file_field :picture , class: "display-none", id: "lefile"%>
+        <!--<input id="lefile" type="file" style="display:none">-->
+        <div class="input-append">
+
+            <!--<input id="photoCover" class="input-large" type="text">-->
+            <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
+            <!--<a id="upload-btn" class="btn"><i class="icon-upload-alt"></i> Browse</a>-->
+
+        </div>
+
+        <script type="text/javascript">
+            $('input[id=lefile]').change(function() {
+                $('#photoCover').val($(this).val());
+            });
+        </script>
+
         <%= hidden_field :game, :id %>
         <%= f.submit "Post", class: "btn btn-small btn-primary btn-danger btn-right", id: "userpost-btn" %>
     <% end %>
@@ -11,4 +26,3 @@
     <script>
         $("#userpost_data").autogrow();
     </script>
-<!--</div>-->

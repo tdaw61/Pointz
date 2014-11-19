@@ -2,6 +2,15 @@ class GamesController < ApplicationController
   #TODO make sure users are logged in to view pages
   #TODO testing suite
   #TODO images and editing for leagues
+  #TODO add liking system
+  #TODO add comment system
+  #TODO pictures still not working
+  #TODO add small preview image of picture
+  #TODO reformat games table times: start date and end date dont fit on the same line
+  #TODO add formatting for username in header bar
+  #TODO add verification for point values
+  #TODO add a ranking system
+
 
   before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event]
 
@@ -22,13 +31,15 @@ class GamesController < ApplicationController
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
     game_events = @game.game_events
     @event_votes = Array.new
-    game_events.each do |game_event|
-      if !game_event.has_passed?
-        @event_votes += game_event.event_votes
-      end
-    end
+    @event_votes = @game.active_event_votes(current_user.id)
+
+    # game_events.each do |game_event|
+    #   if !game_event.has_passed?
+    #     @event_votes += game_event.event_votes
+    #   end
+    # end
     # @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
-    @userpost  = current_user.userposts.build
+    # @userpost  = current_user.userposts.build
 
     @game_event = @game.game_events.build
     @users = @game.users

@@ -22,7 +22,7 @@ class UserpostsController < ApplicationController
         @user_feed_items = @game.userposts
         @game_event_feed_items = @game.game_events
         @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
-        format.html { render :back }
+        format.html { redirect_to :back  }
         format.json { render json: @user.errors, status: :unprocessable_entity }
         format.js
       end
@@ -60,7 +60,7 @@ class UserpostsController < ApplicationController
 
   private
   def userpost_params
-    params.require(:userpost).permit(:data)
+    params.require(:userpost).permit(:data, :picture)
     # params.require(:game).permit(:id)
   end
 end

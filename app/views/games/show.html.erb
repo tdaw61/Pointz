@@ -26,7 +26,6 @@
             <div class="feed feed-left feed-top" id="feed">
                 <%= render 'shared/feed' %>
 
-
             </div>
 
         </div>
@@ -36,9 +35,12 @@
 
             <%= render 'event_vote/vote_table' %>
 
+            <div class="no-margin padding-bottom">
+                <%= link_to 'Show voting history', show_events_history_path, remote: true %>
+            </div>
+
             <%= render 'vote_form' %>
 
-            <%= link_to 'Show voting history', show_events_history_path, remote: true %>
 
         </div>
     </div>

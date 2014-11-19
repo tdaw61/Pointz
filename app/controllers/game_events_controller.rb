@@ -7,28 +7,25 @@ class GameEventsController < ApplicationController
   end
 
   def create
-    #TODO ajax call for creating vote double borders new vote table
     #TODO vote saving with no data causes error that doesn't do anything
 
     #TODO refactor the create event. Move logic into model & correctly ajax back response.
     @game_event = GameEvent.new(game_event_params)
-    # @game_event.init_votes
+
     if @game_event.save
-
-      #create votes for each user in the game
-      @game_event.game.users.each do |user|
-        @game_event.event_votes.create_vote_for_game user, params, current_user.id
-      end
-
-      if @game_event.has_passed?
-        Score.update_score @game_event
-      end
-
-      @game_event.create_userpost
+      @game_event.init_votes params, current_user.id
 
       respond_to do |format|
-        @event_votes = EventVote.where(game_id: params[:game_id], user_id: current_user.id)
         @game = Game.find(params[:game_id])
+
+        @event_votes = @game.active_event_votes(current_user.id)
+        # game_events = @game.game_events
+        # @event_votes = Array.new
+        # game_events.each do |game_event|
+        #   if !game_event.has_passed?
+        #     @event_votes += game_event.event_votes
+        #   end
+        # end
         @game_event = GameEvent.new
         @scores = @game.scores
         @users = @game.users
@@ -38,7 +35,8 @@ class GameEventsController < ApplicationController
         format.js
       end
     else
-      render :new
+      flash.alert = "You must enter a reason"
+      redirect_to :controller => :games , :action => :show, :id => params[:game_id]
     end
   end
 

@@ -4,11 +4,11 @@
 <div class="profile_container">
 
 <div class="profile_avatar">
-    <%= link_to gravatar_for(current_user, size: 60), current_user %>
+    <%= link_to gravatar_for(@user, size: 60), @user %>
 </div>
 <div class="profile_name">
     <h1>
-        <%= link_to current_user.name, current_user %>
+        <%= link_to @user.name, @user %>
     </h1>
 </div>
 <div class="profile_stats">
@@ -20,9 +20,9 @@
                 <td> open votes: </td>
             </tr>
             <tr>
-                <td> <%= current_user.leagues.count %></td>
-                <td> <%= current_user.game_events.count %> </td>
-                <td> <%= current_user.open_votes %> </td>
+                <td> <%= @user.leagues.count %></td>
+                <td> <%= @user.game_events.count %> </td>
+                <td> <%= @user.open_votes %> </td>
             </tr>
         </tbody>
 

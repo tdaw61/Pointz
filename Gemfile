@@ -11,6 +11,9 @@ gem 'faker'
 gem 'compass'
 gem 'bootstrap-datepicker-rails'
 gem 'mail'
+gem 'fog'
+gem 'mini_magick'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

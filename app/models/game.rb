@@ -31,4 +31,12 @@ class Game < ActiveRecord::Base
     scores.order(points: :desc).where(user_id: user.id)
   end
 
+  def active_event_votes current_user_id
+    @event_votes = Array.new
+    game_events.where(active: true).each do |game_event|
+      @event_votes += game_event.event_votes.where(user_id: current_user_id)
+    end
+    @event_votes
+  end
+
 end

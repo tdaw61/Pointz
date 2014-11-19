@@ -95,6 +95,14 @@ textarea {
   margin-bottom: 20px;
 }
 
+.margin-top {
+  margin-top: 10px;
+}
+
+.display-none{
+  display: none;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -751,7 +759,7 @@ input[type="text"] {
   display: block;
 }
 
-.game-form, .user-form{
+.game-form, .user-form, .league-form{
   width: 700px;
   background: white;
   border: 1px solid #808080;
@@ -868,4 +876,8 @@ input[type="text"] {
   background: white;
   border: 1px solid #808080;
   margin-bottom: 10px;
+}
+
+.grey{
+  color: #808080;
 }
