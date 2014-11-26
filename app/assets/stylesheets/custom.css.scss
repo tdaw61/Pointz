@@ -679,6 +679,7 @@ input[type="text"]{
 .overflow-hidden{
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .leagues-table{
@@ -701,9 +702,9 @@ input[type="text"]{
     padding:0px;
     margin: 0px;
   }
-  a{
-    color: black;
-  }
+//  a{
+//    color: black;
+//  }
 }
 
 .league-overview{
@@ -759,7 +760,7 @@ input[type="text"] {
   display: block;
 }
 
-.game-form, .user-form, .league-form{
+.game-form, .user-form, .league-form, .input-form{
   width: 700px;
   background: white;
   border: 1px solid #808080;
@@ -776,10 +777,9 @@ input[type="text"] {
     font-weight: bold;
   }
 
-
-
   .btn{
     margin-top: 10px;
+    padding-bottom: 5px;
   }
 }
 
@@ -880,4 +880,11 @@ input[type="text"] {
 
 .grey{
   color: #808080;
+}
+
+.nav-clipped{
+  max-width: 55px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

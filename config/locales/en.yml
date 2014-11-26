@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    attributes:
+      game_event:
+        data: "Reason"
+        point_value: "Point value"

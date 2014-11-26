@@ -44,16 +44,16 @@
                     <span><%= f.label :point_tiers, "Fixed point system (Optional) - This will make +/- 5 the greatest point value for a single vote." %> </span>
                     <div>
                         <span>Fixed Scoring</span>
-                        <%= radio_button :game, :point_tiers, 'point tiers', :checked => true %>
+                        <%= radio_button :game, :point_tiers, 0, :checked => true %>
                     </div>
                     <div>
                         <span>Free Scoring </span>
-                        <%= radio_button :game, :point_tiers, 'free scoring' %>
+                        <%= radio_button :game, :point_tiers, 1 %>
                     </div>
                 </div>
 
 
-                <%= f.submit "Create game", class: "btn btn-large btn-primary btn-danger block padding-top" %>
+                <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger block padding-top" %>
             <% end %>
 
         </div>

@@ -10,7 +10,7 @@
     <% @scores.each do |score| %>
 
         <tr>
-            <td><%= score.username %></td>
+            <td><%= link_to score.username, score.user %></td>
             <td><%= score.points %></td>
         </tr>
     <% end %>

@@ -53,7 +53,7 @@ class LeaguesController < ApplicationController
   end
 
   def add_user_save
-
+    #TODO add find user by email or username with live search.
     #TODO REFACTOR THIS PLEASE
     user = User.find_by email: params[:email]
     if (user)
@@ -72,10 +72,18 @@ class LeaguesController < ApplicationController
 
       redirect_to :action => :show, id: params[:id]
     else
-      flash.alert = "not a valid user"
+      flash.alert = "User not found"
       redirect_to :add_user
     end
 
+  end
+
+  def expand_league_games
+    self.games
+  end
+
+  def expand_league_users
+    self.league_users
   end
 
   def remove_user

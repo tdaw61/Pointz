@@ -30,17 +30,8 @@ class GamesController < ApplicationController
 
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
-    game_events = @game.game_events
     @event_votes = Array.new
     @event_votes = @game.active_event_votes(current_user.id)
-
-    # game_events.each do |game_event|
-    #   if !game_event.has_passed?
-    #     @event_votes += game_event.event_votes
-    #   end
-    # end
-    # @event_votes = EventVote.where(game_id: params[:id], user_id: current_user.id)
-    # @userpost  = current_user.userposts.build
 
     @game_event = @game.game_events.build
     @users = @game.users
@@ -127,7 +118,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:name, :motto, :start_date, :end_date, :user_id)
+    params.require(:game).permit(:name, :motto, :start_date, :end_date, :user_id, :score_cap, :point_tiers)
   end
 
   def game_event_params

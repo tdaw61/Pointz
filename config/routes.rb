@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get '/leagues/remove_user' => 'leagues#remove_user', via: 'post', as: 'remove_user'
   match '/leagues/:id/add_user', to: 'leagues#add_user_save', via: 'post', as: 'add_user_save'
   get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
+  match '/leagues/:id/expand_league_games' => 'leagues#expand_league_games', via: 'get', as: 'expand_league_games'
+  match '/leagues/:id/expand_league_users' => 'leagues#expand_league_users', via: 'get', as: 'expand_league_users'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,6 @@
     <div class="row">
-        <div class="span6 offset3">
-            <h1> Add new user to <%= @league.name%> </h1>
+        <div class="span6 offset3 input-form">
+            <h1> <%= @league.name%> >> Add User </h1>
 
             <% if flash[:alert] %>
                 <div id="error_explanation"><%= flash[:alert] %></div>
@@ -9,11 +9,11 @@
             <%= form_tag add_user_save_path do %>
 
                 <p>
-                    <%= label_tag "User email" %><br>
+                    <%= label_tag "User email" %>
                     <%= text_field_tag :email %>
                 </p>
 
-                <%= submit_tag "Add user", class: "btn btn-large btn-primary" %>
+                <%= submit_tag "Add user", class: "btn btn-large btn-primary btn-danger" %>
             <% end %>
 
         </div>

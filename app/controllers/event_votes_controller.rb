@@ -2,10 +2,11 @@ class EventVotesController < ApplicationController
 
   def show_events_history
     @game = Game.find(params[:id])
-    @event_votes = Array.new
-        @game.game_events.each do |game_event|
-          @event_votes += game_event.event_votes
-        end
+    if params[:on_off] == "1"
+      @event_votes = @game.inactive_event_votes current_user.id
+    else
+      @event_votes = @game.active_event_votes current_user.id
+    end
     respond_to do |format|
       format.js {render 'games/show_events_history'}
     end

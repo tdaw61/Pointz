@@ -2,9 +2,11 @@
 
     <%= form_for([@game, @game_event], remote: true) do |f| %>
 
+        <h4>Start a new vote:</h4>
+
         <% if @game_event.errors.any? %>
             <div id="error_explanation">
-                <h2><%= pluralize(@game_event.errors.count, "error") %> prohibited this event from being saved:</h2>
+                <h5><%= pluralize(@game_event.errors.count, "error") %> prohibited this event from being saved:</h5>
 
                 <ul>
                     <% @game_event.errors.full_messages.each do |message| %>
@@ -14,10 +16,8 @@
             </div>
         <% end %>
 
-        <h4>Start a new vote:</h4>
-        <p>
             <%= f.label :target_user_id %>
-            <%= f.collection_select :target_user_id, @users, :id, :name,{}, {:class => "no-margin"} %>
+            <%= f.collection_select :target_user_id, @users, :id, :name, {}, {:class => "no-margin"} %>
 
             <% if @game.point_tiers == 1 %>
                 <%= f.label "points to +/-" %>
@@ -30,11 +30,15 @@
             <%= f.label "reason for the points" %>
             <%= f.text_field :data, class: "no-margin" %>
 
-            <%= f.hidden_field :game_id, :value => @game.id %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-        </p>
 
-        <%= f.submit "Create vote", class: "btn btn-small btn-primary btn-danger" %>
+
+        <%= f.hidden_field :game_id, :value => @game.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+
+        <%= f.submit "Create vote", class: "btn btn-small btn-primary btn-danger margin-top" %>
+        <% if flash[:alert] %>
+            <div id="error_explanation"><%= flash[:alert] %></div>
+        <% end %>
     <% end %>
 
 

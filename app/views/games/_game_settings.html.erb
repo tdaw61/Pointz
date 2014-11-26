@@ -1,12 +1,13 @@
 <div class="game-settings">
     <p class="centered"> Game Settings </p>
+
     <div>
-         <span>
-             Start Date: <%= @game.created_at %>
-             <% if !@game.end_date.nil? %>
-                 End Date: <%= @game.end_date %>
-             <% end %>
-         </span>
+        Start Date: <%= @game.created_at %>
+    </div>
+    <div>
+        <% if !@game.end_date.nil? %>
+            End Date: <%= @game.end_date %>
+        <% end %>
     </div>
 
     <div>
