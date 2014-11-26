@@ -73,7 +73,7 @@
                 <% @league_users.each do |user| %>
                     <tr>
                         <td><%= link_to user.name, user_path %> </td>
-                        <% if @league.admin(current_user) %>
+                        <% if @league.is_admin(current_user) %>
                         <% end %>
                     </tr>
                 <% end %>

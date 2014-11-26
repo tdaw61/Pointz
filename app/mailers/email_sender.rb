@@ -1,6 +1,6 @@
 class EmailSender < ActionMailer::Base
 
-  default from: "tdaw61@gmail.com"
+  default from: "tdaw6134@yahoo.com"
 
     def join_league(user, league, current_user)
       @user = user

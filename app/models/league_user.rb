@@ -5,4 +5,9 @@ class LeagueUser < ActiveRecord::Base
 
   validates_presence_of :league_id, :user_id
 
+
+  def username
+    user.name
+  end
+
 end

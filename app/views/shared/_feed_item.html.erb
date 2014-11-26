@@ -1,5 +1,5 @@
 <% if feed_item.points.nil?
-     if feed_item.type == "user_join" %>
+     if feed_item.post_type == "user_join" %>
         <li id="feed_item_<%= feed_item.id %>">
             <div>
                 <%= link_to gravatar_for(feed_item.user), feed_item.user %>

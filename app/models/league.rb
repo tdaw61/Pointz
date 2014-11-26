@@ -19,7 +19,7 @@ class League < ActiveRecord::Base
     feed_items
   end
 
-  def admin(user)
+  def is_admin(user)
     #TODO decide if league admin
     true
   end

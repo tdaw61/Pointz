@@ -27,6 +27,7 @@ class GamesController < ApplicationController
   def show
     #TODO calculate position of player in game
     #TODO show event history option
+
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
     game_events = @game.game_events
@@ -77,7 +78,7 @@ class GamesController < ApplicationController
   def update
     if @game.update(game_params)
       @scores = Score.where(game_id: params[:id])
-      render @game
+      redirect_to 'show', id: params[:id]
     else
       render edit
     end

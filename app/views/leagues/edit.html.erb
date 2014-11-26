@@ -1,0 +1,31 @@
+<div class='league-form margin-top'>
+    <%= form_for(@league) do |f| %>
+        <% if @league.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@league.errors.count, "error") %> prohibited this league from being saved:</h2>
+
+                <ul>
+                    <% @league.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <h2> Update League </h2>
+
+        <p>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+        </p>
+
+        <p style="width: 300px">
+            <%= label :league_user, :admin %>
+            <%= collection_select :league_user, :admin_id, @league_users, :user_id, :username %>
+        </p>
+
+
+        <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger" %>
+
+    <% end %>
+
+</div>

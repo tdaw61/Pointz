@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112215329) do
+ActiveRecord::Schema.define(version: 20141126004605) do
 
   create_table "event_votes", force: true do |t|
     t.integer  "game_id",          null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141112215329) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "target_user_id",                null: false
-    t.integer  "yes_votes",      default: 0
+    t.integer  "yes_votes",      default: 1
     t.boolean  "active",         default: true
   end
 
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20141112215329) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
+    t.string   "post_type"
     t.integer  "points"
     t.integer  "target_user_id"
     t.string   "picture"
