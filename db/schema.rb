@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141126004605) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "target_user_id",                null: false
-    t.integer  "yes_votes",      default: 1
+    t.integer  "yes_votes",      default: 0
     t.boolean  "active",         default: true
   end
 

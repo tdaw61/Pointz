@@ -15,8 +15,14 @@
 
     <div class="league-info">
         <h3><%= link_to league.name, league %></h3>
-        <p># of games: <%=league.games.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true%></p>
-        <p># of users: <%=league.users.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true%></p>
+        <div>
+            <p># of games: <%=league.games.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true%></p>
+        </div>
+        <%= render 'mini_league_games'%>
+        <div>
+            <p># of users: <%=league.users.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true%></p>
+        </div>
+        <%= render 'mini_league_users'%>
         <p>Date created: <%= time_tag league.created_at, pubdate: true%> </p>
     </div>
     <div style="clear: both"></div>

@@ -1,0 +1,35 @@
+<div class="games-table">
+    <div class="topframe game">
+        <div>Your Current games <i class="icon-chevron-down icon-white"></i></div>
+        <div class="pts-header">Pts  Pos</div>
+    </div>
+
+    <ul class="games-list">
+
+
+        <% if @games.empty? %>
+            <li> You have no games yet. <%= link_to "Start one now", new_league_game_path(@league) %></li>
+
+        <%
+           else
+             @games.each do |game|
+        %>
+                <li>
+
+                    <div class="inline game-title">
+                        <%= link_to game.name, game %>
+                    </div>
+                    <div class="float-right pts-pos-entry">
+                        <%= game.points current_user %>
+
+                    </div>
+
+                    <div style="clear: both; height: 1px"></div>
+                </li>
+
+            <%
+               end
+               end
+            %>
+    </ul>
+</div>
