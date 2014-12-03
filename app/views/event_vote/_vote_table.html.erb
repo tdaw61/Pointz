@@ -20,7 +20,7 @@
             <% else %>
                 <tr >
                     <% end %>
-            <td class="overflow-hidden"><%= event_vote.username %></td>
+            <td class="overflow-hidden" title="<%=event_vote.username%>"><%= event_vote.username %></td>
             <td class="cell-centered "><%= event_vote.user_point_value %></td>
             <td class="cell-centered"><%= event_vote.game_event.yes_votes %> / <%= @game.users.count %> </td>
             <% if event_vote.has_voted? %>
