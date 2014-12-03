@@ -58,7 +58,6 @@ class LeaguesController < ApplicationController
     #TODO add find user by email or username with live search.
     user = User.find_by email: params[:email]
     if user
-      @league.add_user
       begin
         LeagueUser.create!(league_id: params[:id], user_id: user.id)
       rescue ActiveRecord::RecordNotUnique => e
@@ -67,7 +66,7 @@ class LeaguesController < ApplicationController
       end
       begin
         EmailSender.join_league(user, @league, current_user)
-      rescue Net::* => e
+      rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError, Net::OpenTimeout => e
         puts e
       end
       Userpost.create({user_id: user.id, post_type: "user_join"})

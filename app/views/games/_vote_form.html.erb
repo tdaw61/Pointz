@@ -24,7 +24,7 @@
                 <%= f.text_field :point_value, class: "no-margin" %>
             <% else %>
                 <%= f.label "points to +/-" %>
-                <%= f.select :point_value, [['-5', -5], ['-4', -4], ['-3', -3], ['-2', -2], ['-1', -1], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], selected: 1, class: "no-margin" %>
+                <%= f.select :point_value, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1], ['-1', -1] , ['-2', -2], ['-3', -3], ['-4', -4], ['-5', -5]], selected: 1, class: "no-margin" %>
             <% end %>
 
             <%= f.label "reason for the points" %>
