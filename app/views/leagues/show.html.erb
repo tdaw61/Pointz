@@ -3,7 +3,7 @@
     <div class="span4">
 
         <div class="user-info ">
-            <div class="topframe">
+            <div class="topframe-user">
             </div>
             <div class="profile_container">
                 <%= render 'shared/league_info', :league => @league %>
@@ -15,9 +15,9 @@
         <!--<%= link_to "Edit league", edit_league_path(@league), class: "btn btn-small btn-primary btn-danger "%>-->
 
         <div class="games-table">
-            <div class="topframe game">
-                <div>Your Current games <i class="icon-chevron-down icon-white"></i></div>
-                <div class="pts-header">Pts  Pos</div>
+            <div class="topframe-table">
+                <div>Your Current games <i class="icon-chevron-down icon-white"></i><div class="pts-header">Pts  Pos</div></div>
+
             </div>
 
             <ul class="games-list">
@@ -31,13 +31,18 @@
                      @games.each do |game|
                 %>
                         <li>
-
                             <div class="inline game-title">
                                 <%= link_to game.name, game %>
                             </div>
                             <div class="float-right pts-pos-entry">
-                                <%= game.points current_user %>
-
+                                <ul>
+                                    <li>
+                                        <%= game.points current_user %>
+                                    </li>
+                                    <li>
+                                        <%= game.position current_user %>
+                                    </li>
+                                </ul>
                             </div>
 
                             <div style="clear: both; height: 1px"></div>
