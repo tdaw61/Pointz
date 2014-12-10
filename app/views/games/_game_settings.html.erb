@@ -2,11 +2,11 @@
     <p class="centered"> Game Settings </p>
 
     <div>
-        Start Date: <%= @game.created_at.strftime("%m/%d/%Y") %>
+        Start Date: <%= @game.created_at %>
     </div>
     <div>
         <% if !@game.end_date.nil? %>
-            End Date: <%= @game.end_date.strftime("%m/%d/%Y") %>
+            End Date: <%= @game.end_date %>
         <% end %>
     </div>
 

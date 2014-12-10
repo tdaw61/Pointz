@@ -22,12 +22,11 @@
                     <% league.games.each do |game| %>
                         <div class="inline game-title">
                             <%= link_to game.name, game %>
-                            <div class="float-right pts-pos-entry">
-                                <%= game.points @user %>
-                                <%= game.position @user %>
-                            </div>
+                        </div>\
+                        <div class="float-right pts-pos-entry">
+                            <%= game.points @user %>
+                            <%= game.position @user %>
                         </div>
-
 
                     <div style="clear: both; height: 1px"></div>
                     <% end %>

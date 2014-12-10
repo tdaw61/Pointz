@@ -88,10 +88,6 @@ class GamesController < ApplicationController
 
   end
 
-  def end_game
-    @game.update_attributes(active: false)
-  end
-
 
   def save_vote
     event_vote = EventVote.find(params[:event_vote_id])

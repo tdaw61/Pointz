@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  #TODO edit league settings page
+  #TODO add new user to league needs format, possibly basic edit/new form in css would be helpful
   #TODO show user list option on each league
   #TODO add new user needs to be part of the form. Disable button after submit.
   before_action :set_league, only: [:show, :edit, :update, :destroy, :add_user, :add_user_save, :expand_league_games, :expand_league_users]
@@ -78,11 +80,11 @@ class LeaguesController < ApplicationController
   end
 
   def expand_league_games
-    @league.games
+    @games = @league.games
   end
 
   def expand_league_users
-    @league.league_users
+    @league_users = @league.users
   end
 
   def remove_user
