@@ -29,6 +29,17 @@ class Game < ActiveRecord::Base
   def position user
     @rank = Game.find_by_sql("SELECT COUNT(*) AS rank FROM scores WHERE points >= (SELECT Points FROM scores WHERE game_id = :game_id and user_id = :user_id)", {game_id: self.id, user_id: user.id}  )
     @rank[0].rank
+
+    # #TODO position rank query is broken.
+    # @rank = Game.find_by_sql("SELECT COUNT(*) AS rank FROM scores WHERE points >= (SELECT Points FROM scores WHERE game_id = :game_id )", {game_id: self.id} )
+    # "#{@rank[0].rank}/#{self.users.count}"
+    #
+    # SELECT a1.user_id, a1.points, COUNT (a2.points) user_Rank
+    # FROM scores a1, scores a2
+    # WHERE a1.points <= a2.points OR (a1.points=a2.points AND a1.user_id = a2.user_id)
+    # GROUP BY a1.user_id, a1.points
+    # ORDER BY a1.points DESC, a1.user_id DESC;
+
   end
 
   def active_event_votes(current_user_id)

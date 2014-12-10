@@ -16,4 +16,8 @@ class Userpost < ActiveRecord::Base
     User.find(self.target_user_id)
   end
 
+  def event_create_post game_event
+     Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id})
+  end
+
 end
