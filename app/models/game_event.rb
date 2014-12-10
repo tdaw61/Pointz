@@ -26,10 +26,6 @@ class GameEvent < ActiveRecord::Base
   end
 
 
-  #TODO move off of game event
-  def create_userpost
-    Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id})
-  end
 
   #TODO move off of game event to event vote with params still as the argument, maybe change to init_votes_for_event
   def init_votes params, current_user_id
@@ -43,7 +39,7 @@ class GameEvent < ActiveRecord::Base
       Score.update_score self
     end
 
-    create_userpost
+    event_create_post self
   end
 
 
