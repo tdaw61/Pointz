@@ -94,8 +94,11 @@ class LeaguesController < ApplicationController
   end
 
   def remove_user_save
-    @user = User.find(params[:target_user_id][:target_user_id])
-    @league
+    #TODO decide if user should stay in games or be removed from all games too.
+    user = User.find(params[:target_user_id][:target_user_id])
+    @league.users.delete(user)
+    # @league.games.scores.delete(user)
+    redirect_to action: 'show', id: @league.id
   end
 
 
