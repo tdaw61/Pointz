@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
   # match  '/games/:id/paginate' => 'games#paginate', via: 'get'
   match  '/games/:id/show_events_history', to: 'event_votes#show_events_history', via: 'get', as: 'show_events_history'
+  post '/games/:id/end_game', to: 'games#end_game', via: 'post', as: 'end_game'
 
   match  '/paginate' => 'userposts#paginate', via: 'get'
 
@@ -39,11 +40,14 @@ Rails.application.routes.draw do
 
   #leagues
   get '/leagues/join_league' => 'leagues#join_league', via: 'get', as: 'join_league'
-  get '/leagues/remove_user' => 'leagues#remove_user', via: 'post', as: 'remove_user'
+  # get '/leagues/remove_user' => 'leagues#remove_user', via: 'post', as: 'remove_user'
   match '/leagues/:id/add_user', to: 'leagues#add_user_save', via: 'post', as: 'add_user_save'
   get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
   match '/leagues/:id/expand_league_games' => 'leagues#expand_league_games', via: 'get', as: 'expand_league_games'
   match '/leagues/:id/expand_league_users' => 'leagues#expand_league_users', via: 'get', as: 'expand_league_users'
+  match '/leagues/:id/remove_user' => 'leagues#remove_user', via: 'get', as: 'remove_user'
+  match '/leagues/:id/remove_user' => 'leagues#remove_user_save', via: 'post', as: 'remove_user_save'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

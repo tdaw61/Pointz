@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Remove User</h3>
+</div>
+<div class="modal-body">
+
+
+    <% if flash[:alert] %>
+        <div id="error_explanation"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= form_tag remove_user_path, id: "form" do %>
+
+        <p>
+            <%= label_tag "User" %>
+            <%= collection_select :target_user_id, :target_user_id, @users, :id, :name, {}, {:class => "no-margin"} %>
+        </p>
+
+        <p>This will remove the selected user from the league, but all of the posts created by the user will remain.</p>
+        <%= submit_tag "Remove user", class: "btn btn-large btn-primary btn-danger", id: "submit", data: {disable_with: "Processing"}, method: :post %>
+    <% end %>
+</div>

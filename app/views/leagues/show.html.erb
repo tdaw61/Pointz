@@ -92,7 +92,9 @@
         </div>
 
         <%= link_to "Add User", add_user_path, class: "btn btn-small btn-primary btn-danger" %>
-        <!--<%= link_to "Remove User", remove_user_path, class: "btn btn-small btn-primary btn-danger" %>-->
+        <%= link_to "Remove User", remove_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+
+        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
     </div>
 
 

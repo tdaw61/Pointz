@@ -1,7 +1,7 @@
 class LeaguesController < ApplicationController
   #TODO show user list option on each league
   #TODO add new user needs to be part of the form. Disable button after submit.
-  before_action :set_league, only: [:show, :edit, :update, :destroy, :add_user, :add_user_save, :expand_league_games, :expand_league_users]
+  before_action :set_league, only: [:show, :edit, :update, :destroy, :add_user, :add_user_save, :expand_league_games, :expand_league_users, :remove_user, :remove_user_save]
 
 
   def new
@@ -86,7 +86,16 @@ class LeaguesController < ApplicationController
   end
 
   def remove_user
+    @users = @league.users
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
+  def remove_user_save
+    @user = User.find(params[:target_user_id][:target_user_id])
+    @league
   end
 
 
