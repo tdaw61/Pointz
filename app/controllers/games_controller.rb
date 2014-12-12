@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   #TODO add a ranking system
 
 
-  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event]
+  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save]
 
 
   def new
@@ -100,6 +100,17 @@ class GamesController < ApplicationController
     redirect_to game_path
   end
 
+  def end_game
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def end_game_save
+    @game.update_attributes(active: false)
+    redirect_to :show, id: @game.id
+  end
 
 
 

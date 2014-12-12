@@ -1,6 +1,9 @@
 <% if signed_in? %>
     <div class="game-header">
-        <h1 class="no-margin"> <%= link_to @game.league.name, @game.league %> >> <%= @game.name %> </h1>
+        <h1 class="no-margin"> <%= link_to @game.league.name, @game.league %> >> <%= @game.name %>
+            <% if !@game.active %> (Inactive)
+            <% end %>
+        </h1>
     </div>
 
     <div class="row">
@@ -9,18 +12,24 @@
 
             <%= render 'game_settings' %>
 
-            <%= link_to 'Edit game settings', edit_game_path, class:  "btn btn-small btn-primary btn-danger " %>
-            <%= link_to 'end this game', @game, method: :delete,
-                        data: {confirm: "You sure?"},
-                        title: @game.name,
-                        class: "btn btn-small btn-primary btn-danger"%>
+            <% if @game.active %>
+
+                <%= link_to 'Edit game settings', edit_game_path, class: "btn btn-small btn-primary btn-danger " %>
+                <%= link_to "End this game", end_game_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+            <% end %>
+
+            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
         </aside>
         <div class="span6">
 
             <section class="status-content">
-                <div class="userpost-form feed-left" id="userpost-form">
-                    <%= render 'shared/userpost_form' %>
-                </div>
+                <% if @game.active %>
+
+                    <div class="userpost-form feed-left" id="userpost-form">
+                        <%= render 'shared/userpost_form' %>
+                    </div>
+                <% end %>
             </section>
 
             <div class="feed feed-left feed-top" id="feed">
@@ -34,12 +43,14 @@
             <p class="no-margin">Votes Pending</p>
 
             <%= render 'event_vote/vote_table' %>
-
             <div class="no-margin padding-bottom">
-                <p>Show vote history <%= link_to 'On', show_events_history_path(on_off: 1), remote: true %> | <%= link_to 'Off', show_events_history_path(on_off: 0), remote:true %></p>
+                <p>Show vote history <%= link_to 'On', show_events_history_path(on_off: 1), remote: true %>
+                    | <%= link_to 'Off', show_events_history_path(on_off: 0), remote: true %></p>
             </div>
+            <% if @game.active %>
 
-            <%= render 'vote_form' %>
+                <%= render 'vote_form' %>
+            <% end %>
 
 
         </div>

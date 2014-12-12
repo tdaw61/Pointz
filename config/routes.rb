@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   root :to => 'users#home', via: 'get'
 
-
   #generic static pages
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
@@ -21,17 +20,11 @@ Rails.application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  #games/events/votes
-  # match '/leagues/:id/add_user', to: 'leagues#add_user_save',      via: 'post', as: 'add_user_save'
-  # get '/leagues/:id/add_user' => 'leagues#add_user', via: 'get', as: 'add_user'
-  # get '/games/:id/create_event' => 'games#create_event', via: 'get', as: 'create_event'
-  # post '/games/:id/create_event' => 'games#save_event', via: 'post', as: 'save_event'
-
   #games
   post '/games/:id/vote' => 'games#save_vote', via: 'post', as:'save_vote'
-  # match  '/games/:id/paginate' => 'games#paginate', via: 'get'
   match  '/games/:id/show_events_history', to: 'event_votes#show_events_history', via: 'get', as: 'show_events_history'
-  post '/games/:id/end_game', to: 'games#end_game', via: 'post', as: 'end_game'
+  match '/games/:id/end_game', to: 'games#end_game', via: 'get', as: 'end_game'
+  match '/games/:id/end_game', to: 'games#end_game_save', via: 'post', as: 'end_game_save'
 
   match  '/paginate' => 'userposts#paginate', via: 'get'
 
