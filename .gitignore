@@ -22,6 +22,5 @@
 
 /out
 
-/Gemfile.lock
 
 /config/initializers/s3_constants.rb
