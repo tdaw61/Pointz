@@ -21,7 +21,11 @@
                 <%= link_to feed_item.user.name, feed_item.user %>
             </div>
             <div class="feed-item-content">
-                <!--<%= image_tag feed_item.picture.url.to_s if feed_item.picture.url.present? %>-->
+                <% if feed_item.picture.url.present? %>
+                    <div class="post-data-attachment">
+                        <%= image_tag feed_item.picture.url.to_s %>
+                    </div>
+                    <% end %>
                 <p class="feed-item-text"><%= feed_item.data %></p>
             </div>
 

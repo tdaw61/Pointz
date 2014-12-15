@@ -6,7 +6,10 @@ class UserpostsController < ApplicationController
     @userpost = current_user.userposts.build(userpost_params)
     @userpost.game_id = params[:game][:id]
     @game = Game.find(params[:game][:id])
+    @userpost.picture = params[:userpost][:picture]
 
+
+    #TODO mini magick isnt working right for resizing. make sure to add old resizing functions back in
     respond_to do |format|
       if @userpost.save
         @userpost = Userpost.new

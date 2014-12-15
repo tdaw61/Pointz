@@ -7,8 +7,8 @@ function readURL(input) {
                 .attr('src', e.target.result)
                 .width(75)
                 .height(90);
-            $('#img_prev').show()
-            $('.userpost-extras').show()
+            $('#img_prev').show();
+            $('.userpost-extras').show();
         };
 
         reader.readAsDataURL(input.files[0]);
