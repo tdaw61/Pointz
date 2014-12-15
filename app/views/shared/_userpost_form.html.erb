@@ -1,28 +1,19 @@
     <%= form_for(Userpost.new, html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload"}) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div >
+        <div class="userpost-text">
             <%= f.text_area :data, placeholder: "What's happening", style: "border-radius: none;" %>
         </div>
-        <div>
+        <div class="userpost-extras">
             <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "readURL(this)"%>
+            <div class="post-picture">
+                <img id="img_prev" src="#" alt="your image" style="display: none" />
+                <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
+            </div>
+
         </div>
-        <!--<input id="lefile" type="file" style="display:none">-->
         <div class="input-append">
-
-            <!--<input id="photoCover" class="input-large" type="text">-->
             <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
-            <!--<a id="upload-btn" class="btn"><i class="icon-upload-alt"></i> Browse</a>-->
-
         </div>
-
-        <script type="text/javascript">
-            $('input[id=lefile]').change(function() {
-                $('#photoCover').val($(this).val());
-            });
-        </script>
-
-        <input type='file' onchange="readURL(this);" />
-        <img id="img_prev" src="#" alt="your image" />
 
         <%= hidden_field :game, :id %>
         <%= f.submit "Post", class: "btn btn-small btn-primary btn-danger btn-right", id: "userpost-btn" %>
@@ -33,21 +24,4 @@
         $("#userpost_data").autogrow();
     </script>
 
-
-        <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#img_prev')
-                                .attr('src', e.target.result)
-                                .width(150)
-                                .height(200);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        </script>
 
