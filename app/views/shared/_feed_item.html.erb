@@ -22,7 +22,7 @@
             </div>
             <div class="feed-item-content">
                 <% if feed_item.picture.url.present? %>
-                    <div class="post-data-attachment">
+                    <div class="feed-item-attachment">
                         <%= image_tag feed_item.picture.url.to_s %>
                     </div>
                     <% end %>
@@ -69,8 +69,6 @@
                             class: "icon-trash opacity-thirtyfive del-link" %>
             <% end %>
         </div>
-
-
     </li>
 
 <% end %>
