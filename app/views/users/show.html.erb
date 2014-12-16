@@ -1,16 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-    <div class="span4 ">
+    <div class="span12 ">
 
         <div class="user-info">
             <%= render 'shared/user_info' %>
         </div>
-        <div class="padding-top">
-            <%= render 'league_table' %>
+
+        <div class="leagues-list">
+            <div class="padding-top">
+                <%= render 'league_table' %>
+            </div>
         </div>
+
+        <div>
+            <%= render 'shared/feed' %>
+        </div>
+
+
     </div>
 
-    <div class="span8">
-        <%= render 'shared/feed' %>
-    </div>
 </div>
