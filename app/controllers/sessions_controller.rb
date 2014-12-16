@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   #todo add verification for email (make sure to include domains )
 
   def new
+    flash[:notice] = nil
   end
 
   def create

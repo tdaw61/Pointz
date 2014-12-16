@@ -52,7 +52,7 @@ class UsersController < ApplicationController
       if @user.save
         sign_in @user
         EmailSender.welcome(@user)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'User was successfully created.', user_id: @user.id }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
