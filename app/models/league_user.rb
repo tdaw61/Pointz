@@ -10,4 +10,5 @@ class LeagueUser < ActiveRecord::Base
     user.name
   end
 
+
 end

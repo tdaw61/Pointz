@@ -21,7 +21,7 @@ class League < ActiveRecord::Base
 
   def is_admin(user)
     #TODO decide if league admin
-    true
+    self.league_users.where(user_id: user.id).first.admin
   end
 
 end

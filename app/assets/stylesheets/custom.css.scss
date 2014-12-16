@@ -42,6 +42,10 @@ a:hover{
   width: 1200px;
 }
 
+.container-small {
+  width: 940px;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -930,4 +934,13 @@ input[type="text"] {
   margin-right: auto;
   width: 150px;
   height: 200px;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.ele-ctr{
+  margin-right: auto;
+  margin-left: auto;
 }
