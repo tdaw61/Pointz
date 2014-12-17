@@ -20,7 +20,7 @@ class League < ActiveRecord::Base
   end
 
   def is_admin(user)
-    #TODO decide if league admin
+    #TODO improve the admin search
     self.league_users.where(user_id: user.id).first.admin
   end
 

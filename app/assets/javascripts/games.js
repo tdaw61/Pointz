@@ -9,9 +9,18 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function (e) {
 //    });
 //});
 //
-//$(document).ready(function($) {
-//    $("tr[data-link]").click(function() {
-//        alert("yeah");
-//        window.location = this.data("link");
-//    });
-//});
+
+function clickable()
+{
+    $(document).ready(function ($) {
+        $("tr[data-link]").click(function () {
+            alert("yeah");
+            $.ajax(this.dataset["link"], )
+            window.location = this.dataset["link"];
+        });
+    });
+}
+
+$(document).ready(function(){
+    clickable();
+});
