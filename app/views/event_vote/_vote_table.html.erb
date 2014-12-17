@@ -16,10 +16,10 @@
     <% else %>
         <% @event_votes.each do |event_vote|
         if !event_vote.game_event.active %>
-        <tr class="grey">
+            <tr class="grey" data-link="<%= expand_vote_detail_path(event_vote)%>">
             <% else %>
-                <tr >
-                    <% end %>
+            <tr data-link="<%= expand_vote_detail_path(event_vote)%>">
+            <% end %>
             <td class="overflow-hidden" title="<%=event_vote.username%>"><%= event_vote.username %></td>
             <td class="cell-centered "><%= event_vote.user_point_value %></td>
             <td class="cell-centered"><%= event_vote.game_event.yes_votes %> / <%= @game.users.count %> </td>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   match  '/games/:id/show_events_history', to: 'event_votes#show_events_history', via: 'get', as: 'show_events_history'
   match '/games/:id/end_game', to: 'games#end_game', via: 'get', as: 'end_game'
   match '/games/:id/end_game', to: 'games#end_game_save', via: 'post', as: 'end_game_save'
+  match '/games/:id/expand_vote_detail', to: 'event_votes#expand_vote_detail', via: 'get', as: 'expand_vote_detail'
 
   match  '/paginate' => 'userposts#paginate', via: 'get'
 
