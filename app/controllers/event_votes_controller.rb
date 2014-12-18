@@ -15,6 +15,7 @@ class EventVotesController < ApplicationController
 
   #TODO expand vote detail could be renedered but just hidden at the beginning? or make the call ajax.
   def expand_vote_detail
+    @game_event = GameEvent.find(params[:game_event_id])
     respond_to do |format|
       format.js {render 'games/expand_vote_detail'}
     end

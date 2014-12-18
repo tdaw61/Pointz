@@ -13,7 +13,7 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function (e) {
 function clickable()
 {
     $(document).ready(function ($) {
-        $("tr[data-link]").click(function () {
+        $("tr[data-link]").off("click").on('click', function () {
             alert("yeah");
             $.ajax(this.dataset["link"], {type: 'get'})
         });

@@ -107,9 +107,11 @@ class GamesController < ApplicationController
     end
   end
 
+
+  #TODO end game is broken, also need to add end league
   def end_game_save
     @game.update_attributes(active: false)
-    redirect_to :show, id: @game.id
+    redirect_to({action: 'show', id: @game.id})
   end
 
 
