@@ -13,7 +13,7 @@ class EventVotesController < ApplicationController
   end
 
 
-  #TODO expand vote detail could be renedered but just hidden at the beginning? or make the call ajax. 
+  #TODO expand vote detail could be renedered but just hidden at the beginning? or make the call ajax.
   def expand_vote_detail
     respond_to do |format|
       format.js {render 'games/expand_vote_detail'}

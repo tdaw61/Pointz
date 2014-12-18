@@ -15,8 +15,7 @@ function clickable()
     $(document).ready(function ($) {
         $("tr[data-link]").click(function () {
             alert("yeah");
-            $.ajax(this.dataset["link"], )
-            window.location = this.dataset["link"];
+            $.ajax(this.dataset["link"], {type: 'get'})
         });
     });
 }
