@@ -1,0 +1,38 @@
+<div class="league-info">
+    <div class="topframe-user"></div>
+    <div class="league-avatar">
+        <%= link_to gravatar_for(current_user, size: 60), @user %>
+    </div>
+    <div class="profile_container">
+
+        <div class="league-name">
+            <h1>
+                <%= league.name %>
+            </h1>
+        </div>
+        <div class="league-content">
+            <table style="width: 100%;">
+                <tbody>
+                <tr>
+                    <td> users: </td>
+                    <td> games: </td>
+                </tr>
+                <tr>
+                    <td> <%= league.users.count %> </td>
+                    <td> <%= league.games.count %> </td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div style="text-align: right; margin-right: 10px">
+            <%= link_to edit_league_path(league) do%>
+                <i class="icon-cog"></i>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="margin-bottom">
+
+</div>

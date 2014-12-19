@@ -12,7 +12,7 @@ def make_users
                        password: "foobar",
                        password_confirmation: "foobar",
                        admin: true,
-                       super_user: false )
+                       super_user: true )
   30.times do |n|
     name  = Faker::Name.name
     email = "test-#{n+1}@test.com"

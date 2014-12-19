@@ -2,17 +2,7 @@
 <div class="row">
     <div class="span4">
 
-        <div class="user-info ">
-            <div class="topframe-user">
-            </div>
-            <div class="profile_container">
-                <%= render 'shared/league_info', :league => @league %>
-            </div>
-        </div>
-        <div class="margin-bottom">
-
-        </div>
-        <!--<%= link_to "Edit league", edit_league_path(@league), class: "btn btn-small btn-primary btn-danger "%>-->
+        <%= render 'league_info', league: @league %>
 
         <div class="games-table">
             <div class="topframe-table">

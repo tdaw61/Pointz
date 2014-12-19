@@ -4,8 +4,6 @@
         <h3>Sign in</h3>
 
         <% if flash[:notice] %>
-            <!--<div id="error_explanation">-->
-
             <div id="error_explanation"><%= flash[:notice] %></div>
         <% end %>
         <%= form_for(:session, url: sessions_path) do |f| %>

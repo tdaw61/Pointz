@@ -252,7 +252,7 @@ aside {
   }
 }
 
-.profile_avatar {
+.profile_avatar, .league-avatar {
 //  display: inline-block;
   height: 0px;
   margin: -35px;
@@ -434,7 +434,7 @@ aside {
   }
 }
 
-  .user-info {
+  .user-info, .league-info {
     background: white;
     -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
     -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
@@ -503,7 +503,7 @@ aside {
 
   }
 
-  .profile_name {
+  .profile_name, .league-name {
     padding-top: 20px;
     a{
       color: black;
@@ -699,7 +699,7 @@ input[type="text"]{
  }
 }
 
-.league-info{
+.league-content{
   padding-left: 10px;
   p{
     padding:0px;

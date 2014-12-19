@@ -1,4 +1,5 @@
 class GameEventsController < ApplicationController
+  before_action :signed_in_user
 
   def new
     @game_event = GameEvent.new
@@ -24,7 +25,6 @@ class GameEventsController < ApplicationController
         format.js
       end
     else
-      # redirect_to :controller => :games , :action => :show, :id => params[:game_id], formats: [:html]
     end
   end
 
@@ -33,19 +33,15 @@ class GameEventsController < ApplicationController
   end
 
   def save
-    puts "yeah"
   end
 
   def edit
-    puts "yeah"
   end
 
   def destroy
-    puts "yeah"
   end
 
   def update
-    puts "yeah"
   end
 
 

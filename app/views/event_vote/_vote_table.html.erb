@@ -1,9 +1,9 @@
 <table class="table table-striped table-bordered table-condensed table-hover table-fixed no-margin" id="votes-table">
     <thead>
     <tr>
-        <th width="50%">User</th>
+        <th width="50%">Target User</th>
         <th class="cell-centered">Pts</th>
-        <th class="cell-centered">Rank</th>
+        <th class="cell-centered">Votes</th>
         <th class="cell-centered">You Voted</th>
 
     </tr>
@@ -29,12 +29,13 @@
                 <td class="cell-centered"><%= link_to "Yes", save_vote_path(:vote => 1, :event_vote_id => event_vote.id, :id => @game.id), method: :post %>
                     | <%= link_to "No", save_vote_path(:vote => 0, :event_vote_id => event_vote.id, :id => @game.id), method: :post %></td>
             <% end %>
+
         </tr>
         <% end %>
     <% end %>
 
 </table>
 
-<script>
-    clickable();
-</script>
+<!--<script>-->
+<!--//    clickable();-->
+<!--</script>-->

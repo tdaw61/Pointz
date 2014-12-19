@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  #TODO figure out why flash events show up everywhere
   before_action :set_user, only: [:show, :destroy]
   before_action :signed_in_user, only: [:edit, :index, :update]
   before_action :correct_user, only: [:edit, :update]
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
       if @user.save
         sign_in @user
         EmailSender.welcome(@user)
-        format.html { redirect_to root_path, notice: 'User was successfully created.', user_id: @user.id }
+        format.html { redirect_to root_path, user_id: @user.id }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -84,7 +83,6 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    flash[:success] = "User deleted."
     respond_to do |format|
       format.html { redirect_to users_url}
       format.json { head :no_content }

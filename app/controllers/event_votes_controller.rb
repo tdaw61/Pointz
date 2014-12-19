@@ -1,4 +1,5 @@
 class EventVotesController < ApplicationController
+  before_action :signed_in_user
 
   def show_events_history
     @game = Game.find(params[:id])
@@ -13,7 +14,6 @@ class EventVotesController < ApplicationController
   end
 
 
-  #TODO expand vote detail could be renedered but just hidden at the beginning? or make the call ajax.
   def expand_vote_detail
     @game_event = GameEvent.find(params[:game_event_id])
     respond_to do |format|

@@ -1,12 +1,13 @@
 class GamesController < ApplicationController
-  #TODO make sure users are logged in to view pages
+  before_action :signed_in_user
+
+  #TODO deal with permission problems. Show games/leagues unless private - need to add a private feature.
   #TODO testing suite
   #TODO images and editing for leagues
   #TODO add liking system
   #TODO add comment system
   #TODO pictures still not working
   #TODO add small preview image of picture
-  #TODO reformat games table times: start date and end date dont fit on the same line
   #TODO add formatting for username in header bar
   #TODO add verification for point values
   #TODO add a ranking system
@@ -26,7 +27,6 @@ class GamesController < ApplicationController
 
   def show
     #TODO calculate position of player in game
-    #TODO show event history option
 
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
@@ -77,7 +77,6 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    #TODO Modal popover for deleting? - This would be much cooler than the ugly chrome one.
 
     if @game.destroy
       @games = Game.paginate(page: params[:page])
