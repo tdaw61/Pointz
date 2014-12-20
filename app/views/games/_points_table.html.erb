@@ -11,7 +11,8 @@
 
         <tr>
             <td><%= link_to score.username, score.user %></td>
-            <td><%= score.points %></td>
+            <td class="cell-centered"><%= score.points %></td>
+            <td class="cell-centered"><%= score.game.position(score.user) %></td>
         </tr>
     <% end %>
 
