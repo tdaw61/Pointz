@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 
 
   #TODO deal with permission problems. Show games/leagues unless private - need to add a private feature.
+  #TODO in addition to permissions, make sure users can't post to closed games/leagues. Add a before filter
   #TODO testing suite
 
 
