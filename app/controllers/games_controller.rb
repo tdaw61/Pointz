@@ -93,7 +93,7 @@ class GamesController < ApplicationController
     event_vote.cast_vote params[:vote].to_i
 
     if event_vote.game_event.has_passed?
-      Score.update_score event_vote
+      Score.update_score event_vote.game_event
     end
 
     redirect_to game_path

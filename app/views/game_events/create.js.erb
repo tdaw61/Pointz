@@ -2,7 +2,7 @@ $(".vote-form").replaceWith("<%= escape_javascript(render 'games/vote_form') %>"
 
 
 <% if @game_event.errors.none? %>
-$("#votes-table").html("<%= escape_javascript(render 'event_vote/vote_table') %>");
+$("#votes-table").replaceWith("<%= escape_javascript(render 'event_vote/vote_table') %>");
 $("#scores-table").html("<%= escape_javascript(render 'games/points_table') %>");
 $(".feed").html("<%= escape_javascript(render('shared/feed')) %>");
 clickable();

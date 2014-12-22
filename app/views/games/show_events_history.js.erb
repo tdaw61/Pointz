@@ -1,1 +1,1 @@
-$("#votes-table").html("<%= escape_javascript(render('event_vote/vote_table')) %>")
+$("#votes-table").replaceWith("<%= escape_javascript(render('event_vote/vote_table')) %>")

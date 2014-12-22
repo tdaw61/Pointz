@@ -11,6 +11,9 @@ class EventVote < ActiveRecord::Base
   end
 
   def vote_string
+    if vote.nil?
+      return "N/A"
+    end
     if vote?
       "Yes"
     else
@@ -35,6 +38,7 @@ class EventVote < ActiveRecord::Base
   def cast_vote yes_no
     self.vote = yes_no
     self.has_voted = 1
+    self.save
     if yes_no == 1
       yes_votes = self.game_event.yes_votes+=1
       self.game_event.update_attribute(:yes_votes ,  yes_votes)

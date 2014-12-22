@@ -18,7 +18,7 @@ class GameEventsController < ApplicationController
       respond_to do |format|
         @event_votes = @game.active_event_votes(current_user.id)
         @game_event = GameEvent.new
-        @scores = @game.scores
+        @scores = @game.ordered_scores
         @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
 
         format.html{ redirect_to :controller => :games , :action => :show, :id => params[:game_id] }
