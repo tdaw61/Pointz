@@ -27,7 +27,7 @@ class Game < ActiveRecord::Base
   end
 
   def position user
-    @rank = Score.find_by_sql("select  s1.*, (select  count(*)+1 from scores as s2 where s2.points > s1.points and game_id = :game_id) as UserRank from scores as s1 WHERE game_id = :game_id and user_id = :user_id", {game_id: self.id, user_id: user.id})
+    @rank = Score.find_by_sql("select (select  count(*)+1 from scores as s2 where s2.points > s1.points and game_id = :game_id) as UserRank from scores as s1 WHERE game_id = :game_id and user_id = :user_id", {game_id: self.id, user_id: user.id})
     @rank[0].UserRank
   end
 
