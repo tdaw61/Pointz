@@ -1,4 +1,4 @@
-<h1 class="no-margin"> << <%= @league.name %> >> </h1>
+<h1 class="no-margin"> << <%= @league.name %> >> <% if !@league.active %> (Inactive) <% end %></h1>
 <div class="row">
     <div class="span4">
 
@@ -6,12 +6,12 @@
 
         <div class="games-table">
             <div class="topframe-table">
-                 <div>Your Current games <i class="icon-chevron-down icon-white"></i>
-                 <ul class="pts-header">
-                 <li title="Points">Pts</li>
-                 <li title="Position">Pos</li>
-                 </ul>
-                 </div>
+                <div>Your Current games <i class="icon-chevron-down icon-white"></i>
+                    <ul class="pts-header">
+                        <li title="Points">Pts</li>
+                        <li title="Position">Pos</li>
+                    </ul>
+                </div>
 
             </div>
 
@@ -50,8 +50,9 @@
             </ul>
         </div>
 
-        <p> <%= link_to "New Game", new_league_game_path(@league), class: "btn btn-small btn-primary btn-danger" %></p>
-
+        <% if @league.active %>
+            <p> <%= link_to "New Game", new_league_game_path(@league), class: "btn btn-small btn-primary btn-danger" %></p>
+        <% end %>
     </div>
 
     <div class="span7">
@@ -72,7 +73,7 @@
                 </thead>
                 <% @league_users.each do |user| %>
                     <tr>
-                        <td title="<%=user.name%>"><%= link_to user.name, user_path(user) %> </td>
+                        <td title="<%= user.name %>"><%= link_to user.name, user_path(user) %> </td>
                         <% if @league.is_admin(current_user) %>
                         <% end %>
                     </tr>
@@ -81,12 +82,13 @@
             </table>
         </div>
 
-        <%= link_to "Add User", add_user_path, class: "btn btn-small btn-primary btn-danger" %>
-        <% if @league.is_admin(current_user) %>
-        <%= link_to "Remove User", remove_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+        <% if @league.active %>
+
+            <%= link_to "Add User", add_user_path, class: "btn btn-small btn-primary btn-danger" %>
+            <% if @league.is_admin(current_user) %>
+                <%= link_to "Remove User", remove_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+            <% end %>
         <% end %>
-        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
     </div>
-
-
 </div>

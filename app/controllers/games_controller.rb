@@ -27,7 +27,6 @@ class GamesController < ApplicationController
   end
 
   def show
-    #TODO calculate position of player in game
 
     @scores = @game.ordered_scores
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
@@ -108,9 +107,8 @@ class GamesController < ApplicationController
   end
 
 
-  #TODO end game is broken, also need to add end league
   def end_game_save
-    @game.update_attributes(active: false)
+    @game.update_attribute(:active, false)
     redirect_to({action: 'show', id: @game.id})
   end
 

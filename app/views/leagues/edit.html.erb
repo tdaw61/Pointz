@@ -23,9 +23,18 @@
             <%= collection_select :league_user, :admin_id, @league_users, :user_id, :username %>
         </p>
 
+        <div class="end-league-box">
+            <p></p>
+            <%= link_to 'End this League', end_league_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger margin-left"} %>
+        </div>
 
-        <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger" %>
+        <div>
+            <%= f.submit "Save", class: "btn btn-small btn-primary btn-danger" %>
+            <%= link_to 'Cancel', league_path, class: "btn btn-small btn-primary btn-danger" %>
+        </div>
+        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
-    <% end %>
+
+<% end %>
 
 </div>

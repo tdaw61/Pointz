@@ -760,7 +760,7 @@ input[type="text"] {
   display: block;
 }
 
-.game-form, .user-form, .league-form, .input-form{
+.game-form, .user-form, .input-form{
   width: 700px;
   background: white;
   border: 1px solid #808080;
@@ -773,6 +773,7 @@ input[type="text"] {
   }
 
   label{
+    max-width: 300px;
     padding-top: 5px;
     font-weight: bold;
   }
@@ -781,6 +782,12 @@ input[type="text"] {
     margin-top: 10px;
     padding-bottom: 5px;
   }
+}
+
+.modal-btn {
+  padding: 0px;
+  margin: 0px;
+  vertical-align: inherit;
 }
 
 

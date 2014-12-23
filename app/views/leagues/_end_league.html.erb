@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">End League</h3>
+</div>
+<div class="modal-body">
+
+
+    <% if flash[:alert] %>
+        <div id="error_explanation"><%= flash[:alert] %></div>
+    <% end %>
+
+
+
+        <p>Are you sure you want to end this league? Everything tied to the league will remain but you will not be able to create new games or edit settings.</p>
+        <div class="modal-footer">
+            <%= link_to "End League", end_league_path, class: "btn btn-primary btn-danger", id: "submit", data: {disable_with: "Processing"}, method: :post %>
+            <button class="btn btn-primary btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+
+
+</div>

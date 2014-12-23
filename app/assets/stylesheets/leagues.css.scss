@@ -1,3 +1,23 @@
-// Place all the styles related to the leagues controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.league-form{
+  width: 700px;
+  background: white;
+  border: 1px solid #808080;
+  padding: 20px;
+
+  label{
+    padding-top: 5px;
+    font-weight: bold;
+    max-width: 300px;
+  }
+
+  input{
+    max-width: 300px;
+  }
+
+}
+
+.end-league-box{
+  max-width: 150px;
+  height: 40px;
+//  border: 2px solid black;
+}
