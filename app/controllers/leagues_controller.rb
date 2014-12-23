@@ -42,8 +42,10 @@ class LeaguesController < ApplicationController
 
   def update
     @league_user = LeagueUser.where(user_id: params[:league_user][:admin_id])
+    @league.update_attributes(league_params)
 
-    redirect_to({:action => 'show', :id => params[:id]})
+
+      redirect_to({:action => 'show', :id => params[:id]})
   end
 
   def destroy
@@ -112,7 +114,7 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-    params.require(:league).permit(:name)
+    params.require(:league).permit(:name, :picture)
   end
 
   def set_league
