@@ -1,7 +1,11 @@
 <div class="league-info">
     <div class="topframe-user"></div>
     <div class="league-avatar">
-        <%= link_to gravatar_for(current_user, size: 60), @user %>
+        <% if league.picture.url.present? %>
+
+                <%= image_tag league.picture.url.to_s %>
+
+        <% end %>
     </div>
     <div class="profile_container">
 

@@ -13,6 +13,18 @@
         <% end %>
         <h2> League Settings </h2>
 
+        <div class="input-append">
+            <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
+        </div>
+
+        <div class="post-picture">
+            <img id="img_prev" src="#" alt="your image" style="display: none" />
+            <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
+        </div>
+
+        <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "readURL(this)"%>
+
+
         <p>
             <%= f.label :name %>
             <%= f.text_field :name %>
