@@ -20,6 +20,6 @@ function clickable()
     });
 }
 
-$(document).ready(function(){
-    clickable();
-});
+//$(document).ready(function(){
+//    clickable();
+//});
