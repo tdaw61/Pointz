@@ -13,22 +13,21 @@
         <% end %>
         <h2> League Settings </h2>
 
-        <div class="input-append">
-            <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
-        </div>
-
-        <div class="post-picture">
-            <img id="img_prev" src="#" alt="your image" style="display: none" />
-            <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
-        </div>
-
-        <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "readURL(this)"%>
-
-
         <p>
             <%= f.label :name %>
             <%= f.text_field :name %>
         </p>
+
+        <div class="margin-bottom photo-div">
+                <%= image_tag @league.picture.large_avatar.url.to_s, id: "img_prev" %>
+        </div>
+        <div class="input-append">
+            <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add/Change Photo <i class="icon-camera"></i></a>
+        </div>
+
+        <img id="img_prev" src="#" alt="your image" style="display: none"/>
+
+        <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "readURL(this)" %>
 
         <p style="width: 300px">
             <%= label :league_user, :admin %>
@@ -47,6 +46,6 @@
         <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 
-<% end %>
+    <% end %>
 
 </div>

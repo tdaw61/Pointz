@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223011901) do
+ActiveRecord::Schema.define(version: 20141225185728) do
 
   create_table "event_votes", force: true do |t|
     t.integer  "game_id",          null: false
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20141223011901) do
     t.string   "remember_token"
     t.boolean  "admin",           default: false
     t.boolean  "super_user",      default: false
+    t.string   "picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

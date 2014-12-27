@@ -34,15 +34,15 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   version :large_avatar do
     # returns a 150x150 image
-    process :resize_to_fill => [150, 150]
+    process :resize_to_fit => [150, 150]
   end
   version :medium_avatar do
     # returns a 50x50 image
-    process :resize_to_fill => [50, 50]
+    process :resize_to_fit => [65, 65]
   end
   version :small_avatar do
     # returns a 35x35 image
-    process :resize_to_fill => [35, 35]
+    process :resize_to_fit => [35, 35]
   end
 
   # Create different versions of your uploaded files:

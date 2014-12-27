@@ -6,4 +6,14 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  def avatar_for(object)
+    if request[:action] == 'home'
+      image_tag(object.picture.medium_avatar.url.to_s)
+    else
+      image_tag(object.picture.large_avatar.url.to_s)
+    end
+  end
+
+
 end

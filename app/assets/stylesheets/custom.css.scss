@@ -221,6 +221,20 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
+  border: 3px solid white;
+}
+
+.user-gravatar, .league-gravatar {
+  float: left;
+  margin-right: 10px;
+  margin-top: -29px;
+  border: 3px solid white;
+  outline: 1px solid black;
+
+}
+
+.favicon-gravatar{
+
 }
 
 .stats {
@@ -698,6 +712,7 @@ input[type="text"]{
 
 .league-content{
   padding-left: 10px;
+  margin-top: 20px;
   p{
     padding:0px;
     margin: 0px;
@@ -888,6 +903,12 @@ input[type="text"] {
   font-size: 13px;
 }
 
+.feed-item-header-lrg{
+  color: black;
+  font-size: 14px;
+  height: 65px;
+}
+
 .feed-item-content{
   color: black;
   font-size: 14px;
@@ -947,4 +968,10 @@ input[type="text"] {
 .ele-ctr{
   margin-right: auto;
   margin-left: auto;
+}
+
+#votes-table{
+  tbody{
+    cursor: pointer;
+  }
 }

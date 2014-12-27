@@ -16,6 +16,7 @@ class EventVotesController < ApplicationController
 
   def expand_vote_detail
     @game_event = GameEvent.find(params[:game_event_id])
+    @event_vote = EventVote.find(params[:event_vote_id])
     respond_to do |format|
       format.js {render 'games/expand_vote_detail'}
     end

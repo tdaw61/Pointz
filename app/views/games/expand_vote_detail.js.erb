@@ -1,4 +1,4 @@
 
 <% if @game_event.id %>
-$("#vote_<%= vote.id %>");
+    $("#vote_<%= @event_vote.id %>").after("<%= escape_javascript(render 'games/expand_vote_detail') %>");
 <% end %>

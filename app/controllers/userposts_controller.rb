@@ -9,7 +9,6 @@ class UserpostsController < ApplicationController
     @userpost.picture = params[:userpost][:picture]
 
 
-    #TODO mini magick isnt working right for resizing. make sure to add old resizing functions back in
     respond_to do |format|
       if @userpost.save
         @userpost = Userpost.new

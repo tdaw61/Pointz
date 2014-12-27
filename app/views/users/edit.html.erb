@@ -25,6 +25,17 @@
                 <%= f.label :name %><br>
                 <%= f.text_field :name %>
 
+            <%= f.label :picture, "Profile picture" %>
+
+            <div class="margin-bottom">
+                    <%= image_tag @user.picture.large_avatar.url.to_s, id: "img_prev" %>
+            </div>
+            <div class="input-append">
+                <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add/Change Photo <i class="icon-camera"></i></a>
+            </div>
+
+            <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "readURL(this)" %>
+
                 <%= f.label :email %><br>
                 <%= f.text_field :email %>
 

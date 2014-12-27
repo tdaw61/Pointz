@@ -17,16 +17,17 @@
             <div>
                 <%= link_to gravatar_for(feed_item.user), feed_item.user %>
             </div>
-            <div class="feed-item-header">
+            <div class="feed-item-header-lrg">
                 <%= link_to feed_item.user.name, feed_item.user %>
             </div>
             <div class="feed-item-content">
+                <p class="feed-item-text"><%= feed_item.data %></p>
+
                 <% if feed_item.picture.url.present? %>
                     <div class="feed-item-attachment">
                         <%= image_tag feed_item.picture.url.to_s %>
                     </div>
                     <% end %>
-                <p class="feed-item-text"><%= feed_item.data %></p>
             </div>
 
             <div class="feed-item-footer">

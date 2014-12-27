@@ -1,5 +1,4 @@
 class League < ActiveRecord::Base
-  #TODO still need league settings page with admin settings, picture upload, motto change.
 
   has_many :league_users
   has_many :users, :through => :league_users

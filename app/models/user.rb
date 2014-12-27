@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :league_users
   has_many :leagues, :through => :league_users
 
+  mount_uploader :picture, PictureUploader
+
+
   before_create :create_remember_token
   before_save { self.email = email.downcase }
 
