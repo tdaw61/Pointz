@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
 
   root :to => 'users#home', via: 'get'
 

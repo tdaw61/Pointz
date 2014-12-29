@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       @feed_items = current_user.userposts.paginate(page: params[:page])
       @leagues = current_user.leagues
       @user = current_user
+      @comment = Comment.new
     end
   end
 
