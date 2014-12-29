@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resource :game_events
     end
   end
+  resources :likes, only: [:create, :destroy]
 
   root :to => 'users#home', via: 'get'
 

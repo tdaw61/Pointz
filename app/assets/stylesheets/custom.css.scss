@@ -840,8 +840,8 @@ input[type="text"] {
   padding: 15px;
 }
 
-.del-link{
-  margin-right: 15%;
+.feed-item-link{
+  margin-right: .5%;
   margin-left: auto;
   float: right;
 }
@@ -917,6 +917,13 @@ input[type="text"] {
 .feed-item-footer{
   color: grey;
   font-size: 13px;
+  a{
+    opacity: .6;
+    margin-right: 1%
+  }
+  i{
+    opacity: .35;
+  }
 }
 
 .games-table{

@@ -1,0 +1,6 @@
+ele = $("#userpost_<%=@like.userpost_id%>")
+ele.find("#like_count").text('<%= @like.userpost.positive_likes %>');
+ele.find("#dislike_count").text('<%= @like.userpost.negative_likes %>');
+ele.find("#comment_link").after('<%= link_to "Like", likes_path(like: 1, userpost_id: @like.userpost.id, user_id: current_user.id), method: :post, remote: true, class: "opacity-thirtyfive feed-item-link", id: "like_link" %>');
+ele.find("#comment_link").after('<%= link_to "Dislike", likes_path(like: 0, userpost_id: @like.userpost.id, user_id: current_user.id), method: :post, remote: true, class: "opacity-thirtyfive feed-item-link", id: "dislike_link"%>');
+ele.find("#like_dislike_link").remove();
