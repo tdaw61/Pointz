@@ -47,15 +47,7 @@
 
                     <span class=" feed-item-link" id="dislike_count"> <%= feed_item.negative_likes %></span><i class="icon-thumbs-down feed-item-link"></i>
                     <span class=" feed-item-link" id="like_count"><%= feed_item.positive_likes %>  </span><i class="icon-thumbs-up feed-item-link"></i>
-
-
-
-                    <%= link_to "", feed_item, method: :delete,
-                                data: {confirm: "You sure?"},
-                                title: "delete post",
-                                class: "icon-comment feed-item-link" %>
-
-                    <%= link_to "Comment", like_path(feed_item), remote: true, class: "feed-item-link", id: "comment_link" %>
+                    <span class=" feed-item-link" id="comment_count"><%= feed_item.comments.count%>  </span><i class="icon-comment feed-item-link"></i>
 
                     <% if has_liked_userpost(feed_item) %>
                         <%= has_liked_link %>
@@ -109,15 +101,8 @@
 
                 <span class=" feed-item-link" id="dislike_count"> <%= feed_item.negative_likes %></span><i class="icon-thumbs-down feed-item-link"></i>
                 <span class=" feed-item-link" id="like_count"><%= feed_item.positive_likes %>  </span><i class="icon-thumbs-up feed-item-link"></i>
+                <span class=" feed-item-link" id="comment_count"><%= feed_item.comments.count%>  </span><i class="icon-comment feed-item-link"></i>
 
-
-
-                <%= link_to "", feed_item, method: :delete,
-                            data: {confirm: "You sure?"},
-                            title: "delete post",
-                            class: "icon-comment feed-item-link" %>
-
-                <%= link_to "Comment", like_path(feed_item), remote: true, class: "feed-item-link", id: "comment_link" %>
 
                 <% if has_liked_userpost(feed_item) %>
                     <%= has_liked_link %>
@@ -132,6 +117,8 @@
 
             </div>
         </div>
+        <%= render 'comments/comment_form' %>
+
     </li>
 
 <% end %>

@@ -32,6 +32,7 @@ class GamesController < ApplicationController
     @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
     @event_votes = Array.new
     @event_votes = @game.active_event_votes(current_user.id)
+    @comment = Comment.new
 
     @game_event = @game.game_events.build
     @users = @game.users

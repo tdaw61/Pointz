@@ -1,5 +1,5 @@
 <div>
-    <%= form_for(@comment) do |f| %>
+    <%= form_for(@comment, remote: true) do |f| %>
 
         <% if @comment.errors.any? %>
             <div id="error_explanation">
