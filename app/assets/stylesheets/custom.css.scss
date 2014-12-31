@@ -982,3 +982,11 @@ input[type="text"] {
     cursor: pointer;
   }
 }
+
+.comments-list{
+  background: #dddddd;
+  list-style: none;
+  li{
+    margin: 5px;
+  }
+}

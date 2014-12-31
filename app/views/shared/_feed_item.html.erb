@@ -64,6 +64,7 @@
             </div>
 
             <%= render 'comments/comment_form' %>
+            <%= render 'comments/comment_list', comments:  feed_item.comments %>
 
         </li>
     <% end %>
@@ -117,8 +118,11 @@
 
             </div>
         </div>
-        <%= render 'comments/comment_form' %>
+        <%= render 'comments/comment_form', {userpost_id: feed_item.id} %>
+        <%= render 'comments/comment_list', comments:  feed_item.comments %>
 
     </li>
 
 <% end %>
+
+
