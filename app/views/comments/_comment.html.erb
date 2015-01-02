@@ -1,5 +1,42 @@
-<li>
+<li id="comment_<%=comment.id%>">
+    <div>
+        <%= link_to image_tag(comment.user.picture.small_avatar.url.to_s, class: 'user-gravatar'), comment.user %>
+    </div>
     <div>
         <p><%= comment.data %></p>
+    </div>
+    <% if comment.picture.url.present? %>
+        <div class="feed-item-attachment">
+            <%= image_tag comment.picture.url.to_s %>
+        </div>
+    <% end %>
+    <div class="feed-item-footer">
+        <p class="feed-item-text inline">Posted <%= time_ago_in_words(comment.created_at) %> ago.</p>
+
+        <div class="inline">
+
+
+            <% if current_user?(comment.user) %>
+                <%= link_to "", comment, method: :delete,
+                            data: {confirm: "You sure?"},
+                            title: "delete post",
+                            class: "icon-trash feed-item-link" %>
+            <% end %>
+
+            <span class=" feed-item-link" id="dislike_count"> <%= comment.negative_likes %></span><i class="icon-thumbs-down feed-item-link"></i>
+            <span class=" feed-item-link" id="like_count"><%= comment.positive_likes %>  </span><i class="icon-thumbs-up feed-item-link"></i>
+
+            <% if has_liked_userpost(comment) %>
+                <%= has_liked_link %>
+            <% else %>
+                    <span>
+                        <%= link_to "Dislike", likes_path(like: 0, comment_id: comment.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "dislike_link" %>
+
+                        <%= link_to "Like", likes_path(like: 1, comment_id: comment.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "like_link" %>
+                    </span>
+
+            <% end %>
+
+        </div>
     </div>
 </li>

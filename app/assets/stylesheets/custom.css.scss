@@ -333,6 +333,7 @@ input {
   padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 20px;
+  padding-left: 10px;
 }
 .data {
   display: block;
@@ -984,9 +985,16 @@ input[type="text"] {
 }
 
 .comments-list{
+  margin: 0px;
   background: #dddddd;
   list-style: none;
   li{
-    margin: 5px;
+    padding: 5px;
+  }
+}
+
+.comment-form{
+  input{
+    width: 80%;
   }
 }

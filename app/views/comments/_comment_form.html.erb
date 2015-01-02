@@ -1,24 +1,17 @@
-<div class="comment-form">
-    <%= form_for(@comment, remote: true) do |f| %>
+<li class="comment-form">
+    <%= form_for(Comment.new, remote: true) do |f| %>
 
-        <% if @comment.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this event from being saved:</h2>
+        <div>
+            <div>
+                <%= link_to image_tag(current_user.picture.small_avatar.url.to_s, class: 'user-gravatar'), current_user %>
 
-                <ul>
-                    <% @comment.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                </ul>
             </div>
-        <% end %>
-
-        <p>
-            <%= f.text_field :data %>
-        </p>
+            <%= f.text_field :data, placeholder: "Write comment here" %>
+            <i class="icon-camera"></i>
+        </div>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :userpost_id, value: userpost_id %>
+        <%= f.hidden_field :userpost_id, value: userpost_id%>
 
-        <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+
     <% end %>
-</div>
+</li>

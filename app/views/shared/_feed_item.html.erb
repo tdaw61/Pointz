@@ -3,7 +3,6 @@
         <li id="userpost_<%= feed_item.id %>">
             <div>
                 <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, class: 'user-gravatar'), feed_item.user %>
-
             </div>
             <div class="feed-item-header">
                 <%= link_to feed_item.user.name, feed_item.user %>
@@ -63,8 +62,7 @@
                 </div>
             </div>
 
-            <%= render 'comments/comment_form' %>
-            <%= render 'comments/comment_list', comments:  feed_item.comments %>
+            <%= render 'comments/comment_list', {comments:  feed_item.comments.reverse, userpost_id: feed_item.id} %>
 
         </li>
     <% end %>
@@ -118,8 +116,7 @@
 
             </div>
         </div>
-        <%= render 'comments/comment_form', {userpost_id: feed_item.id} %>
-        <%= render 'comments/comment_list', comments:  feed_item.comments %>
+        <%= render 'comments/comment_list', {comments:  feed_item.comments.reverse, userpost_id: feed_item.id} %>
 
     </li>
 
