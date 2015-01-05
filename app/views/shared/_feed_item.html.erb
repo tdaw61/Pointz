@@ -2,7 +2,7 @@
      if feed_item.post_type == "user_join" %>
         <li id="userpost_<%= feed_item.id %>">
             <div>
-                <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, class: 'user-gravatar'), feed_item.user %>
+                <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45", class: 'userpost-gravatar'), feed_item.user %>
             </div>
             <div class="feed-item-header">
                 <%= link_to feed_item.user.name, feed_item.user %>
@@ -16,9 +16,9 @@
 
         <li id="userpost_<%= feed_item.id %>">
             <div>
-                <%= link_to link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, class: 'user-gravatar'), feed_item.user %>
+                <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45", class: 'userpost-gravatar'), feed_item.user %>
             </div>
-            <div class="feed-item-header-lrg">
+            <div class="feed-item-header">
                 <%= link_to feed_item.user.name, feed_item.user %>
             </div>
             <div class="feed-item-content">
@@ -73,7 +73,8 @@
     <li id="userpost_<%= feed_item.id %>">
 
         <div>
-            <%= link_to link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, class: 'user-gravatar'), feed_item.user %>
+            <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45",
+                                  class: 'userpost-gravatar'), feed_item.user %>
         </div>
         <div class="feed-item-header">
             <p class="feed-item-text"><%= link_to feed_item.user.name, feed_item.user %> started a vote

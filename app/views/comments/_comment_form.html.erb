@@ -3,7 +3,7 @@
 
         <div>
             <div>
-                <%= link_to image_tag(current_user.picture.small_avatar.url.to_s, class: 'user-gravatar'), current_user %>
+                <%= link_to image_tag(current_user.picture.small_avatar.url.to_s, size: "32X32", class: 'comment-gravatar'), current_user %>
 
             </div>
             <%= f.text_field :data, placeholder: "Write comment here" %>

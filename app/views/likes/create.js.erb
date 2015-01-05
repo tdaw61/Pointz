@@ -6,4 +6,9 @@ ele.find("#dislike_count").text('<%= @like.userpost.negative_likes %>');
 ele.find("#comment_link").after('<%= link_to (@like.like ? "Unlike" : "Un-dislike") , like_path(id: @like.id), method: :delete, remote: true, class: "opacity-thirtyfive feed-item-link", id: "like_dislike_link" %>');
 ele.find("#like_link").remove();
 ele.find("#dislike_link").remove();
+<% else %>
+var ele = $("#comment_<%=@like.comment_id%>");
+ele.find("#like_count").text('<%= @like.comment.positive_likes %>');
+ele.find("#dislike_count").text('<%= @like.comment.negative_likes %>');
+ele.find("#like_links").html('<%= link_to (@like.like ? "Unlike" : "Un-dislike") , like_path(id: @like.id), method: :delete, remote: true, class: "opacity-thirtyfive feed-item-link", id: "like_dislike_link" %>');
 <% end %>

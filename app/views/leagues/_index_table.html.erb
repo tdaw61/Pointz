@@ -1,9 +1,10 @@
 <div class="league-overview">
 
-    <div class="gravatar">
+    <div class="league-index-gravatar">
 
     <a class="b-link-fade b-animate-go" href="<%= league_path(league) %> ">
-        <%= gravatar_for(current_user, {size: 150}) %>
+        <%= image_tag(current_user.picture.large_avatar.url.to_s, size: "150", class: 'league-index-gravatar') %>
+
 
         <div class="b-wrapper">
             <h4 class="b-from-left b-animate b-delay03" style=" color: black"> <%= league.name %> </h4>

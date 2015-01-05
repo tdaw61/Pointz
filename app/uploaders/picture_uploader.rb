@@ -18,11 +18,14 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
+    if model.class == User
+      "" + [version_name, "default_avatar.jpeg"].compact.join('_')
+    end
     # For Rails 3.1+ asset pipeline compatibility:
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
 
     #{}"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    'default_avatar.jpeg' #rails will look at 'app/assets/images/default_avatar.png'
+    #rails will look at 'app/assets/images/default_avatar.png'
   end
 
   # Process files as they are uploaded:
@@ -38,11 +41,11 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
   version :medium_avatar do
     # returns a 50x50 image
-    process :resize_to_fit => [65, 65]
+    process :resize_to_fill => [65, 65]
   end
   version :small_avatar do
     # returns a 35x35 image
-    process :resize_to_fit => [35, 35]
+    process :resize_to_fill => [35, 35]
   end
 
   # Create different versions of your uploaded files:
