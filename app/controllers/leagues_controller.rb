@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-
+  #TODO league index expand details doesn't look right, needs fixing. 
   #TODO add reactivate for games & leagues, might make sense for leagues only
 
   before_action :set_league, only: [:show, :edit, :update, :destroy, :add_user, :add_user_save, :expand_league_games, :expand_league_users, :remove_user, :remove_user_save, :end_league_save]
