@@ -5,7 +5,7 @@
             <div>
                 <%= link_to image_tag(current_user.picture.small_avatar.url.to_s, size: "32X32", class: 'comment-gravatar'), current_user %>
             </div>
-            <span class="input-append" style="width: 80%">
+            <span class="input-append" style="width: 88%">
                 <%= f.text_field :data, placeholder: "Write comment here" %>
                 <a class="btn" onclick="$('#userpost_<%=userpost_id%>').find('input[id=lefile]').click();"><i class="icon-camera"></i></a>
             </span>

@@ -9,11 +9,6 @@ class GamesController < ApplicationController
   #TODO testing suite
 
 
-  #TODO add liking system
-  #TODO add comment system
-  #TODO add a ranking system
-
-
   before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save]
 
 
