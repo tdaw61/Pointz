@@ -68,13 +68,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.mail.yahoo.com',
+      address:              'smtp.sendgrid.net',
       port:                 587,
-      domain:               'anythingworks',
-      user_name:            'tdaw6134@yahoo.com',
-      password:             'Rolled6!',
+      domain:               'heroku.com',
+      user_name:            'app26967816@heroku.com',
+      password:             '6tcdujxb',
       authentication:       'plain',
-      enable_starttls_auto:  true        }
+      enable_starttls_auto:  true
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
