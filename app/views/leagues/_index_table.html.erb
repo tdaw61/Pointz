@@ -19,20 +19,17 @@
         <table style="width: 500px" >
             <tr>
                 <td style="width: 250px">
-                    # of games: <%=league.games.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true%>
+                    # of games: <%=league.games.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true, id: "mini_games_link"%>
                 </td>
+                <td style="width: 30px"></td>
                 <td style="width: 250px">
-                    # of users: <%=league.users.count %> <%= link_to 'Expand', expand_league_users_path(league), remote: true%>
+                    # of users: <%=league.users.count %> <%= link_to 'Expand', expand_league_users_path(league), remote: true, id: "mini_users_link"%>
                 </td>
             </tr>
             <tr>
-            <td id="mini_league_games">
-
-            </td>
-            <td id="mini_league_users">
-
-            </td>
-
+                <td id="mini_league_games"></td>
+                <td style="width: 30px;"></td>
+                <td id="mini_league_users"></td>
             </tr>
         </table>
         <p>Date created: <%= time_tag league.created_at, pubdate: true%> </p>
