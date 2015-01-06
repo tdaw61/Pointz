@@ -469,7 +469,7 @@ aside {
     border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
     border: 1px solid black;
     scroll: false;
-    height: 175px;
+    min-height: 175px;
     margin-bottom: 2px;
     h1 {
       font-size: 1.4em;
@@ -1037,6 +1037,10 @@ input[type="text"] {
   float: left;
 
   margin: 5px;
+}
+
+#mini_league_games, #mini_league_users{
+  vertical-align: top;
 }
 
 

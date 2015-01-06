@@ -2,40 +2,40 @@
 
     <div class="league-index-gravatar">
 
-    <a class="b-link-fade b-animate-go" href="<%= league_path(league) %> ">
-        <%= image_tag(current_user.picture.large_avatar.url.to_s, size: "150", class: 'league-index-gravatar') %>
+        <a class="b-link-fade b-animate-go" href="<%= league_path(league) %> ">
+            <%= image_tag(current_user.picture.large_avatar.url.to_s, size: "150", class: 'league-index-gravatar') %>
 
+            <div class="b-wrapper">
+                <h4 class="b-from-left b-animate b-delay03" style=" color: black"> <%= league.name %> </h4>
 
-        <div class="b-wrapper">
-            <h4 class="b-from-left b-animate b-delay03" style=" color: black"> <%= league.name %> </h4>
-
-            <p class="b-from-right b-animate b-delay03"> </p>
-        </div>
-    </a>
+                <p class="b-from-right b-animate b-delay03"></p>
+            </div>
+        </a>
     </div>
 
     <div class="league-info">
         <h3><%= link_to league.name, league %></h3>
-        <table style="width: 500px" >
+        <table style="width: 500px">
             <tr>
-                <td style="width: 250px">
-                    # of games: <%=league.games.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true%>
+                <td style="width: 250px"># of games: <%= league.games.count %> <%= link_to 'Expand', expand_league_games_path(league), remote: true, id: "expand_league_games" %>
                 </td>
-                <td style="width: 250px">
-                    # of users: <%=league.users.count %> <%= link_to 'Expand', expand_league_users_path(league), remote: true%>
+                <td style="width: 25px;"></td>
+                <td style="width: 250px"># of users: <%= league.users.count %> <%= link_to 'Expand', expand_league_users_path(league), remote: true, id: "expand_league_users" %>
                 </td>
             </tr>
             <tr>
-            <td id="mini_league_games">
+                <td id="mini_league_games">
 
-            </td>
-            <td id="mini_league_users">
+                </td>
+                <td style="width: 25px;"></td>
 
-            </td>
+                <td id="mini_league_users">
+
+                </td>
 
             </tr>
         </table>
-        <p>Date created: <%= time_tag league.created_at, pubdate: true%> </p>
+        <p>Date created: <%= time_tag league.created_at, pubdate: true %> </p>
     </div>
     <div style="clear: both"></div>
 
