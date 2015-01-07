@@ -68,12 +68,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :port           => ENV['MAILGUN_SMTP_PORT'],
-      :address        => ENV['MAILGUN_SMTP_SERVER'],
-      :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-      :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+      :port           => 587,
+      :address        => 'smtp.mailgun.org',
+      :user_name      => postmaster@app26967816.mailgun.org,
+      :password       => f7718cf002a621f743c1347b10549096,
       :domain         => 'manpoints.herokuapp.com',
-      :authentication => :plain,
+      :authentication => :plain
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
