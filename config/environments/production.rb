@@ -68,13 +68,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.sendgrid.net',
-      port:                 587,
-      domain:               'heroku.com',
-      user_name:            'app26967816@heroku.com',
-      password:             '6tcdujxb',
-      authentication:       'plain',
-      enable_starttls_auto:  true
+      :port           => ENV['MAILGUN_SMTP_PORT'],
+      :address        => ENV['MAILGUN_SMTP_SERVER'],
+      :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+      :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+      :domain         => 'manpoints.herokuapp.com',
+      :authentication => :plain,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
