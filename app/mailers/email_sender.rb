@@ -11,6 +11,6 @@ class EmailSender < ActionMailer::Base
 
     def welcome(user)
       @user = user
-      mail(to: 'tdaw6134@yahoo.com', subject: 'Welcome to ManPoints')
+      mail(to: 'tdaw6134@yahoo.com', subject: 'Welcome to ManPoints').deliver
     end
 end
