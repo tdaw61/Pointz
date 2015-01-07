@@ -22,8 +22,14 @@ class LeaguesController < ApplicationController
 
   def index
     @leagues = current_user.leagues
-    @games = @leagues.first.games
-    @league_users = @leagues.first.users
+    if @leagues.empty?
+      @games = {}
+      @league_users = {}
+    else
+      @games = @leagues.first.games
+      @league_users = @leagues.first.users
+    end
+
   end
 
   def show
