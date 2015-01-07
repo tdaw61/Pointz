@@ -14,6 +14,7 @@ gem 'mail'
 gem 'fog'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'figaro'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
