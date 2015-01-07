@@ -68,6 +68,7 @@ class LeaguesController < ApplicationController
 
   def add_user_save
     #TODO add find user by email or username with live search on friends list.
+    #TODO userpost for user joining league never is seen because feed items are found by game_id
     user = User.find_by email: params[:email]
     if user
       begin

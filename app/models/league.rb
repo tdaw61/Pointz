@@ -10,6 +10,7 @@ class League < ActiveRecord::Base
   validates_length_of :name, maximum: 30, message: "30 characters max for game name"
 
   def feed_items
+    #TODO N+1 problems with feed items
     feed_items = Array.new
     games = self.games
     games.each do |game|
