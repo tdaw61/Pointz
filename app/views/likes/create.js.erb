@@ -1,12 +1,12 @@
 //Need better check for this. Right now check if comment is null, then it is a userpost and act accordingly. (only changes ID for jquery)
 <% if @like.comment_id.nil? %>
-var ele = $("#userpost_<%=@like.userpost_id%>");
+ele = $("#userpost_<%=@like.userpost_id%>");
 ele.find("#like_count").text('<%= @like.userpost.positive_likes %>');
 ele.find("#dislike_count").text('<%= @like.userpost.negative_likes %>');
 ele.find("#like_links").html('<%= link_to (@like.like ? "Unlike" : "Un-dislike") , like_path(id: @like.id), method: :delete, remote: true, class: "opacity-thirtyfive feed-item-link", id: "like_dislike_link" %>');
 
 <% else %>
-var ele = $("#comment_<%=@like.comment_id%>");
+ele = $("#comment_<%=@like.comment_id%>");
 ele.find("#like_count").text('<%= @like.comment.positive_likes %>');
 ele.find("#dislike_count").text('<%= @like.comment.negative_likes %>');
 ele.find("#like_links").html('<%= link_to (@like.like ? "Unlike" : "Un-dislike") , like_path(id: @like.id), method: :delete, remote: true, class: "opacity-thirtyfive feed-item-link", id: "like_dislike_link" %>');
