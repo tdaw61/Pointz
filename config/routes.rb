@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    get 'search', on: :member
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :userposts
   resources :leagues do

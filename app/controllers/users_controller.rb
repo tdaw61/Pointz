@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+
+  #TODO add in cancel buttons everywhere, often times you are stuck on a form.
+  #TODO search is going to be way too simple at first
+  #TODO add filtering option for feed to do only events or only userposts.
+  #TODO add picture to event vote form
+
   before_action :set_user, only: [:show, :destroy]
   before_action :signed_in_user, only: [:edit, :index, :update]
   before_action :correct_user, only: [:edit, :update]
@@ -88,6 +94,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url}
       format.json { head :no_content }
     end
+  end
+
+  def search
+
   end
 
   private
