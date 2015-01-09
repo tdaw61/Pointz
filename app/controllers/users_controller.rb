@@ -97,7 +97,9 @@ class UsersController < ApplicationController
   end
 
   def search
-
+    search_condition = "%" + params['srch-term'] + "%"
+    @search_users = User.where('name LIKE ? OR email LIKE ?', search_condition, search_condition)
+    @search_users
   end
 
   private
