@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :game_events
   has_many :league_users
   has_many :leagues, :through => :league_users
+  has_many :friendships
+  has_many :friends, :through => :friendships
 
   mount_uploader :picture, PictureUploader
 

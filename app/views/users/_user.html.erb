@@ -2,13 +2,14 @@
     <%= gravatar_for user, size: 52 %>
     <%= link_to user.name, user %>
     <span>
-        <p >
+        <p>
          <%= link_to 'Edit this User', edit_user_path(user), :class => "btn" %>
         </p>
         <p>
             <% if current_user.admin? && !current_user?(user) %>
             <%= link_to 'Destroy this User', user, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn" %>
             <% end %>
+            <%= link_to 'Add as Friend', friendships_path(friend_id: user.id), method: :post, remote: true %>
 
         </p>
         <p style="clear:both"></p>

@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       @leagues = current_user.leagues
       @user = current_user
       @comment = Comment.new
+      @user_friends = current_user.friends
     end
   end
 
@@ -99,7 +100,7 @@ class UsersController < ApplicationController
   def search
     search_condition = "%" + params['srch-term'] + "%"
     @search_users = User.where('name LIKE ? OR email LIKE ?', search_condition, search_condition)
-    @search_users
+    @users = @search_users.paginate(page: params[:page])
   end
 
   private

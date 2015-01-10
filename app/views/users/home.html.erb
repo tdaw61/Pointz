@@ -9,10 +9,15 @@
                 <%= render 'league_table' %>
             </div>
         </div>
-        <div class="span8">
+        <div class="span7">
             <%= render 'shared/feed' %>
         </div>
+        <div class="span4">
+            <%= render 'friends/friends_table', user_friends: @user_friends %>
+        </div>
     </div>
+
+
 <% else %>
 
 
