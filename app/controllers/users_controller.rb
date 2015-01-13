@@ -99,7 +99,7 @@ class UsersController < ApplicationController
 
   def search
     search_condition = "%" + params['srch-term'] + "%"
-    @search_users = User.where('name LIKE ? OR email LIKE ?', search_condition, search_condition)
+    @search_users = User.where('name LIKE ? OR email LIKE ? and id not in (?)', search_condition, search_condition, current_user.id)
     @users = @search_users.paginate(page: params[:page])
   end
 

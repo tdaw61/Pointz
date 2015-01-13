@@ -1,1 +1,1 @@
-<li> <%= user_friend.picture.small_avatar.url if user_friend.picture.present? %></li>
+<li> <%= image_tag(friend.picture.small_avatar.url.to_s) if friend.picture.present? %></li>

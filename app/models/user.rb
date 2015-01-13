@@ -41,6 +41,15 @@ class User < ActiveRecord::Base
     self.event_votes.where(game_id: game.id, has_voted: false).count
   end
 
+  def has_pending_friendship search_user
+    friendship = self.friends.where(friend_id: search_user.id, accepted: false).first
+    if !friendship.nil? && friendship.accepted == false
+      true
+    else
+      false
+    end
+  end
+
   private
 
   def create_remember_token

@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   end
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
-  resources :friendships, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy] do
+    member do
+      post 'friend_request_accept'
+      delete 'friend_request_reject'
+    end
+  end
+
 
   root :to => 'users#home', via: 'get'
 

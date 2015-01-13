@@ -1065,6 +1065,10 @@ input[type="text"] {
 
 .navbar-form{
   padding-top: 5px;
+  input{
+    margin-left: 100px;
+    width: 300px;
+  }
 }
 
 .friend-box .header{
@@ -1076,3 +1080,12 @@ input[type="text"] {
   padding: 5px;
 }
 
+.search-results{
+  background: white;
+  margin-left: 290px;
+  padding-left: 10px;
+}
+
+.user-search-content{
+  padding-left: 70px;
+}

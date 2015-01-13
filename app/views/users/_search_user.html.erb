@@ -1,0 +1,9 @@
+<li>
+    <%= avatar_for(search_user, 'medium', "float-left") %>
+    <div class="user-search-content padding-bottom">
+        <%= link_to search_user.name, search_user, class: "padding-right" %>
+    </div>
+    <div class="user-search-content" id="friend_link_<%=search_user.id%>">
+        <%= friend_link search_user%>
+    </div>
+</li>

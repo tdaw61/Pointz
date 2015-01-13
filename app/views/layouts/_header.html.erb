@@ -5,13 +5,12 @@
             <nav>
 
                 <div class="span3 pull-left">
-                    <%= form_tag( search_user_path(current_user), method: 'get', class: "navbar-form" ) do %>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                            <!--<div class="input-group-btn">-->
-                                <!--<button class="btn btn-default" type="submit"><i class="icon-search"></i></button>-->
-                            <!--</div>-->
-                        </div>
+                    <% if signed_in? %>
+                        <%= form_tag(search_user_path(current_user), method: 'get', class: "navbar-form") do %>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Find Friends" name="srch-term" id="srch-term">
+                            </div>
+                        <% end %>
                     <% end %>
                 </div>
 

@@ -1,0 +1,1 @@
+$("#friend_link_<%=@friendship.friend_id%>").replaceWith( j <%= link_to 'UnFriend',  friendships_path(friend_id: @friendship.friend_id), method: :delete, remote: true, data: "Are you sure you want to unfriend this person?", class: "padding-left btn btn-small btn-danger" %>);

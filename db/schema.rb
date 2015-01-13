@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108052142) do
+ActiveRecord::Schema.define(version: 20150113063407) do
 
   create_table "comments", force: true do |t|
     t.string   "data",        null: false
@@ -40,7 +40,10 @@ ActiveRecord::Schema.define(version: 20150108052142) do
     t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "accepted",   default: false
   end
+
+  add_index "friendships", ["friend_id", "user_id"], name: "index_friendships_on_friend_id_and_user_id", unique: true
 
   create_table "game_events", force: true do |t|
     t.integer  "point_value",                   null: false
