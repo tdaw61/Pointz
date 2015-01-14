@@ -28,12 +28,15 @@ module UsersHelper
 
     if current_user.id == search_user.id
        #Do nothing
-    elsif(current_user.has_pending_friendship(search_user))
-      link_to "Accept Friendship"
+    elsif(current_user.pending_friends.include?(search_user))
+      link_to 'Cancel Friend Request',  friendship_path(id: search_user.id), method: :delete, remote: true, data: 'Are you sure you want to unfriend this person?', class: 'padding-left btn btn-small btn-danger', id: "friend_link_#{search_user.id}"
+    elsif(current_user.requested_friends.include?(search_user))
+      link_to "Accept Friend Request", friend_request_accept_friendship_path, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}, id: "friend_link_#{search_user.id}"
+      link_to "Reject Friend Request", friendship_path(id: search_user.id), method: :delete, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}, id: "friend_link_#{search_user.id}"
     elsif(current_user.friends.include?(search_user))
-      link_to 'UnFriend',  friendships_path(friend_id: search_user.id), method: :delete, remote: true, data: "Are you sure you want to unfriend this person?", class: "padding-left btn btn-small btn-danger"
+      link_to 'UnFriend',  friendships_path(id: search_user.id), method: :delete, remote: true, data: "Are you sure you want to unfriend this person?", class: "padding-left btn btn-small btn-danger", id: "friend_link_#{search_user.id}"
     else
-      link_to 'Add as Friend', friendships_path(friend_id: search_user.id), method: :post, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}
+      link_to 'Add as Friend', friendships_path(id: search_user.id), method: :post, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}, id: "friend_link_#{search_user.id}"
     end
   end
 end
