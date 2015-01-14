@@ -1077,7 +1077,6 @@ input[type="text"] {
 
 .friend-box {
   border: 1px solid black;
-  padding: 5px;
 }
 
 .search-results{
@@ -1088,4 +1087,19 @@ input[type="text"] {
 
 .user-search-content{
   padding-left: 70px;
+}
+
+
+.requested-friends-list{
+  padding: 0px;
+  margin: 0px;
+  img{
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+  li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+  }
 }

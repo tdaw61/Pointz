@@ -31,8 +31,10 @@ module UsersHelper
     elsif(current_user.pending_friends.include?(search_user))
       link_to 'Cancel Friend Request',  friendship_path(id: search_user.id), method: :delete, remote: true, data: 'Are you sure you want to unfriend this person?', class: 'padding-left btn btn-small btn-danger', id: "friend_link_#{search_user.id}"
     elsif(current_user.requested_friends.include?(search_user))
-      link_to "Accept Friend Request", friend_request_accept_friendship_path, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}, id: "friend_link_#{search_user.id}"
-      link_to "Reject Friend Request", friendship_path(id: search_user.id), method: :delete, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}, id: "friend_link_#{search_user.id}"
+      content_tag :div, id: "friend_link_#{search_user.id}" do
+        html = link_to "Accept", accept_friendship_path(id: search_user.id), method: :post, remote: true, class: "padding-left btn btn-small btn-danger margin-right", data: {disable_with: "Processing"}
+        html += link_to "Reject", friendship_path(id: search_user.id), method: :delete, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}
+      end
     elsif(current_user.friends.include?(search_user))
       link_to 'UnFriend',  friendships_path(id: search_user.id), method: :delete, remote: true, data: "Are you sure you want to unfriend this person?", class: "padding-left btn btn-small btn-danger", id: "friend_link_#{search_user.id}"
     else

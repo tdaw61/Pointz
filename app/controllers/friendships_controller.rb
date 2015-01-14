@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :get_friendship
+  before_action :set_friendship
 
   #accept friendship, this will need to update friendships in 2 directions.
   def accept
@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
   end
 
   private
-  def get_friendship
+  def set_friendship
     @user = current_user
     @friend = User.find(params[:id])
   end

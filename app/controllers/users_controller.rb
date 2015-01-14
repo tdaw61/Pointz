@@ -29,6 +29,7 @@ class UsersController < ApplicationController
       @user = current_user
       @comment = Comment.new
       @user_friends = current_user.friends
+      @friend_requests = current_user.requested_friends
     end
   end
 

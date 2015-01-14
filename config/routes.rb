@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:new, :create, :destroy]
   resources :friendships, only: [:create, :destroy] do
     member do
-      post 'friend_request_accept'
+      post 'accept'
       delete 'friend_request_reject'
     end
   end
