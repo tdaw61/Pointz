@@ -1066,8 +1066,10 @@ input[type="text"] {
 .navbar-form{
   padding-top: 5px;
   input{
-    margin-left: 100px;
-    width: 300px;
+    margin-left: 155px;
+    width: 540px;
+    line-height: normal;
+    vertical-align: -webkit-baseline-middle;
   }
 }
 
@@ -1105,7 +1107,7 @@ input[type="text"] {
   }
 }
 
-.friend-requests-box .pad{
+.friend-requests-box .pad, .friend-box .pad{
   padding: 5px;
 }
 

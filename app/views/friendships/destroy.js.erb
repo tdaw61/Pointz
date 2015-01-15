@@ -1,1 +1,5 @@
+<% if params[:from] == "home" %>
+$("#friend-request-<%=@friend.id%>").remove();
+<% else %>
 $("#friend_link_<%=@friend.id%>").replaceWith("<%= escape_javascript( link_to 'Add as Friend', friendships_path(id: @friend.id), method: :post, remote: true, class: "padding-left btn btn-small btn-danger", data: {disable_with: "Processing"}, id: "friend_link_#{@friend.id}")%>");
+<% end %>
