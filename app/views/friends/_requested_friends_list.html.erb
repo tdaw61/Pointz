@@ -1,11 +1,18 @@
-<div class="friend-box margin-top">
+<div class="friend-requests-box margin-top">
     <div>
         <div class="header">
-            Friend Requests
+            <div class="pad">
+                Friend Requests
+            </div>
+
         </div>
-        <div>
+        <div class="pad">
             <ul class="requested-friends-list">
-                <%= render partial: "friends/requested_friend", collection: @friend_requests %>
+                <% if @friend_requests.empty? %>
+                    <li> You have no current friend requests</li>
+                <% else %>
+                    <%= render partial: "friends/requested_friend", collection: @friend_requests %>
+                <% end %>
             </ul>
         </div>
     </div>

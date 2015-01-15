@@ -5,6 +5,7 @@ class FriendshipsController < ApplicationController
   def accept
     if @user.requested_friends.include?(@friend)
       Friendship.accept(@user, @friend)
+      @user_friends = current_user.friends
     else
       flash[:notice] = "There has been no friendship request"
     end
@@ -13,7 +14,7 @@ class FriendshipsController < ApplicationController
   #this will take care of rejecting, cancelling, and unfriending.
   def destroy
     if @user.friends.include?(@friend)
-      Friendship.breakup(@user, @friend)
+      Friendship.destroy_friendship(@user, @friend)
       flash[:notice] = "Friendship Deleted"
     else
       flash[:notice] = "No Friendship to delete"

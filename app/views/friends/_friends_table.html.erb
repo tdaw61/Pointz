@@ -2,9 +2,13 @@
     <div class="header">
         Friends
     </div>
-    <div class="friend_list">
-        <ul>
-            <%= render partial: "friends/friend" , collection: user_friends %>
+    <div>
+        <ul class="friend_list">
+            <% if user_friends.empty? %>
+                <li> You have no current friend requests</li>
+            <% else %>
+                <%= render partial: "friends/friend", collection: user_friends %>
+            <% end %>
         </ul>
     </div>
 </div>

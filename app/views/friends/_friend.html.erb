@@ -1,1 +1,1 @@
-<li> <%= image_tag(friend.picture.small_avatar.url.to_s) if friend.picture.present? %></li>
+<li> <%= link_to avatar_for(friend, 'medium', nil), user_path(friend), title: friend.name %></li>

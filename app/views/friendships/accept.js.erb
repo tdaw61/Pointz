@@ -1,0 +1,8 @@
+
+
+<% if params[:from] == "home" %>
+    $("#friend-request-<%=@friend.id%>").remove();
+    $(".friend-box").replaceWith("<%= escape_javascript(render 'friends/friends_table', user_friends: @user_friends)%>");
+<% elsif params[:from] == "search" %>
+    $("#search_user_<%=@friend.id%>").remove();
+<% end %>
