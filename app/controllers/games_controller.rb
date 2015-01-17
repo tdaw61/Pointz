@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_action :signed_in_user
   #TODO add categories for type of manpoint - then can do a stat breakdown per player
   #TODO Add setting for event vote time limit before expiration.
+  #TODO Calendar symbol in create game needs to link.
 
 
   #TODO deal with permission problems. Show games/leagues unless private - need to add a private feature.
