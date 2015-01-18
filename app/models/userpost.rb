@@ -19,7 +19,7 @@ class Userpost < ActiveRecord::Base
   end
 
   def event_create_post game_event
-     Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id})
+     Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id, post_type: "userpost"})
   end
 
   def positive_likes

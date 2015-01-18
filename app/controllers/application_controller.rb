@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
 
-  #TODO no vote doesnt appear to work
   #TODO updating the vote to pass maybe create a new feed item?
   #TODO explain score cap on create game, tutorial on the page maybe?
   #TODO make vote into modal popup, expand reason for vote into a text area with picture

@@ -3,16 +3,9 @@
         <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45", class: 'userpost-gravatar'), feed_item.user %>
     </div>
     <div class="feed-item-header">
-        <%= link_to feed_item.user.name, feed_item.user %>
-    </div>
-    <div class="feed-item-content">
-        <p class="feed-item-text"><%= feed_item.data %></p>
-
-        <% if feed_item.picture.url.present? %>
-            <div class="feed-item-attachment">
-                <%= image_tag feed_item.picture.large_avatar.url.to_s %>
-            </div>
-        <% end %>
+        <p class="feed-item-text">
+            <%= link_to feed_item.target_user.name, feed_item.target_user%> has received <%= feed_item.points %> points from <%= link_to feed_item.user.name + "'s", feed_item.user %> vote
+        </p>
     </div>
 
     <div class="feed-item-footer">

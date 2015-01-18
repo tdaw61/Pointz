@@ -2,6 +2,9 @@ class GameEvent < ActiveRecord::Base
   #TODO add event expand option on click to table cell. should give date and more detail.
   belongs_to :game
   belongs_to :user
+  belongs_to :target_user, class_name: "User"
+
+
 
   has_many :event_votes
 
@@ -37,7 +40,7 @@ class GameEvent < ActiveRecord::Base
       Score.update_score self
     end
 
-    Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id})
+    Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id, post_type: "event_created"})
   end
 
 

@@ -1,0 +1,10 @@
+<li id="userpost_<%= feed_item.id %>">
+    <div>
+        <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45", class: 'userpost-gravatar'), feed_item.user %>
+    </div>
+    <div class="feed-item-header">
+        <%= link_to feed_item.user.name, feed_item.user %>
+    </div>
+    <div class="feed-item-content">
+        <p class="feed-item-text"><%= feed_item.user.name %> has joined the league </p></div>
+</li>

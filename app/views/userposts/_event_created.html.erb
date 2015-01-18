@@ -1,19 +1,18 @@
 <li id="userpost_<%= feed_item.id %>">
+
     <div>
-        <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45", class: 'userpost-gravatar'), feed_item.user %>
+        <%= link_to image_tag(feed_item.user.picture.small_avatar.url.to_s, size: "45",
+                              class: 'userpost-gravatar'), feed_item.user %>
     </div>
     <div class="feed-item-header">
-        <%= link_to feed_item.user.name, feed_item.user %>
+        <p class="feed-item-text"><%= link_to feed_item.user.name, feed_item.user %> started a vote
+            for <%= link_to feed_item.target_username, feed_item.target_user %>
+            in <%= link_to feed_item.game.name, feed_item.game %> </p>
     </div>
     <div class="feed-item-content">
-        <p class="feed-item-text"><%= feed_item.data %></p>
+        <p class="feed-item-text">Points: <%= feed_item.points %></p>
 
-        <% if feed_item.picture.url.present? %>
-            <div class="feed-item-attachment">
-                <%= image_tag feed_item.picture.large_avatar.url.to_s %>
-            </div>
-        <% end %>
-    </div>
+        <p class="feed-item-text"><%= feed_item.data %></p></div>
 
     <div class="feed-item-footer">
         <p class="feed-item-text inline">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</p>
@@ -45,7 +44,6 @@
 
         </div>
     </div>
-
     <%= render 'comments/comment_list', {comments:  feed_item.comments.reverse, userpost_id: feed_item.id} %>
 
 </li>

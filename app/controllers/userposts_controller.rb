@@ -5,6 +5,7 @@ class UserpostsController < ApplicationController
     # @posts = Post.paginate(page: params[:page], per_page: 15).order('created_at DESC')
     @userpost = current_user.userposts.build(userpost_params)
     @userpost.game_id = params[:game][:id]
+    @userpost.post_type = "userpost"
     @game = Game.find(params[:game][:id])
     @userpost.picture = params[:userpost][:picture]
 
