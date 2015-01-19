@@ -9,13 +9,10 @@
         <div id="error_explanation"><%= flash[:alert] %></div>
     <% end %>
 
-    <%= form_tag end_game_path, id: "form" do %>
-
         <p>Are you sure you want to end this game? Everything tied to the game will remain but you will not be able to create new votes.</p>
     <div class="modal-footer">
-        <%= submit_tag "End Game", class: "btn btn-primary btn-danger", id: "submit", data: {disable_with: "Processing"}, method: :post %>
+        <%= link_to "End Game", end_game_save_path, class: "btn btn-primary btn-danger", id: "submit", data: {disable_with: "Processing"}, method: :post %>
         <button class="btn btn-primary btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
-    <% end %>
 
 </div>

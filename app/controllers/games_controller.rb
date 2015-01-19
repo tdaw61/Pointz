@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   #TODO testing suite
 
 
-  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save]
+  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save, :game_settings]
 
 
   def new
@@ -107,6 +107,11 @@ class GamesController < ApplicationController
   def end_game_save
     @game.update_attribute(:active, false)
     redirect_to({action: 'show', id: @game.id})
+  end
+
+  def game_settings
+
+    render 'game_settings'
   end
 
 

@@ -51,10 +51,18 @@
                         <%= radio_button :game, :point_tiers, 1 %>
                     </div>
                 </div>
+                <div class="danger-box">
+                    <div>Danger zone</div>
+                    <%= link_to "End this game", end_game_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+                    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="endGameWindow" aria-hidden="true"></div>
+                </div>
 
 
                 <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger block padding-top" %>
+
             <% end %>
+
+
 
         </div>
     </div>

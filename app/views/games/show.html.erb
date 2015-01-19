@@ -10,15 +10,12 @@
         <aside class="span5">
             <%= render 'points_table' %>
 
-            <%= render 'game_settings' %>
-
             <% if @game.active %>
 
-                <%= link_to 'Edit game settings', edit_game_path, class: "btn btn-small btn-primary btn-danger " %>
-                <%= link_to "End this game", end_game_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+                <%= link_to 'View game settings', game_settings_game_path , {:remote => true, 'data-toggle' => "modal", 'data-target' => '#settings-window', class: "btn btn-small btn-primary btn-danger "} %>
             <% end %>
 
-            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+            <div id="settings-window" class="modal hide fade" role="dialog" aria-labelledby="settingsWindow" aria-hidden="true"></div>
 
         </aside>
         <div class="span6">

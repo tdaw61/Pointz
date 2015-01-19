@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :userposts
   resources :leagues do
     resources :games, shallow: true do
+      get 'game_settings', on: :member
       resource :game_events
     end
   end
