@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   match '/games/:id/end_game', to: 'games#end_game', via: 'get', as: 'end_game'
   match '/games/:id/end_game', to: 'games#end_game_save', via: 'post', as: 'end_game_save'
   match '/games/:id/expand_vote_detail', to: 'event_votes#expand_vote_detail', via: 'get', as: 'expand_vote_detail'
+  match '/games/:id/ajax_userpost_form', to: 'games#ajax_userpost_form', via: 'get', as: 'ajax_userpost_form'
+  match '/games/:id/ajax_vote_form', to: 'games#ajax_vote_form', via: 'get', as: 'ajax_vote_form'
 
   match  '/paginate' => 'userposts#paginate', via: 'get'
 

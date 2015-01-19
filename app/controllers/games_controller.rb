@@ -110,8 +110,16 @@ class GamesController < ApplicationController
   end
 
   def game_settings
-
     render 'game_settings'
+  end
+
+  def ajax_userpost_form
+
+  end
+
+  def ajax_vote_form
+    @game = Game.new
+    @game_event = GameEvent.new
   end
 
 
