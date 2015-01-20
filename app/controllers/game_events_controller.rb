@@ -48,7 +48,7 @@ class GameEventsController < ApplicationController
   private
 
   def game_event_params
-    params.require(:game_event).permit(:point_value, :data, :target_user_id, :user_id, :game_id)
+    params.require(:game_event).permit(:point_value, :data, :target_user_id, :user_id, :game_id, :picture)
   end
 
 end

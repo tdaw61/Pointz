@@ -6,13 +6,13 @@ function readURL(input, id) {
             if(id)
                 ele = $('#userpost_'+id);
             else
-                ele = $('#userpost-form');
+                ele = $('.status-content');
             ele.find("#img_prev")
                 .attr('src', e.target.result)
                 .width(75)
                 .height(90);
             ele.find("#img_prev").show();
-            ele.find('.userpost-extras').show();
+            ele.find('.post-extras').show();
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -26,7 +26,7 @@ function removePhoto(id){
     else
         ele = $('#userpost-form');
     ele.find("#img_prev").hide();
-    ele.find('.userpost-extras').hide();
+    ele.find('.post-extras').hide();
     ele.find('#img_prev').attr('src', '');
     ele.find('#lefile').val("");
 }

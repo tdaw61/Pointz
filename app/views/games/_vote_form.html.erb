@@ -1,6 +1,6 @@
 <div class="vote-form">
 
-    <%= form_for([@game, @game_event], remote: true) do |f| %>
+    <%= form_for([@game, @game_event], html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload", remote: true, authenticity_token: true}) do |f| %>
 
         <h4>Start a new vote:</h4>
 
@@ -38,17 +38,6 @@
             <%= f.label "reason for the points" %>
             <%= f.text_area :data, class: "no-margin", rows: 3 %>
 
-            <div class="userpost-extras">
-                <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "readURL(this)"%>
-                <div class="post-picture">
-                    <img id="img_prev" src="#" alt="your image" style="display: none" />
-                    <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
-                </div>
-
-            </div>
-            <div class="input-append">
-                <a class="btn btn-small" onclick="$('#userpost-form').find('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
-            </div>
 
         </span>
 

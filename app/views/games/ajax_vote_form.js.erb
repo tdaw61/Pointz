@@ -1,3 +1,7 @@
+<% if params[:modal] == "false" %>
 $(".status-content").html("<%= escape_javascript(render 'vote_form')%>");
 $("#event-tab").attr("class", "active");
-$("#post-tab").removeAttr("class");
+$("#post-tab").attr("class", "inactive");
+<% else %>
+$("#vote-window").html("<%= escape_javascript(render 'games/modal_vote_form') %>")
+<% end %>

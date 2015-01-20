@@ -979,7 +979,7 @@ input[type="text"] {
 .userpost-text{
   margin-bottom: -2px;
 }
-.userpost-extras{
+.post-extras{
   display: none;
   height:125x;
   border: 1px lightgrey;
@@ -1149,12 +1149,16 @@ input[type="text"] {
   text-decoration: none;
   border: 1px solid lightgrey;
   border-bottom-color: transparent;
-  background-color: #dddddd;
+  background-color: #d2d2d2;
 }
 
-.nav > li > .inactive {
+.nav .inactive {
   text-decoration: none;
-  background-color: #d2d2d2;
+  background-color: #ebebeb;
+//  border-radius: 3px;
+//  border: 1px solid lightgray;
+  border-bottom: none;
+
 }
 
 //.nav-tabs > li > a {
@@ -1168,3 +1172,7 @@ input[type="text"] {
 //    border-color: $grayLighter $grayLighter #ddd;
 //  }
 //}
+
+.mrg_btm_3px{
+  margin-bottom: 3px;
+}

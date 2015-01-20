@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114200226) do
+ActiveRecord::Schema.define(version: 20150120061847) do
 
   create_table "comments", force: true do |t|
     t.string   "data",        null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150114200226) do
     t.integer  "target_user_id",                null: false
     t.integer  "yes_votes",      default: 0
     t.boolean  "active",         default: true
+    t.string   "picture"
   end
 
   add_index "game_events", ["game_id"], name: "index_game_events_on_game_id"
