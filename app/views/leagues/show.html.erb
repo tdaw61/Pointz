@@ -84,10 +84,12 @@
 
         <% if @league.active %>
 
-            <%= link_to "Add User", add_user_path, class: "btn btn-small btn-primary btn-danger" %>
+            <%= link_to "Add User", add_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
             <% if @league.is_admin(current_user) %>
                 <%= link_to "Remove User", remove_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
-            <% end %>
+                <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="UserWindow" aria-hidden="true"></div>
+
+        <% end %>
         <% end %>
 
     </div>

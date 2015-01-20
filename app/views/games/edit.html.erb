@@ -57,8 +57,10 @@
                     <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="endGameWindow" aria-hidden="true"></div>
                 </div>
 
-
-                <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger block padding-top" %>
+                <div class="form-btns">
+                    <%= f.submit "Save", class: "btn btn-primary btn-danger block padding-top" %>
+                    <%= link_to "Cancel", :back, class: "btn btn-primary btn-danger" %>
+                </div>
 
             <% end %>
 

@@ -845,7 +845,6 @@ input[type="text"] {
   padding: 10px;
   border: 2px solid gainsboro;
   background: white;
-  margin-bottom: 10px;
 
   p{
     padding: 0;
@@ -1175,4 +1174,14 @@ input[type="text"] {
 
 .mrg_btm_3px{
   margin-bottom: 3px;
+}
+
+.form-btns{
+
+  input{
+    display: inline;
+    margin: 0px;
+    vertical-align: middle;
+  }
+
 }

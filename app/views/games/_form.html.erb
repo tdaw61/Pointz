@@ -52,8 +52,10 @@
                     </div>
                 </div>
 
-
-                <%= f.submit "Create game", class: "btn btn-large btn-primary btn-danger block padding-top" %>
+                <div class="form-btns">
+                    <%= f.submit "Create game", class: "btn btn-primary btn-danger block padding-top" %>
+                    <%= link_to "Cancel", :back, class: "btn btn-primary btn-danger" %>
+                </div>
             <% end %>
 
         </div>

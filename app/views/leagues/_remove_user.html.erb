@@ -17,6 +17,9 @@
         </p>
 
         <p>This will remove the selected user from the league, but all of the posts created by the user will remain.</p>
-        <%= submit_tag "Remove user", class: "btn btn-large btn-primary btn-danger", id: "submit", data: {disable_with: "Processing"}, method: :post %>
+        <div class="form-btns">
+            <%= submit_tag "Remove user", class: "btn btn-primary btn-danger", id: "submit", data: {disable_with: "Processing"}, method: :post %>
+            <button class="btn btn-primary btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
     <% end %>
 </div>
