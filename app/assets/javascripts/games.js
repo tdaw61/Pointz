@@ -2,13 +2,9 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function (e) {
     $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "orientation": "bottom right"})
 });
 
-
-//$(document).ready(function($) {
-//    $(".clickable").click(function() {
-//        alert("this just got clicked");
-//    });
-//});
-//
+$(function(){
+    $(".datepicker-icon").datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "orientation": "bottom right"});
+});
 
 function clickable()
 {
