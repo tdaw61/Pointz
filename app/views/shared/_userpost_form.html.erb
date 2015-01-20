@@ -1,3 +1,5 @@
+<div class="userpost-form " id="userpost-form">
+
     <%= form_for(Userpost.new, html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload"}) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="userpost-text">
@@ -24,4 +26,4 @@
         $("#userpost_data").autogrow();
     </script>
 
-
+</div>

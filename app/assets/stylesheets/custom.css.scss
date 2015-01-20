@@ -663,10 +663,16 @@ aside {
 
 .vote-form{
   background: white;
-  border: 1px solid #d2d2d2;
+//  border: 1px solid #d2d2d2;
   padding: 10px;
   margin-bottom: 5px;
 
+  .input-half{
+    float: left;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 
 
@@ -1137,3 +1143,28 @@ input[type="text"] {
   margin-bottom: 0px;
   padding: 0px;
 }
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  border: 1px solid lightgrey;
+  border-bottom-color: transparent;
+  background-color: #dddddd;
+}
+
+.nav > li > .inactive {
+  text-decoration: none;
+  background-color: #d2d2d2;
+}
+
+//.nav-tabs > li > a {
+//  padding-top: 8px;
+//  padding-bottom: 8px;
+//  line-height: $baseLineHeight;
+//  border: 1px solid transparent;
+//  @include border-radius(4px 4px 0 0);
+//  &:hover,
+//  &:focus {
+//    border-color: $grayLighter $grayLighter #ddd;
+//  }
+//}

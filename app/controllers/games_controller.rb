@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   #TODO testing suite
 
 
-  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save, :game_settings]
+  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save, :game_settings, :ajax_userpost_form, :ajax_vote_form]
 
 
   def new
@@ -118,7 +118,7 @@ class GamesController < ApplicationController
   end
 
   def ajax_vote_form
-    @game = Game.new
+    @users = @game.users
     @game_event = GameEvent.new
   end
 

@@ -21,8 +21,8 @@
         <div class="span8">
 
             <ul class=" nav nav-tabs nav-posts">
-                <li role="presentation" class="active"><%= link_to "Post", ajax_userpost_form_path, remote: true %></li>
-                <li role="presentation" ><%= link_to "Create Vote", ajax_vote_form_path, remote: true %></li>
+                <li role="presentation" class="active" id="post-tab"><%= link_to "Post", ajax_userpost_form_path, remote: true %></li>
+                <li role="presentation" class="inactive" id="event-tab"><%= link_to "Create Vote", ajax_vote_form_path, remote: true %></li>
             </ul>
 
             <div class="status-content">

@@ -16,21 +16,41 @@
             </div>
         <% end %>
 
-            <%= f.label :target_user_id %>
-            <%= f.collection_select :target_user_id, @users, :id, :name, {}, {:class => "no-margin"} %>
+        <span>
 
-            <% if @game.point_tiers == 1 %>
-                <%= f.label "points to +/-" %>
-                <%= f.text_field :point_value, class: "no-margin" %>
-            <% else %>
-                <%= f.label "points to +/-" %>
-                <%= f.select :point_value, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1], ['-1', -1] , ['-2', -2], ['-3', -3], ['-4', -4], ['-5', -5]], selected: 1, class: "no-margin" %>
-            <% end %>
+            <div class="input-half">
+                <%= f.label :target_user_id %>
+                <%= f.collection_select :target_user_id, @users, :id, :name, {}, {:class => "no-margin"} %>
+            </div>
+
+            <div class="input-half">
+
+                <% if @game.point_tiers == 1 %>
+                    <%= f.label "points to +/-" %>
+                    <%= f.text_field :point_value, class: "no-margin" %>
+                <% else %>
+                    <%= f.label "points to +/-" %>
+                    <%= f.select :point_value, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1], ['-1', -1] , ['-2', -2], ['-3', -3], ['-4', -4], ['-5', -5]], selected: 1, class: "no-margin" %>
+                <% end %>
+            </div>
+            <div style="clear: both"></div>
 
             <%= f.label "reason for the points" %>
-            <%= f.text_field :data, class: "no-margin" %>
+            <%= f.text_area :data, class: "no-margin", rows: 3 %>
 
+            <div class="userpost-extras">
+                <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "readURL(this)"%>
+                <div class="post-picture">
+                    <img id="img_prev" src="#" alt="your image" style="display: none" />
+                    <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
+                </div>
 
+            </div>
+            <div class="input-append">
+                <a class="btn btn-small" onclick="$('#userpost-form').find('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
+            </div>
+
+        </span>
 
         <%= f.hidden_field :game_id, :value => @game.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
