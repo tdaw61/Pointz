@@ -101,6 +101,10 @@ class UsersController < ApplicationController
   def search
     search_condition = "%" + params['srch-term'] + "%"
     @search_users = User.where('name LIKE ? OR email LIKE ? and id not in (?)', search_condition, search_condition, current_user.id)
+
+    #need to load up the current users friends or else the queries are endless
+    current_user_friends_loaded = User.includes(:pending_friends, :friends, :requested_friends).find(current_user.id)
+    @current_user = current_user_friends_loaded
     @users = @search_users.paginate(page: params[:page])
   end
 

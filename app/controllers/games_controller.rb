@@ -22,14 +22,21 @@ class GamesController < ApplicationController
     @games = current_user.games.paginate(page: params[:page])
   end
 
+  #TODO there are multiple n+1 issues here
   def show
-
     @scores = @game.ordered_scores
-    @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
+    @game = Game.includes(:userposts, :users, {userposts: [:comments] }).where(id: @game.id)
+    @game = @game[0]
+    @feed_items = @game.userposts
+    @feed_items.each do |feed_item|
+      feed_item.comments.each do |comment|
+          comment.id
+      end
+    end
     @event_votes = Array.new
     @event_votes = @game.active_event_votes(current_user.id)
     @comment = Comment.new
-
+    adlfkjadlkfj
     @game_event = @game.game_events.build
     @users = @game.users
     respond_to do |format|
@@ -55,10 +62,10 @@ class GamesController < ApplicationController
         end
 
         format.html { redirect_to @game}
-        format.json { render :show, status: :created, location: @game}
+        # format.json { render :show, status: :created, location: @game}
       else
         format.html { render :new }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
+        # format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
   end

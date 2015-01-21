@@ -6,7 +6,7 @@
     </div>
 
     <%= render 'event_vote/vote_table' %>
-    <div class="no-margin padding-bottom">
+    <div class="no-margin ">
         <p>
             Show vote history <%= link_to 'On', show_events_history_path(on_off: 1), remote: true %>
             | <%= link_to 'Off', show_events_history_path(on_off: 0), remote: true %>
