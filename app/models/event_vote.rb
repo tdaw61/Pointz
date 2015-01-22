@@ -45,14 +45,7 @@ class EventVote < ActiveRecord::Base
     end
 
     #check if game event is now passing
-    if (game_event.yes_votes.to_f / game_event.game.users.count.to_f).to_f > 0.5 || game_event.game.users.count == 1
-      post_data = game_event.target_user.name + " has received " + game_event.point_value.to_s + " points from " + game_event.user.name + "'s vote"
-      transaction do
-      Userpost.create(data: post_data, target_user_id: game_event.target_user_id, user_id: game_event.user_id, post_type: "vote_ended", game_id: game_event.game_id, points: game_event.point_value)
-      self.game_event.update_attribute(:active,  false)
-      end
-      game_event.active = false
-    end
+    game_event.check_for_passing
   end
 
 end
