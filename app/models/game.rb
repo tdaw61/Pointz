@@ -15,7 +15,7 @@ class Game < ActiveRecord::Base
   end
 
   def leader
-    self.include("scores").where(maximum("points"))
+    self.scores.order('points desc').first
   end
 
   def ordered_scores
@@ -56,15 +56,19 @@ class Game < ActiveRecord::Base
     @event_votes
   end
 
-  def check_for_deactivate
+  def is_passing?
 
-    if (!self.score_cap.nil? && self.scores.maximum(:points) > self.score_cap)
-      self.deactivate
+    if !self.score_cap.nil? && self.scores.maximum(:points) >= self.score_cap
+      true
+    else
+      false
     end
+
   end
 
   def deactivate
     self.update_attribute(:active, false)
+    Userpost.create_game_winner(game)
   end
 
 end

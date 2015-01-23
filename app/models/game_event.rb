@@ -36,24 +36,25 @@ class GameEvent < ActiveRecord::Base
       end
       reload
 
-    if !active
-      Score.update_score self
-    end
+    Userpost.create_event_created(self)
 
-    Userpost.create!({:points => self.point_value, :data => self.data, :user_id => self.user_id, :game_id => self.game_id, :target_user_id => self.target_user_id, post_type: "event_created"})
   end
 
-  def check_for_passing
-    if (game_event.yes_votes.to_f / game_event.game.users.count.to_f).to_f > 0.5 || game_event.game.users.count == 1
-      post_data = game_event.target_user.name + " has received " + game_event.point_value.to_s + " points from " + game_event.user.name + "'s vote"
-      transaction do
-        Userpost.create(data: post_data, target_user_id: game_event.target_user_id, user_id: game_event.user_id, post_type: "vote_ended", game_id: game_event.game_id, points: game_event.point_value)
-        self.update_attribute(:active,  false)
-      end
-      self.game.check_for_deactivate
+  def is_passing?
+    if (self.yes_votes.to_f / self.game.users.count.to_f).to_f > 0.5 || self.game.users.count == 1
+      true
+    else
+      false
     end
   end
 
-
+  def deactivate
+    self.update_attribute(:active,  false)
+    Score.update_score(self)
+    Userpost.create_game_event_passed(self)
+    if self.game.is_passing?
+      game.deactivate
+    end
+  end
 
 end

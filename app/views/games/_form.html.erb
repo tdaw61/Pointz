@@ -37,11 +37,11 @@
 
                 </div>
 
-                <span><%= f.label :score_cap , "Score Cap (Optional) - The first user to reach this score will win the game, and the game will end."%> </span>
+                <div><%= f.label :score_cap , "Score Cap (Optional) - The first user to reach this score will win the game, and the game will end."%></div>
                 <%= f.text_field :score_cap %>
 
                 <div >
-                    <span><%= f.label :point_tiers, "Fixed point system (Optional) - This will make +/- 5 the greatest point value for a single vote." %> </span>
+                     <div><%= f.label :point_tiers, "Fixed point system (Optional) - This will make +/- 5 the greatest point value for a single vote." %> </div>
                     <div>
                         <span>Fixed Scoring</span>
                         <%= radio_button :game, :point_tiers, 'point tiers', :checked => true %>

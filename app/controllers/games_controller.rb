@@ -90,10 +90,6 @@ class GamesController < ApplicationController
     event_vote = EventVote.find(params[:event_vote_id])
     event_vote.cast_vote params[:vote].to_i
 
-    if event_vote.game_event.has_passed?
-      Score.update_score event_vote.game_event
-    end
-
     redirect_to game_path
   end
 

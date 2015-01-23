@@ -1,6 +1,6 @@
 <div class="vote-form">
 
-    <%= form_for([@game, @game_event], html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload", remote: true, authenticity_token: true}) do |f| %>
+    <%= form_for([@game, @game_event], html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload", authenticity_token: true}) do |f| %>
 
         <h4>Start a new vote:</h4>
 

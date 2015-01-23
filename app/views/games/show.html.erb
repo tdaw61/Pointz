@@ -1,7 +1,7 @@
 <% if signed_in? %>
     <div class="game-header">
         <h1 class="no-margin"> <%= link_to @game.league.name, @game.league %> >> <%= @game.name %>
-            <% if !@game.active %> (Inactive)
+            <% unless @game.active %> (Inactive)
             <% end %>
         </h1>
     </div>
@@ -19,20 +19,20 @@
 
         </aside>
         <div class="span8">
+            <% if @game.active %>
 
-            <ul class=" nav nav-tabs nav-posts">
-                <li role="presentation" class="active" id="post-tab"><%= link_to "Post", ajax_userpost_form_path, remote: true %></li>
-                <li role="presentation" class="inactive" id="event-tab"><%= link_to "Create Vote", ajax_vote_form_path(modal: "false"), remote: true %></li>
-            </ul>
+                <ul class=" nav nav-tabs nav-posts">
+                    <li role="presentation" class="active" id="post-tab"><%= link_to "Post", ajax_userpost_form_path, remote: true %></li>
+                    <li role="presentation" class="inactive" id="event-tab"><%= link_to "Create Vote", ajax_vote_form_path(modal: "false"), remote: true %></li>
+                </ul>
 
-            <div class="status-content">
-                <% if @game.active %>
+                <div class="status-content">
 
                     <div class="userpost-form " id="userpost-form">
                         <%= render 'shared/userpost_form' %>
                     </div>
-                <% end %>
                 </div>
+            <% end %>
 
             <div class="" id="feed">
                 <%= render 'shared/feed' %>

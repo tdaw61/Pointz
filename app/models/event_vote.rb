@@ -45,7 +45,9 @@ class EventVote < ActiveRecord::Base
     end
 
     #check if game event is now passing
-    game_event.check_for_passing
+    if self.game_event.is_passing?
+      self.game_event.deactivate
+    end
   end
 
 end
