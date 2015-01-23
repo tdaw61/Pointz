@@ -5,7 +5,7 @@
             <div id="vote-window" class="modal hide fade" role="dialog" aria-labelledby="voteWindow" aria-hidden="true"></div></div>
     </div>
 
-    <%= render 'event_vote/vote_table' %>
+    <%= render 'event_votes/vote_table' %>
     <div class="no-margin ">
         <p>
             Show vote history <%= link_to 'On', show_events_history_path(on_off: 1), remote: true %>

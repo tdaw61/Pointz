@@ -10,7 +10,7 @@
         <aside class="span6">
             <%= render 'points_table' %>
 
-            <%= render 'event_vote/vote_section' %>
+            <%= render 'event_votes/vote_section' %>
 
             <% if @game.active %>
                 <%= link_to 'View game settings', game_settings_game_path , {:remote => true, 'data-toggle' => "modal", 'data-target' => '#settings-window', class: "btn btn-small btn-primary btn-danger "} %>
