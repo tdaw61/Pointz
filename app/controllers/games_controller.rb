@@ -25,9 +25,9 @@ class GamesController < ApplicationController
   #TODO there are multiple n+1 issues here
   def show
     @scores = @game.ordered_scores
-    @game = Game.includes(:userposts, :users, {userposts: [:comments] }).where(id: @game.id)
+    @game = Game.includes(:userposts, :users, {userposts: [:comments, :likes] }).where(id: @game.id)
     @game = @game[0]
-    @feed_items = @game.userposts.paginate(page: params[:page], per_page: 15)
+    @feed_items = @game.userposts.includes(:comments).paginate(page: params[:page], per_page: 15)
     @event_votes = Array.new
     @event_votes = @game.active_event_votes(current_user.id)
     @comment = Comment.new

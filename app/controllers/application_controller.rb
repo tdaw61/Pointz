@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
 
   #TODO picture on vote form is causing an authenticity token error
   #TODO redo league layout
-  #TODO ending the game at the cap is currently not being done
+  #TODO figure out how to end game at the set time
   #TODO show list of who voted for what, anonymous voting option
 end
