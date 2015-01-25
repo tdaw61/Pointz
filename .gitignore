@@ -21,7 +21,6 @@
 /out
 /config/initializers/s3_constants.rb
 /config/application.yml
-/config/secrets.yml
 
 
 *.sqlite3
