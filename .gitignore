@@ -16,14 +16,20 @@
 /tmp
 
 /ManPoints.iml
-/.idea/workspace.xml
-
 /.idea/*
 
 /out
-
-
 /config/initializers/s3_constants.rb
-
-# Ignore application configuration
 /config/application.yml
+/config/secrets.yml
+
+
+*.sqlite3
+config/database.yml
+log/*
+tmp/*
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
