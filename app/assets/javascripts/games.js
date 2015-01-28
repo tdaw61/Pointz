@@ -2,8 +2,8 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function (e) {
     $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "orientation": "bottom right"})
 });
 
-$(function(){
-    $(".datepicker-icon").datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "orientation": "bottom right"});
+$(document).ready(function(){
+    $("#datepicker-icon").datepicker();
 });
 
 function clickable()

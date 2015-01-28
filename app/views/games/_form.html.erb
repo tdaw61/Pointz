@@ -29,12 +29,13 @@
                 <div class="input-append date-input ">
 
 
-                    <div class="end-date ">
-                        <span><%= f.label :end_date, "End Date (Optional) - The game will end at this date. (yyyy-mm-dd format)" %></span>
-                        <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker", :size => "16" %>
-                        <span class="add-on datepicker-icon" data-behaviour="datepicker"><i class="icon-calendar"></i> </span>
+                    <div class="input-append date-input">
+                        <div class="end-date">
+                            <span><%= f.label :end_date, "End Date (Optional) - The game will end at this date." %></span>
+                            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker", :size => "16" %>
+                            <span class="add-on" id="datepicker-icon"><i class="icon-calendar" ></i></span>
+                        </div>
                     </div>
-
                 </div>
 
                 <div><%= f.label :score_cap , "Score Cap (Optional) - The first user to reach this score will win the game, and the game will end."%></div>
