@@ -464,7 +464,14 @@ input[type="text"]{
   white-space: nowrap;
 
   .add-on{
+    margin-top: 1px;
+    margin-left: -2px;
     padding-bottom: 5px;
+  }
+
+  .btn{
+   margin-top: 1px;
+   margin-left: -2px;
   }
 }
 
@@ -473,7 +480,7 @@ input[type="text"]{
   display: block;
 }
 
-.game-form, .user-form, .input-form{
+.game-form, .user-form, .input-form, .league-form{
   width: 700px;
   background: white;
   border: 1px solid #808080;
@@ -499,7 +506,6 @@ input[type="text"]{
   .form-btns{
     input{
       display: inline;
-      margin: 0px;
       vertical-align: middle;
     }
   }

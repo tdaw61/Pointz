@@ -7,7 +7,7 @@
     <div class="pad">
         <ul class="friend_list">
             <% if user_friends.empty? %>
-                <li> You have no current friend requests</li>
+                <li> You have no friends... </li>
             <% else %>
                 <%= render partial: "friends/friend", collection: user_friends %>
             <% end %>

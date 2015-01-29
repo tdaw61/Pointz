@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
   #TODO redo league layout
   #TODO figure out how to end game at the set time
   #TODO show list of who voted for what, anonymous voting option
+  #TODO live time updates
+  #TODO pictures could be made polymorphic
+
 end
