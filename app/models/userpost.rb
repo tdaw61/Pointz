@@ -3,6 +3,8 @@ class Userpost < ActiveRecord::Base
   belongs_to :game
   has_many :likes
   has_many :comments
+  has_many :positive_likes, -> {where(like: true).count}, class_name: "Like"
+  has_many :negative_likes, -> {where(like: false).count}, class_name: "Like"
 
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true

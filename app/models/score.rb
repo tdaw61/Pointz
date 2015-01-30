@@ -1,5 +1,7 @@
 class Score < ActiveRecord::Base
 
+  default_scope -> {order("points desc")}
+
   belongs_to :game
   belongs_to :user
 

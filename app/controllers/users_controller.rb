@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   def home
     if signed_in?
       @userpost  = current_user.userposts.build
-      @feed_items = current_user.userposts.paginate(page: params[:page])
+      @user = User.includes(:userposts, {userposts: [:comments, :likes]}, :leagues, {leagues: [:games]}, :friends, :requested_friends ).where(id: current_user.id).first
+      @feed_items = @user.userposts
       @leagues = current_user.leagues
       @user = current_user
       @comment = Comment.new
