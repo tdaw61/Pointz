@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     get 'search', on: :member
   end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :userposts
+  resources :userposts do
+    resources :comments, only: [:new, :create, :destroy]
+  end
   resources :leagues do
     resources :games, shallow: true do
       get 'game_settings', on: :member
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
     end
   end
   resources :likes, only: [:create, :destroy]
-  resources :comments, only: [:new, :create, :destroy]
   resources :friendships, only: [:create, :destroy] do
     member do
       post 'accept'

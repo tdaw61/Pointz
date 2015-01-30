@@ -48,6 +48,26 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [35, 35]
   end
 
+  # version :thumb do
+  # process :resize_nocrop_noscale => [35, 35]
+  #   :resize_to_fill
+  # end
+  #
+  # def resize_nocrop_noscale(w,h)
+  #   image = ::MiniMagick::Image.open(current_path)
+  #   w_original = img[:width].to_f
+  #   h_original = img[:height].to_f
+  #
+  #   if w_original < w && h_original < h
+  #     return im
+  #   end
+  #
+  #   # resize
+  #   img.resize("#{w}x#{h}")
+  #
+  #   return img
+  # end
+
   # Create different versions of your uploaded files:
 
 

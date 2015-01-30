@@ -20,7 +20,16 @@ module UsersHelper
           image_tag(PictureUploader.default_avatar.medium_avatar.url)
       end
     else
-      image_tag('default_avatar.jpeg', class: css_class)
+      case type
+        when "small"
+          image_tag('small_avatar_default_avatar.jpeg', class: css_class)
+        when "medium"
+          image_tag('medium_avatar_default_avatar.jpeg', class: css_class)
+        when "large"
+          image_tag('large_avatar_default_avatar.jpeg', class: css_class)
+        else
+          image_tag(PictureUploader.default_avatar.medium_avatar.url)
+      end
     end
   end
 

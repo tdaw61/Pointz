@@ -3,8 +3,7 @@
     <div class="league-index-gravatar">
 
     <a class="b-link-fade b-animate-go" href="<%= league_path(league) %> ">
-        <%= image_tag(current_user.picture.large_avatar.url.to_s, size: "150", class: 'league-index-gravatar') %>
-
+        <%= avatar_for(league, "large", 'league-index-gravatar', "150") %>
 
         <div class="b-wrapper">
             <h4 class="b-from-left b-animate b-delay03" style=" color: black"> <%= league.name %> </h4>
@@ -27,9 +26,9 @@
                 </td>
             </tr>
             <tr>
-                <td id="mini_league_games"></td>
+                <td class="mini-league-table" id="mini_league_games_<%=league.id%>"></td>
                 <td style="width: 30px;"></td>
-                <td id="mini_league_users"></td>
+                <td class="mini-league-table" id="mini_league_users_<%=league.id%>"></td>
             </tr>
         </table>
         <p>Date created: <%= time_tag league.created_at, pubdate: true%> </p>

@@ -5,7 +5,7 @@
 <div class="row">
     <div class="span6 offset3 user-form">
 
-        <%= form_for(@user) do |f| %>
+        <%= form_for(@user, id: "user-form") do |f| %>
             <% if @user.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -27,14 +27,14 @@
 
             <%= f.label :picture, "Profile picture" %>
 
-            <div class="margin-bottom">
+            <div class="margin-bottom" id="user-form-pic">
                     <%= image_tag @user.picture.large_avatar.url.to_s, id: "img_prev" %>
             </div>
             <div class="input-append">
                 <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add/Change Photo <i class="icon-camera"></i></a>
             </div>
 
-            <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "readURL(this)" %>
+            <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "addPhoto(this, '#user-form-pic')" %>
 
                 <%= f.label :email %><br>
                 <%= f.text_field :email %>
@@ -45,13 +45,10 @@
                 <%= f.label :password_confirmation, "Confirm Password" %>
                 <%= f.password_field :password_confirmation %><br>
 
-
-            <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger" %>
+            <div class="form-btns">
+                <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger" %>
+                <%= link_to "Cancel", :back, class: "btn btn-primary btn-danger" %>
+            </div>
         <% end %>
-
     </div>
 </div>
-
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back to Users List', users_path %>

@@ -5,9 +5,7 @@
 <% elsif feed_item.post_type == "event_created" %>
     <%= render partial: "userposts/event_created", locals:{feed_item: feed_item} %>
 <% elsif feed_item.post_type == "vote_ended" %>
-    <%= render partial: "userposts/vote_ended", locals:{feed_item: feed_item} %>
 <% elsif feed_item.post_type == "game_winner" %>
-    <%= render partial: "userposts/userpost", locals:{feed_item: feed_item}  %>
 <% end %>
 
 

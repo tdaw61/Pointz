@@ -17,7 +17,7 @@
 
 
             <% if current_user?(comment.user) %>
-                <%= link_to "", comment, method: :delete,
+                <%= link_to "", userpost_comment_path(id: comment.id, userpost_id: comment.userpost.id), method: :delete,
                             data: {confirm: "You sure?"},
                             title: "delete post",
                             class: "icon-trash feed-item-link" %>

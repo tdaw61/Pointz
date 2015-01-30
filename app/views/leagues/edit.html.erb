@@ -1,5 +1,5 @@
 <div class='league-form margin-top'>
-    <%= form_for(@league) do |f| %>
+    <%= form_for(@league, id: 'league-form') do |f| %>
         <% if @league.errors.any? %>
             <div id="error_explanation">
                 <h2><%= pluralize(@league.errors.count, "error") %> prohibited this league from being saved:</h2>
@@ -18,7 +18,7 @@
             <%= f.text_field :name %>
         </p>
 
-        <div class="margin-bottom photo-div">
+        <div class="margin-bottom photo-div" id="league-form-pic">
                 <%= image_tag @league.picture.large_avatar.url.to_s, id: "img_prev" %>
         </div>
         <div class="input-append">
@@ -27,7 +27,7 @@
 
         <img id="img_prev" src="#" alt="your image" style="display: none"/>
 
-        <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "readURL(this)" %>
+        <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "addPhoto(this, '#league-form-pic')" %>
 
         <p style="width: 300px">
             <%= label :league_user, :admin %>

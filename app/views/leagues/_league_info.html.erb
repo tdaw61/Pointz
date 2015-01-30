@@ -1,9 +1,7 @@
 <div class="league-info">
     <div class="topframe-user"></div>
     <div class="league-avatar">
-        <% if league.picture.url.present? %>
-             <%= image_tag league.picture.medium_avatar.url.to_s, class: 'gravatar hoverZoomLink' %>
-        <% end %>
+             <%= avatar_for( league, 'medium',  'league-profile-gravatar', nil) %>
     </div>
     <div class="profile_container">
 

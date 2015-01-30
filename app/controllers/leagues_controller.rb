@@ -11,7 +11,6 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.new(league_params)
-    # @league.league_users.build({:user_id => current_user.id, :league_id => @league.id})
     if @league.save!
       @league.league_users << LeagueUser.create!(:user_id => current_user.id, :league_id => @league.id, :admin => true)
       redirect_to action: 'show', id: @league.id

@@ -1,5 +1,5 @@
 <li class="comment-form">
-    <%= form_for(Comment.new, remote: true) do |f| %>
+    <%= form_for([userpost, Comment.new], remote: true) do |f| %>
 
         <div>
             <div>
@@ -7,20 +7,20 @@
             </div>
             <span class="input-append" style="width: 88%">
                 <%= f.text_field :data, placeholder: "Write comment here" %>
-                <a class="btn" onclick="$('#userpost_<%=userpost_id%>').find('input[id=lefile]').click();"><i class="icon-camera"></i></a>
+                <a class="btn" onclick="$('#userpost_<%=userpost.id%>').find('input[id=lefile]').click();"><i class="icon-camera"></i></a>
             </span>
         </div>
 
         <div class="post-extras">
-            <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "readURL(this, #{userpost_id})"%>
+            <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '#userpost_#{userpost.id}')"%>
             <div class="post-picture">
                 <img id="img_prev" src="#" alt="your image" style="display: none" />
-                <div class="center"> <%= link_to "X", "#", onclick: "removePhoto(#{userpost_id})", class: "img_prev_del" %> </div>
+                <div class="center"> <%= link_to "X", "#", onclick: "removePhoto(#{userpost.id})", class: "img_prev_del" %> </div>
             </div>
         </div>
 
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :userpost_id, value: userpost_id%>
+        <%= f.hidden_field :userpost_id, value: userpost.id%>
 
 
     <% end %>
