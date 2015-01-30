@@ -1,6 +1,6 @@
 <li id="comment_<%=comment.id%>">
     <div>
-        <%= link_to image_tag(comment.user.picture.small_avatar.url.to_s, class: 'comment-gravatar'), comment.user %>
+        <%= link_to image_tag(comment.user.picture.thumb.url.to_s, class: 'comment-gravatar'), comment.user %>
     </div>
     <div>
         <p><%= comment.data %></p>

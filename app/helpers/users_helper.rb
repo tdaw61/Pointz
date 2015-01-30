@@ -7,6 +7,7 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+  #could be made into a hash for options??
   def avatar_for(object, type, css_class, size)
     if(object.picture.present?)
       case type
