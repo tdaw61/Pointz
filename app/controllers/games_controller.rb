@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   #TODO testing suite
 
 
-  before_action :set_game, only: [:show, :edit, :destroy, :update, :create_event, :end_game, :end_game_save, :game_settings, :ajax_userpost_form, :ajax_vote_form]
+  before_action :set_game, only: [ :edit, :destroy, :update, :create_event, :end_game, :end_game_save, :game_settings, :ajax_userpost_form, :ajax_vote_form]
 
 
   def new
@@ -19,17 +19,16 @@ class GamesController < ApplicationController
     @games = current_user.games.paginate(page: params[:page])
   end
 
-  #TODO there are multiple n+1 issues here
+  #TODO count queries still need to be eager loaded.
   def show
-    @scores = @game.ordered_scores
-    @game = Game.includes(:userposts, :users, {userposts: [:comments, :likes] }).where(id: @game.id)
-    @game = @game[0]
-    @feed_items = @game.userposts.includes(:comments).paginate(page: params[:page], per_page: 15)
+    @game = Game.includes(:userposts, {userposts: [:comments, {comments: [:likes]}, :likes]}, :users , :active_game_events, :scores, {active_game_events: [:event_votes]} ).where(id: params[:id], event_votes: {user_id: "1"}).first
+    @feed_items = @game.userposts
     @event_votes = Array.new
-    @event_votes = @game.active_event_votes(current_user.id)
+    @game.active_game_events.each do |game_event|
+      @event_votes += game_event.event_votes
+    end
     @comment = Comment.new
     @game_event = @game.game_events.build
-    @users = @game.users
     respond_to do |format|
       format.js
       format.html

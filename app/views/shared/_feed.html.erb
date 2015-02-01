@@ -3,9 +3,6 @@
         <h5> What's Happening</h5>
         <ol class="userposts">
             <%= render partial: 'shared/feed_item', collection: @feed_items %>
-            <li id="infinite-scrolling">
-                <%= will_paginate @feed_items, :params => {:controller => 'userposts', :action => 'paginate'} %>
-            </li>
         </ol>
     </div>
 <% else %>

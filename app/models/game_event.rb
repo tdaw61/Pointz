@@ -4,6 +4,7 @@ class GameEvent < ActiveRecord::Base
   belongs_to :user
   belongs_to :target_user, class_name: "User"
 
+  has_many :inactive_event_votes, -> {where(active: false)}, class_name: "EventVote"
 
 
   has_many :event_votes

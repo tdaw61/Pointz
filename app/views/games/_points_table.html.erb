@@ -7,8 +7,7 @@
 
     </tr>
     </thead>
-
-    <% @scores.each do |score| %>
+    <% @game.scores.each do |score| %>
 
         <tr>
             <td><%= link_to score.username, score.user %></td>

@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
   has_many :users, :through => :scores
   has_many :userposts
   has_many :game_events, dependent: :destroy
+  has_many :ordered_scores, -> {order("points desc")}, class_name: "Score"
+  has_many :active_game_events, -> { where(active: true)}, class_name: "GameEvent"
   belongs_to :league
 
 

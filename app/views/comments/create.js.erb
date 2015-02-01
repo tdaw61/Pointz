@@ -1,4 +1,4 @@
 ele = $("#userpost_<%=@comment.userpost_id%>");
 ele.find(".comment-form").after("<%= escape_javascript(render('comments/comment', comment: @comment))%>");
 ele.find("#comment_count").text('<%= @comment_count %>');
-ele.find(".comment-form").replaceWith('<%= escape_javascript(render('comments/comment_form', {userpost_id: @comment.userpost_id}))%>');
+ele.find(".comment-form").replaceWith('<%= escape_javascript(render('comments/comment_form', {userpost_id: @comment.userpost_id, userpost: @comment.userpost}))%>');
