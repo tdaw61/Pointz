@@ -5,18 +5,16 @@
             <div>
                 <%= link_to image_tag(current_user.picture.thumb.url.to_s, size: "32X32", class: 'comment-gravatar'), current_user %>
             </div>
-            <span class="input-append" style="width: 88%">
-                <%= f.text_field :data, placeholder: "Write comment here" %>
-                <a class="btn" onclick="$('#userpost_<%=userpost.id%>').find('input[id=lefile]').click();"><i class="icon-camera"></i></a>
+            <span style="width: 88%">
+                <div class="input-group">
+                    <%= f.text_field :data, placeholder: "Write comment here" %>
+                    <span class="input-group-addon" id="basic-addon2">@example.com</span>
+                </div>
             </span>
         </div>
 
         <div class="post-extras">
             <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '#userpost_#{userpost.id}')"%>
-            <div class="post-picture">
-                <img id="img_prev" src="#" alt="your image" style="display: none" />
-                <div class="center"> <%= link_to "X", "#", onclick: "removePhoto(#{userpost.id})", class: "img_prev_del" %> </div>
-            </div>
         </div>
 
         <%= f.hidden_field :user_id, value: current_user.id %>

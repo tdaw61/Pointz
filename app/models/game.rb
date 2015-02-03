@@ -43,7 +43,7 @@ class Game < ActiveRecord::Base
   end
 
   def active_event_votes(current_user_id)
-    @event_votes = Array.new
+    @event_votes = Array.ne
     game_events.active.each do |game_event|
       @event_votes += game_event.event_votes.where(user_id: current_user_id)
     end
