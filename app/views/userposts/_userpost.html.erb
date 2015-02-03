@@ -28,9 +28,9 @@
                             class: "icon-trash feed-item-link" %>
             <% end %>
 
-            <span class=" feed-item-link" id="dislike_count"> <%= feed_item.negative_likes %></span><i class="icon-thumbs-down feed-item-link"></i>
-            <span class=" feed-item-link" id="like_count"><%= feed_item.positive_likes %>  </span><i class="icon-thumbs-up feed-item-link"></i>
-            <span class=" feed-item-link" id="comment_count"><%= feed_item.comments.count%>  </span><i class="icon-comment feed-item-link"></i>
+            <span class=" feed-item-link" id="dislike_count"> <%= feed_item.negative_likes %></span><span class="glyphicon glyphicon-thumbs-up feed-item-link"></span>
+            <span class=" feed-item-link" id="like_count"><%= feed_item.positive_likes %>  </span><span class="glyphicon glyphicon-thumbs-up feed-item-link"></span>
+            <span class=" feed-item-link" id="comment_count"><%= feed_item.comments.count%>  </span><span class="glyphicon glyphicon-comment feed-item-link"></span>
 
 
                     <span id="like_links">

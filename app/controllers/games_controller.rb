@@ -21,7 +21,8 @@ class GamesController < ApplicationController
 
   #TODO count queries still need to be eager loaded.
   def show
-    @game = Game.includes(:userposts, {userposts: [:comments, {comments: [:likes]}, :likes]}, :users , :active_game_events, :scores, {active_game_events: [:event_votes]} ).where(id: params[:id], event_votes: {user_id: "1"}).first
+    @game = Game.includes(:userposts, {userposts: [:comments, {comments: [:likes]}, :likes]}, :users , :active_game_events, :scores ).where(id: params[:id]).first
+    @game.active_game_events.includes(:event_votes).where(user_id: current_user.id)
     @feed_items = @game.userposts
     @event_votes = Array.new
     @game.active_game_events.each do |game_event|

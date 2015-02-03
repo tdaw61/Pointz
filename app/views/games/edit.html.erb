@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="span12  ">
-        <div class="game-form" >
+    <div class="col-md-12  ">
+        <div class="game-form form-horizontal">
 
             <h1>Edit Game </h1>
 
@@ -20,41 +20,62 @@
                 <% end %>
 
 
-                <%= f.label :name, "*Name" %>
-                <%= f.text_field :name %>
-
-                <%= f.label :motto %>
-                <%= f.text_field :motto %>
-
-                <div class="input-append date-input">
-                    <div class="end-date">
-                        <span><%= f.label :end_date, "End Date (Optional) - The game will end at this date." %></span>
-                        <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker", :size => "16" %>
-                        <span class="add-on" id="datepicker-icon"><i class="icon-calendar" ></i></span>
+                <div class="form-group">
+                    <%= f.label :name, "*Name", class: "control-label col-xs-2" %>
+                    <div class="col-xs-6">
+                        <%= f.text_field :name, class: "form-control", placeholder: "Email" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <%= f.label :motto, "Motto", class: "control-label col-xs-2" %>
+                    <div class="col-xs-6">
+                        <%= f.text_field :motto, class: "form-control", placeholder: "Motto" %>
                     </div>
                 </div>
 
-                <span><%= f.label :score_cap , "Score Cap (Optional) - The game will end when a user hits this cap."%> </span>
-                <%= f.text_field :score_cap %>
+                <div class="form-group">
+                    <%= f.label :end_date, "End Date ?", class: "control-label col-xs-2" %>
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker form-control", :size => "16" %>
+                            <span class="input-group-addon" id="datepicker-icon">
+                                    <span class="glyphicon glyphicon-calendar" ></span>
+                            </span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :score_cap, "Score Cap ?", class: "control-label col-xs-2" %>
+                    <div class="col-xs-6">
+                        <%= f.text_field :score_cap, class: "form-control" %>
+                    </div>
+                </div>
+
 
                 <div>
-                    <span><%= f.label :point_tiers, "Fixed point system (Optional) - This will make +/- 5 the greatest point value for a single vote." %> </span>
+                    <span><%= f.label :point_tiers, "Fixed point system (Optional)", class: "control-label" %> </span>
+
                     <div>
-                        <span>Fixed Scoring</span>
+                        <span class="control-label col-xs-2">Fixed Scoring</span>
                         <%= radio_button :game, :point_tiers, 0, :checked => true %>
                     </div>
                     <div>
-                        <span>Free Scoring </span>
-                        <%= radio_button :game, :point_tiers, 1 %>
+                        <span class="control-label col-xs-2">Free Scoring </span>
+                        <%= radio_button :game, :point_tiers, 1 , class: "form-control"%>
                     </div>
                 </div>
-                <div class="danger-box">
-                    <div>Danger zone</div>
-                    <%= link_to "End this game", end_game_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
-                    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="endGameWindow" aria-hidden="true"></div>
+                <div class="form-group ">
+                    <div class="danger-box margin-left">
+                        <div>Danger zone</div>
+                        <%= link_to "End this game", end_game_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-sm btn-primary btn-danger"} %>
+                        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="endGameWindow" aria-hidden="true"></div>
+                    </div>
                 </div>
 
-                <div class="form-btns">
+                <div class="form-btns  form-group ">
                     <%= f.submit "Save", class: "btn btn-primary btn-danger block padding-top" %>
                     <%= link_to "Cancel", :back, class: "btn btn-primary btn-danger" %>
                 </div>
@@ -64,3 +85,4 @@
     </div>
 
 </div>
+

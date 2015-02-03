@@ -1,7 +1,7 @@
 <div class="league-info">
     <div class="topframe-user"></div>
     <div class="league-avatar">
-             <%= avatar_for( league, 'medium',  'league-profile-gravatar', nil) %>
+             <%= avatar_for( league, 'medium',  'league-profile-gravatar', nil, nil) %>
     </div>
     <div class="profile_container">
 
@@ -28,7 +28,7 @@
         </div>
         <div style="text-align: right; margin-right: 10px">
             <%= link_to edit_league_path(league) do%>
-                <i class="icon-cog"></i>
+                <span class="glyphicon glyphicon-cog"></span>
             <% end %>
         </div>
     </div>

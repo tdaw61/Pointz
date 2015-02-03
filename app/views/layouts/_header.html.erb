@@ -1,41 +1,49 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-        <div class="container">
-            <%= link_to "MANPOINTS", root_path, id: "logo" %>
-            <nav>
+<header>
 
-                <div class="span3 pull-left">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <%= link_to "MANPOINTS", root_path, id: "logo" , class: "navbar-brand"%>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
                     <% if signed_in? %>
                         <%= form_tag(search_user_path(current_user), method: 'get', class: "navbar-form") do %>
-                            <div class="input-group">
+                            <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Find Friends" name="srch-term" id="srch-term">
+                                <button type="submit" class="btn btn-default">Search</button>
                             </div>
                         <% end %>
                     <% end %>
                 </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right navbar-links">
+                <li><%= link_to "Home", root_path %></li>
+                <% if signed_in? %>
+                    <li><%= link_to "Leagues", leagues_path %></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= current_user.name %> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><%= link_to "Profile Settings", edit_user_path(current_user) %></li>
+                            <li class="divider"></li>
+                            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+                        </ul>
+                    </li>
+                <% else %>
+                    <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 
-                <ul class="nav pull-right">
-                    <li><%= link_to "Home", root_path %></li>
-                    <% if signed_in? %>
-                        <li><%= link_to "Leagues", leagues_path %></li>
-                        <li id="fat-menu" class="dropdown">
-                            <a href="#" class="dropdown-toggle nav-clipped" data-toggle="dropdown">
-                                <%= current_user.name %>
-                                <!--<b class="caret"></b>-->
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><%= link_to "Profile Settings", edit_user_path(current_user) %></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <%= link_to "Sign out", signout_path, method: "delete" %>
-                                </li>
-                            </ul>
-                        </li>
-                    <% else %>
-                        <li><%= link_to "Sign in", signin_path %></li>
-                    <% end %>
-                </ul>
-            </nav>
-        </div>
-    </div>
 </header>
+
+
+
+

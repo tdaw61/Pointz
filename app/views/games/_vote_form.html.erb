@@ -44,7 +44,7 @@
         <%= f.hidden_field :game_id, :value => @game.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
 
-        <%= f.submit "Create vote", class: "btn btn-small btn-primary btn-danger margin-top" %>
+        <%= f.submit "Create vote", class: "btn btn-sm btn-primary btn-danger margin-top" %>
         <% if flash[:alert] %>
             <div id="error_explanation"><%= flash[:alert] %></div>
         <% end %>
