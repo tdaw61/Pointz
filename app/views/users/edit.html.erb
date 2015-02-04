@@ -31,7 +31,7 @@
                     <%= image_tag @user.picture.large_avatar.url.to_s, id: "img_prev" %>
             </div>
             <div class="input-append">
-                <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add/Change Photo <i class="icon-camera"></i></a>
+                <a class="btn btn-sm" onclick="$('input[id=lefile]').click();"> Add/Change Photo <span class="glyphicon glyhpicon-camera"></span></a>
             </div>
 
             <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "addPhoto(this, '#user-form-pic')" %>
@@ -46,7 +46,7 @@
                 <%= f.password_field :password_confirmation %><br>
 
             <div class="form-btns">
-                <%= f.submit "Save", class: "btn btn-large btn-primary btn-danger" %>
+                <%= f.submit "Save", class: "btn btn-lg btn-primary btn-danger" %>
                 <%= link_to "Cancel", :back, class: "btn btn-primary btn-danger" %>
             </div>
         <% end %>

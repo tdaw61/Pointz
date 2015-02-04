@@ -6,7 +6,7 @@
 
         <div class="games-table">
             <div class="topframe-table">
-                <div>Your Current games <i class="icon-chevron-down icon-white"></i>
+                <div>Your Current games <span class="glyphicon glyphicon-chevron-down icon-white"></span>
                     <ul class="pts-header">
                         <li title="Points">Pts</li>
                         <li title="Position">Pos</li>
@@ -51,7 +51,7 @@
         </div>
 
         <% if @league.active %>
-            <p> <%= link_to "New Game", new_league_game_path(@league), class: "btn btn-small btn-primary btn-danger" %></p>
+            <p> <%= link_to "New Game", new_league_game_path(@league), class: "btn btn-sm btn-primary btn-danger" %></p>
         <% end %>
     </div>
 
@@ -84,9 +84,9 @@
 
         <% if @league.active %>
 
-            <%= link_to "Add User", add_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+            <%= link_to "Add User", add_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-sm btn-primary btn-danger"} %>
             <% if @league.is_admin(current_user) %>
-                <%= link_to "Remove User", remove_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger"} %>
+                <%= link_to "Remove User", remove_user_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-sm btn-primary btn-danger"} %>
                 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="UserWindow" aria-hidden="true"></div>
 
         <% end %>

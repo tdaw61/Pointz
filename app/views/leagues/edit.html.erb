@@ -22,7 +22,7 @@
                 <%= image_tag @league.picture.large_avatar.url.to_s, id: "img_prev" %>
         </div>
         <div class="input-append">
-            <a class="btn btn-small" onclick="$('input[id=lefile]').click();"> Add/Change Photo <i class="icon-camera"></i></a>
+            <a class="btn btn-sm" onclick="$('input[id=lefile]').click();"> Add/Change Photo <span class="glyphicon glyphicon-camera"></span></a>
         </div>
 
         <img id="img_prev" src="#" alt="your image" style="display: none"/>
@@ -35,12 +35,12 @@
         </p>
 
             <div>Danger zone</div>
-            <%= link_to 'End this League', end_league_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-small btn-primary btn-danger margin-left"} %>
+            <%= link_to 'End this League', end_league_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window', class: "btn btn-sm btn-primary btn-danger margin-left"} %>
             <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
         <div class="form-btns padding-top">
-            <%= f.submit "Save", class: "btn btn-small btn-primary btn-danger" %>
-            <%= link_to 'Cancel', league_path, class: "btn btn-small btn-primary btn-danger" %>
+            <%= f.submit "Save", class: "btn btn-sm btn-primary btn-danger" %>
+            <%= link_to 'Cancel', league_path, class: "btn btn-sm btn-primary btn-danger" %>
         </div>
 
 

@@ -5,6 +5,9 @@ $tableBackground: #FFFFFF;
 $tableBackgroundAccent: #FFFFFF;
 $btnDangerBackground: #B50300;
 $btnDangerBackgroundHighlight: #6d0019;
+//$btn-danger-bg: #6d0019;
+//$btn-danger-color: #B50300;
+$brand-danger: #B50300;
 
 
 @import "bootstrap";
@@ -75,6 +78,14 @@ textarea {
   resize: vertical;
 }
 
+ul, li, ol {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+input[type="submit"]{
+  width: auto;
+}
 .text-centered {
   text-align: center;
 }
@@ -101,6 +112,12 @@ textarea {
 .btn-right{
   float: right;
 }
+
+//.btn-danger {
+//  color: white;
+//  background-color: #d9534f;
+//  border-color: #d43f3a;
+//}
 
 td.cell-centered
 {
@@ -254,10 +271,7 @@ p {
   }
 }
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-}
+
 
 
 /* header */
@@ -437,8 +451,9 @@ input[type="text"]{
 
 .comment-form{
   input{
-    width: 90%;
-    padding-left: 3px;
+    margin: 0px;
+    padding: 3px;
+    width: 100%;
   }
   form{
     margin-top: 5px;
@@ -475,6 +490,18 @@ input[type="text"]{
   }
 }
 
+.input-group-addon {
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555555;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
 .date-input{
   height: 55px;
   display: block;
@@ -507,6 +534,7 @@ input[type="text"]{
     input{
       display: inline;
       vertical-align: middle;
+      width: auto;
     }
   }
 

@@ -6,5 +6,5 @@
 <% elsif params[:from] == "search" %>
     $("#search_user_<%=@friend.id%>").remove();
 <% elsif params[:from] == "show" %>
-    $("#friend_link_<%=@friend.id%>").html("<%= escape_javascript(link_to 'UnFriend',  friendship_path(id: @friend.id, from: request.params[:action]), method: :delete, remote: true, data: "Are you sure you want to unfriend this person?", class: "padding-left btn btn-small btn-danger", id: "friend_link_#{@friend.id}")%>");
+    $("#friend_link_<%=@friend.id%>").html("<%= escape_javascript(link_to 'UnFriend',  friendship_path(id: @friend.id, from: request.params[:action]), method: :delete, remote: true, data: "Are you sure you want to unfriend this person?", class: "padding-left btn btn-sm btn-danger", id: "friend_link_#{@friend.id}")%>");
 <% end %>

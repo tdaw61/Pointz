@@ -7,18 +7,18 @@
     </div>
 
     <div class="row">
-        <aside class="col-md-6">
+        <aside class="col-md-5">
             <%= render 'points_table' %>
 
             <%= render 'event_votes/vote_section' %>
 
             <% if @game.active %>
-                <%= link_to 'View game settings', game_settings_game_path , {:remote => true, 'data-toggle' => "modal", 'data-target' => '#settings-window', class: "btn btn-small btn-primary btn-danger "} %>
-                <div id="settings-window" class="modal hide fade" role="dialog" aria-labelledby="settingsWindow" aria-hidden="true"></div>
+                <%= link_to 'View game settings', game_settings_game_path , {:remote => true, 'data-toggle' => 'modal', 'data-target' => '#settings-window', class: "btn btn-sm btn-primary btn-danger "} %>
+                <div id="settings-window" class="modal fade" role="dialog" aria-labelledby="settingsWindow" aria-hidden="true"></div>
             <% end %>
 
         </aside>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <% if @game.active %>
 
                 <ul class=" nav nav-tabs nav-posts">

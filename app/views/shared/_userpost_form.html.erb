@@ -8,12 +8,13 @@
         <div class="post-extras">
             <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '#userpost-form')"%>
         </div>
-        <div class="input-append">
-            <a class="btn btn-small" onclick="$('#userpost-form').find('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
+        <div class="form-btns">
+            <a class="btn btn-sm btn-primary btn-danger" onclick="$('#userpost-form').find('input[id=lefile]').click();"> Add Photo <span class="glyphicon glyphicon-camera"></span></a>
+            <%= f.submit "Post", class: "btn btn-sm btn-primary btn-danger btn-right", id: "userpost-btn" %>
         </div>
 
+
         <%= hidden_field :game, :id %>
-        <%= f.submit "Post", class: "btn btn-small btn-primary btn-danger btn-right", id: "userpost-btn" %>
 
         <% end %>
 
