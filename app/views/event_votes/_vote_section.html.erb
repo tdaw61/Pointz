@@ -2,7 +2,14 @@
     <div>
         <div class="no-margin inline">Votes Pending</div>
         <div class="inline"> <%= link_to 'Create Vote', ajax_vote_form_path(modal: "true") , {:remote => true, 'data-toggle' => "modal", 'data-target' => '#vote-window', class: "btn btn-sm btn-primary btn-danger btn-right mrg_btm_3px"} %>
-            <div id="vote-window" class="modal hide fade" role="dialog" aria-labelledby="voteWindow" aria-hidden="true"></div></div>
+            <div id="vote-window" class="modal fade" role="dialog" aria-labelledby="voteWindow" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <%= render 'event_votes/vote_table' %>
