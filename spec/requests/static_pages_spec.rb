@@ -7,7 +7,7 @@ describe "Static pages" do
   describe "Home page" do
     # before { visit root_path }
     #
-    # it { should have_content('ManPoints') }
+    # it { should have_content('Pointz') }
 
   #   describe "for signed-in users" do
   #     let(:user) { FactoryGirl.create(:user) }

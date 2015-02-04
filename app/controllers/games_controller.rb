@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :signed_in_user
-  #TODO add categories for type of manpoint - then can do a stat breakdown per player
+  #TODO add categories for type of point - then can do a stat breakdown per player
   #TODO Add setting for event vote time limit before expiration.
   #TODO deal with permission problems. Show games/leagues unless private - need to add a private feature.
   #TODO in addition to permissions, make sure users can't post to closed games/leagues. Add a before filter

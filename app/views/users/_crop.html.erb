@@ -7,12 +7,12 @@
         </div>
         <div class="modal-body">
 
-            <%= image_tag @user.photo.picture.url, :id => "user_picture_cropbox", size: "350" %>
+            <%= avatar_for @user, "large", nil, "350", "user_picture_cropbox" %>
 
             <h4>Preview:</h4>
 
             <div style="width:100px; height:100px; overflow:hidden">
-                <%= image_tag @user.photo.picture.url, :id => "user_picture_previewbox" %>
+                <%= avatar_for @user, "large", nil, "350", "user_picture_previewbox" %>
             </div>
             <%= hidden_field_tag(:user_picture_crop_x) %>
             <%= hidden_field_tag(:user_picture_crop_y) %>

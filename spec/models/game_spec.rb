@@ -6,7 +6,7 @@ describe Game do
     @game = build(:game)
   end
 
-  subject { @game}
+  subject {@game}
 
   it{is_expected.to have_many :scores}
   it{is_expected.to have_many :userposts}

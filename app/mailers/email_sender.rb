@@ -1,6 +1,6 @@
 class EmailSender < ActionMailer::Base
 
-  default from: "TheDude@manpoints.herokuapp.com"
+  default from: "TheDude@Pointz.herokuapp.com"
 
     def join_league(user, league, current_user)
       @user = user
@@ -11,6 +11,6 @@ class EmailSender < ActionMailer::Base
 
     def welcome(user)
       @user = user
-      mail(to: 'tdaw6134@yahoo.com', subject: 'Welcome to ManPoints').deliver
+      mail(to: 'tdaw6134@yahoo.com', subject: 'Welcome to Pointz').deliver
     end
 end
