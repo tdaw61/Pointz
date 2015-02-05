@@ -8,26 +8,26 @@ module UsersHelper
   end
 
   #could be made into a hash for options??
-  def avatar_for(object, type, css_class, size)
+  def avatar_for(object, type, css_class, size, css_id)
     if(object.picture.present?)
       case type
         when "small"
-          image_tag(object.picture.small_avatar.url.to_s, class: css_class, alt: object.name, size: size)
+          image_tag(object.picture.small_avatar.url.to_s, class: css_class, alt: object.name, size: size, id: css_id)
         when "medium"
-          image_tag(object.picture.medium_avatar.url.to_s, class: css_class, size: "#{size}")
+          image_tag(object.picture.medium_avatar.url.to_s, class: css_class, size: size, id: css_id)
         when "large"
-          image_tag(object.picture.large_avatar.url.to_s, class: css_class, size: size)
+          image_tag(object.picture.large_avatar.url.to_s, class: css_class, size: size, id: css_id)
         else
           image_tag(PictureUploader.default_avatar.medium_avatar.url)
       end
     else
       case type
         when "small"
-          image_tag('small_avatar_default_avatar.jpeg', class: css_class)
+          image_tag('small_avatar_default_avatar.jpeg', class: css_class, id: css_id)
         when "medium"
-          image_tag('medium_avatar_default_avatar.jpeg', class: css_class)
+          image_tag('medium_avatar_default_avatar.jpeg', class: css_class, id: css_id)
         when "large"
-          image_tag('large_avatar_default_avatar.jpeg', class: css_class)
+          image_tag('large_avatar_default_avatar.jpeg', class: css_class, id: css_id)
         else
           image_tag(PictureUploader.default_avatar.medium_avatar.url)
       end
