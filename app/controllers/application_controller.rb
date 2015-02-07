@@ -10,5 +10,6 @@ class ApplicationController < ActionController::Base
   #TODO show list of who voted for what, anonymous voting option
   #TODO live time updates
   #TODO pictures could be made polymorphic
+  #TODO redo dates to make it all mm/dd/yyyy - game settings have that problem
 
 end
