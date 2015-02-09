@@ -11,7 +11,7 @@ describe Userpost do
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   # it { should respond_to(:game_id)}
-  its(:user) { should eq user }
+  # its(:user) { should eq user }
 
   it { should be_valid }
 

@@ -45,20 +45,7 @@ class User < ActiveRecord::Base
 
 
   def open_votes
-    self.event_votes.where(has_voted: false).count
-  end
-
-  def open_votes_by_game game
-    self.event_votes.where(game_id: game.id, has_voted: false).count
-  end
-
-  def has_pending_friendship search_user
-    friendship = self.friends.where(friend_id: search_user.id, accepted: false).first
-    if !friendship.nil? && friendship.accepted == false
-      true
-    else
-      false
-    end
+    self.event_votes.where(has_voted: false)
   end
 
   private

@@ -3,25 +3,31 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    @user = build :user
   end
 
   subject { @user }
 
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
-  it { should respond_to(:admin) }
-  it { should respond_to(:userposts) }
-  # it { should respond_to(:feed) }
+  it { is_expected.to respond_to(:name)}
+  it { is_expected.to respond_to(:email)}
+  it { is_expected.to respond_to(:password_digest)}
+  it { is_expected.to respond_to(:password)}
+  it { is_expected.to respond_to(:password_confirmation)}
+  it { is_expected.to respond_to(:remember_token)}
+  it { is_expected.to respond_to(:authenticate)}
+  it { is_expected.to respond_to(:admin)}
+  it { is_expected.to respond_to(:friends)}
+  it { is_expected.to respond_to(:friendships)}
+  it { is_expected.to respond_to(:pending_friends)}
+  it { is_expected.to respond_to(:requested_friends)}
+  it { is_expected.to respond_to(:game_events)}
+  it { is_expected.to respond_to(:scores)}
+  it { is_expected.to respond_to(:event_votes)}
+  it { is_expected.to respond_to(:userposts)}
+  it { is_expected.to respond_to(:super_user)}
+  it { is_expected.to respond_to(:picture)}
 
-  it { should be_valid }
-  it { should_not be_admin }
+  it { is_expected.to be_valid }
 
   describe "with admin attribute set to 'true'" do
     before do
@@ -32,31 +38,41 @@ describe User do
     it { should be_admin }
   end
 
+  describe "when super admin is set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:super_user)
+    end
+    it "should be a super user" do
+      is_expected.to be_super_user
+    end
+  end
+
   describe "when name is not present" do
     before { @user.name = " " }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when email is not present" do
     before { @user.email = " " }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when name is too long" do
     before { @user.name = "a" * 51 }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
-  #
-  # describe "when email format is invalid" do
-  #   it "should be invalid" do
-  #     addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-  #                    foo@bar_baz.com foo@bar+baz.com foo@bar..com]
-  #     addresses.each do |invalid_address|
-  #       @user.email = invalid_address
-  #       expect(@user).to_not be_valid
-  #     end
-  #   end
-  # end
+
+  describe "when email format is invalid" do
+    it "should be invalid" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                     foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_address|
+        @user.email = invalid_address
+        expect(@user).to_not be_valid
+      end
+    end
+  end
 
   describe "when email format is valid" do
     it "should be valid" do
@@ -75,7 +91,7 @@ describe User do
       user_with_same_email.save
     end
 
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when password is not present" do
@@ -83,17 +99,19 @@ describe User do
       @user = User.new(name: "Example User", email: "user@example.com",
                        password: " ", password_confirmation: " ")
     end
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
-    it { should be_invalid }
+      it "be invalid" do
+        is_expected.not_to be_valid
+      end
   end
 
   describe "return value of authenticate method" do
@@ -101,20 +119,21 @@ describe User do
     let(:found_user) { User.find_by(email: @user.email) }
 
     describe "with valid password" do
-      it { should eq found_user.authenticate(@user.password) }
+      it { is_expected.to eq found_user.authenticate(@user.password) }
     end
 
     describe "with invalid password" do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
-      it { should_not eq user_for_invalid_password }
-      specify { expect(user_for_invalid_password).to be_false }
+      it "should not be false" do
+         expect(@user).to_not eq user_for_invalid_password
+      end
     end
   end
 
   describe "remember token" do
     before { @user.save }
-    its(:remember_token) { should_not be_blank }
+    it { expect(@user.remember_token).to_not be_blank }
   end
 
   describe "userpost associations" do
@@ -140,4 +159,57 @@ describe User do
       end
     end
   end
+
+  describe "friends" do
+    before{@user.save}
+
+    it "user has one friend" do
+      friend = create(:user)
+      @user.friendships << create(:friendship, user: @user, status: "accepted")
+      expect(@user.friends.count).to eq 1
+    end
+  end
+
+  describe "pending friendships" do
+     before{@user.save}
+
+    it "user has one pending friendship" do
+      pending_friend = create(:user)
+      @user.friendships << create(:friendship, user: @user, status: "pending")
+
+      expect(@user.pending_friends.count).to eq 1
+    end
+  end
+
+  describe "requested friendships" do
+    before{@user.save}
+
+    it "user has one requested friendship" do
+      requested_friend = create(:user)
+      @user.friendships << create(:friendship, user: @user, status: "requested")
+
+      expect(@user.requested_friends.count).to eq 1
+    end
+  end
+
+  describe "#open_votes" do
+
+    before{@user.save}
+
+      let!(:open_event_vote) do
+        @user.event_votes << build(:event_vote, {game_event_id: 1, user: @user, game_id: 1})
+      end
+      let!(:closed_passing_event_vote) do
+        @user.event_votes << build(:passing_event_vote, {game_event_id: 2, user: @user, game_id: 1})
+      end
+      let!(:closed_failing_event_vote) do
+        @user.event_votes << build(:passing_event_vote, {game_event_id: 3, user: @user, game_id: 1})
+      end
+
+
+    it "should have a count of one" do
+      expect(@user.open_votes.count).to eq 1
+    end
+  end
+
 end
