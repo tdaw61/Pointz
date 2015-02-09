@@ -78,6 +78,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(user_params)
+        if params[:picture]
+          Photo.update_photo(@user, params[:picture])
+        end
         flash[:success] = "Profile updated"
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -109,6 +112,11 @@ class UsersController < ApplicationController
     @users = @search_users.paginate(page: params[:page])
   end
 
+  def crop
+    @user = User.find(params[:id])
+    @picture = @user.photo.picture
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -117,7 +125,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :photo, photo_attributes: [:picture])
   end
 
 

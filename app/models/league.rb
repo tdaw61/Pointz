@@ -1,10 +1,9 @@
 class League < ActiveRecord::Base
-
+  has_one  :photo, as: :picture
+  accepts_nested_attributes_for :photo
   has_many :league_users
   has_many :users, :through => :league_users
   has_many :games
-
-  mount_uploader :picture, PictureUploader
 
   validates_presence_of :name
   validates_length_of :name, maximum: 30, message: "30 characters max for game name"

@@ -1,4 +1,6 @@
 class Userpost < ActiveRecord::Base
+  has_one  :photo, as: :picture
+  accepts_nested_attributes_for :photo
   belongs_to :user
   belongs_to :game
   has_many :likes
@@ -10,7 +12,6 @@ class Userpost < ActiveRecord::Base
   validates :user_id, presence: true
   validates :data, presence: true, length: { maximum: 140, message: "Content must be under 140 characters." }
 
-  mount_uploader :picture, PictureUploader
 
   def target_username
     User.find(self.target_user_id).name

@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3 user-form">
 
-        <%= form_for(@user, id: "user-form") do |f| %>
+        <%= form_for(@user, id: "user-form", html: {multipart: true}) do |f| %>
             <% if @user.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -25,16 +25,20 @@
                 <%= f.label :name %><br>
                 <%= f.text_field :name %>
 
-            <%= f.label :picture, "Profile picture" %>
+            <%= f.label :photo, "Profile picture" %>
 
-            <div class="margin-bottom" id="user-form-pic">
-                    <%= image_tag @user.picture.large_avatar.url.to_s, id: "img_prev" %>
+            <div style="width:100px; height:100px; overflow:hidden">
+                <%= avatar_for(@user, 'large', nil, nil, "img_prev") %>
             </div>
             <div class="input-append">
                 <a class="btn btn-sm" onclick="$('input[id=lefile]').click();"> Add/Change Photo <span class="glyphicon glyhpicon-camera"></span></a>
             </div>
 
-            <%= f.file_field :picture, class: "display-none", id: "lefile", onchange: "addPhoto(this, '#user-form-pic')" %>
+            <%= file_field_tag :picture, type: :file, class: "display-none", id: "lefile", onchange: "addAvatar(this, '#user-form-pic')" %>
+            <%= link_to "crop" , 'crop' %>
+            <div id="crop-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                 <%= render 'crop' %>
+            </div>
 
                 <%= f.label :email %><br>
                 <%= f.text_field :email %>

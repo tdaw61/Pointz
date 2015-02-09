@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  # has_and_belongs_to_many :games,
+  has_one  :photo, as: :picture, dependent: :destroy
+  accepts_nested_attributes_for :photo
   has_many :userposts, dependent: :destroy
   has_many :scores
   has_many :games, :through => :scores
@@ -22,9 +23,6 @@ class User < ActiveRecord::Base
            -> {where "friendships.status = 'pending'"},
            through: :friendships,
            source: :friend
-
-  mount_uploader :picture, PictureUploader
-
 
   before_create :create_remember_token
   before_save { self.email = email.downcase }

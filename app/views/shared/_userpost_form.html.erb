@@ -6,7 +6,13 @@
             <%= f.text_area :data, placeholder: "What's happening", style: "border-radius: none;" %>
         </div>
         <div class="post-extras">
-            <%= f.file_field :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '#userpost-form')"%>
+            <%= file_field_tag :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '#userpost-form')"%>
+
+            <div class="post-picture">
+                <img id="img_prev" src="#dummy" alt="your image" style="display: none" />
+                <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
+            </div>
+
         </div>
         <div class="form-btns">
             <a class="btn btn-sm btn-primary btn-danger" onclick="$('#userpost-form').find('input[id=lefile]').click();"> Add Photo <span class="glyphicon glyphicon-camera"></span></a>

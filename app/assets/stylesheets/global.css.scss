@@ -1148,11 +1148,18 @@ input[type="file"]{
     font-style: bold;
    }
 
+.photo-modal{
+  width: 400px;
+}
 
 .modal-btn {
   padding: 0px;
   margin: 0px;
   vertical-align: inherit;
+}
+
+.jcrop-keymgr{
+  opacity: 0;
 }
 
 /* friends/search */
