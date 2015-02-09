@@ -1,0 +1,30 @@
+<div class="modal-dialog">
+    <div class="modal-content photo-modal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"> Crop your Photo </h4>
+        </div>
+        <div class="modal-body">
+
+            <%= image_tag @user.photo.picture.url, :id => "user_picture_cropbox", size: "350" %>
+
+            <h4>Preview:</h4>
+
+            <div style="width:100px; height:100px; overflow:hidden">
+                <%= image_tag @user.photo.picture.url, :id => "user_picture_previewbox" %>
+            </div>
+            <%= hidden_field_tag(:user_picture_crop_x) %>
+            <%= hidden_field_tag(:user_picture_crop_y) %>
+            <%= hidden_field_tag(:user_picture_crop_w) %>
+            <%= hidden_field_tag(:user_picture_crop_y) %>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-right btn btn-sm btn-danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button type="button" class="btn-right btn btn-sm btn-danger margin-right" id="apply-crop-btn" data-dismiss="modal" >Apply</button>
+        </div>
+    </div>
+
+</div>
+

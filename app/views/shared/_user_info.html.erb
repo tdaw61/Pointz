@@ -4,7 +4,7 @@
 <div class="profile_container">
 
 <div class="profile_avatar">
-   <%= image_tag @user.picture.medium_avatar.url.to_s, class: 'user-profile-gravatar' %>
+   <%= link_to avatar_for(@user, "medium", 'user-profile-gravatar', nil, nil), @user %>
 </div>
 <div class="profile_name">
     <h1>

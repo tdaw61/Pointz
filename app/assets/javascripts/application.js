@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.jcrop
+//= require jquery.remotipart
 //= require bootstrap
 //= require turbolinks
 //= require autogrow.min

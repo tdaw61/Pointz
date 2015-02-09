@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   #users
   match '/users/paginate' => 'users#paginate', via: 'get'
+  match '/users/:id/crop' => 'users#crop', via: 'get'
 
   #leagues
   match '/leagues/join_league' => 'leagues#join_league', via: 'get', as: 'join_league'
