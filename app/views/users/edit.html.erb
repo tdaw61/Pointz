@@ -35,7 +35,6 @@
             </div>
 
             <%= file_field_tag :picture, type: :file, class: "display-none", id: "lefile", onchange: "addAvatar(this, '#user-form-pic')" %>
-            <%= link_to "crop" , 'crop' %>
             <div id="crop-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                  <%= render 'crop' %>
             </div>
@@ -50,7 +49,7 @@
                 <%= f.password_field :password_confirmation %><br>
 
             <div class="form-btns">
-                <%= f.submit "Save", class: "btn btn-lg btn-primary btn-danger" %>
+                <%= f.submit "Save", class: "btn btn-primary btn-danger" %>
                 <%= link_to "Cancel", :back, class: "btn btn-primary btn-danger" %>
             </div>
         <% end %>

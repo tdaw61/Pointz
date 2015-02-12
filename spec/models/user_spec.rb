@@ -9,19 +9,26 @@ describe User do
 
   subject { @user }
 
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
-  it { should respond_to(:admin) }
-  it { should respond_to(:userposts) }
+  it { is_expected.to respond_to(:name)}
+  it { is_expected.to respond_to(:email)}
+  it { is_expected.to respond_to(:password_digest)}
+  it { is_expected.to respond_to(:password)}
+  it { is_expected.to respond_to(:password_confirmation)}
+  it { is_expected.to respond_to(:remember_token)}
+  it { is_expected.to respond_to(:authenticate)}
+  it { is_expected.to respond_to(:admin)}
+  it { is_expected.to respond_to(:friends)}
+  it { is_expected.to respond_to(:friendships)}
+  it { is_expected.to respond_to(:pending_friends)}
+  it { is_expected.to respond_to(:requested_friends)}
+  it { is_expected.to respond_to(:game_events)}
+  it { is_expected.to respond_to(:scores)}
+  it { is_expected.to respond_to(:event_votes)}
+  it { is_expected.to respond_to(:userposts)}
+
   # it { should respond_to(:feed) }
 
-  it { should be_valid }
-  it { should_not be_admin }
+  it { is_expected.to be_valid }
 
   describe "with admin attribute set to 'true'" do
     before do
@@ -93,7 +100,9 @@ describe User do
 
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
-    it { should be_invalid }
+      it "be invalid" do
+        is_expected.not_to be_valid
+      end
   end
 
   describe "return value of authenticate method" do
@@ -114,7 +123,7 @@ describe User do
 
   describe "remember token" do
     before { @user.save }
-    its(:remember_token) { should_not be_blank }
+    it { expect(@user.remember_token).to_not be_blank }
   end
 
   describe "userpost associations" do
