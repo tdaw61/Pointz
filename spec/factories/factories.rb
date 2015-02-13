@@ -17,6 +17,11 @@ FactoryGirl.define do
 
   factory :game do
     name "RSpec game"
+    league
+  end
+
+  factory :league do
+    name "RSpec factory league"
   end
 
   factory :score do
@@ -25,14 +30,28 @@ FactoryGirl.define do
   end
 
   factory :game_event do
+    point_value 2
+    target_user user
+    game
 
   end
 
   factory :event_vote do
-    points 1
+    user_point_value 2
     game
     user
     game_event
+    has_voted false
+
+     factory :passing_event_vote do
+       vote true
+       has_voted true
+     end
+
+     factory :failing_event_vote do
+       vote false
+       has_voted true
+     end
   end
 
 end

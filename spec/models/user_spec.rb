@@ -25,8 +25,8 @@ describe User do
   it { is_expected.to respond_to(:scores)}
   it { is_expected.to respond_to(:event_votes)}
   it { is_expected.to respond_to(:userposts)}
-
-  # it { should respond_to(:feed) }
+  it { is_expected.to respond_to(:super_user)}
+  it { is_expected.to respond_to(:picture)}
 
   it { is_expected.to be_valid }
 
@@ -39,19 +39,29 @@ describe User do
     it { should be_admin }
   end
 
+  describe "when super admin is set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:super_user)
+    end
+    it "should be a super user" do
+      is_expected.to be_super_user
+    end
+  end
+
   describe "when name is not present" do
     before { @user.name = " " }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when email is not present" do
     before { @user.email = " " }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when name is too long" do
     before { @user.name = "a" * 51 }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
   #
   # describe "when email format is invalid" do
@@ -82,7 +92,7 @@ describe User do
       user_with_same_email.save
     end
 
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when password is not present" do
@@ -90,12 +100,12 @@ describe User do
       @user = User.new(name: "Example User", email: "user@example.com",
                        password: " ", password_confirmation: " ")
     end
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
-    it { should_not be_valid }
+    it { is_expected.to_not be_valid }
   end
 
   describe "with a password that's too short" do
@@ -110,14 +120,15 @@ describe User do
     let(:found_user) { User.find_by(email: @user.email) }
 
     describe "with valid password" do
-      it { should eq found_user.authenticate(@user.password) }
+      it { is_expected.to eq found_user.authenticate(@user.password) }
     end
 
     describe "with invalid password" do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
-      it { should_not eq user_for_invalid_password }
-      specify { expect(user_for_invalid_password).to be_false }
+      it "should not be false" do
+         expect(@user).to_not eq user_for_invalid_password
+      end
     end
   end
 
@@ -149,4 +160,38 @@ describe User do
       end
     end
   end
+
+  describe "friendship associations" do
+    before{@user.save}
+
+  end
+
+  describe "pending friendship associations" do
+
+  end
+
+  describe "requested friendship associations" do
+
+  end
+
+  describe "#open_votes" do
+
+    before{@user.save}
+
+      let!(:open_event_vote) do
+        @user.event_votes << build(:event_vote, {game_event_id: 1, user_id: 1, game_id: 1})
+      end
+      let!(:closed_passing_event_vote) do
+        @user.event_votes << build(:passing_event_vote, {game_event_id: 2, user_id: 1, game_id: 1})
+      end
+      let!(:closed_failing_event_vote) do
+        @user.event_votes << build(:passing_event_vote, {game_event_id: 3, user_id: 1, game_id: 1})
+      end
+
+
+    it "should have a count of one" do
+      expect(@user.open_votes.count).to eq 1
+    end
+  end
+
 end
