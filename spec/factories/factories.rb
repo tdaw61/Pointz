@@ -15,13 +15,34 @@ FactoryGirl.define do
     user
   end
 
+  factory :league do
+    name "RSpec factory league"
+
+     factory :league_with_game do
+       after(:build) do |league, evaluator|
+            league.games << build(:game, league: league)
+       end
+     end
+
+    factory :league_with_votes do
+      after(:build) do |league, evaluator|
+            league.games << build(:game_with_votes, league: league)
+      end
+    end
+  end
+
   factory :game do
     name "RSpec game"
     league
-  end
 
-  factory :league do
-    name "RSpec factory league"
+    factory :game_with_votes do
+      after(:build) do |game, evaluator|
+        user = build(:user)
+        game.users << user
+        game.scores << build(:score, user: user, game: game)
+        game.game_events << build(:game_event_with_votes, game: game )
+      end
+    end
   end
 
   factory :score do
@@ -52,6 +73,11 @@ FactoryGirl.define do
        vote false
        has_voted true
      end
+  end
+
+  factory :friendship do
+    user
+    friend factory: :user
   end
 
 end

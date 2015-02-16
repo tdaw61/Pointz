@@ -3,8 +3,7 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    @user = build :user
   end
 
   subject { @user }
@@ -63,17 +62,17 @@ describe User do
     before { @user.name = "a" * 51 }
     it { is_expected.to_not be_valid }
   end
-  #
-  # describe "when email format is invalid" do
-  #   it "should be invalid" do
-  #     addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-  #                    foo@bar_baz.com foo@bar+baz.com foo@bar..com]
-  #     addresses.each do |invalid_address|
-  #       @user.email = invalid_address
-  #       expect(@user).to_not be_valid
-  #     end
-  #   end
-  # end
+
+  describe "when email format is invalid" do
+    it "should be invalid" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                     foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_address|
+        @user.email = invalid_address
+        expect(@user).to_not be_valid
+      end
+    end
+  end
 
   describe "when email format is valid" do
     it "should be valid" do
@@ -161,17 +160,36 @@ describe User do
     end
   end
 
-  describe "friendship associations" do
+  describe "friends" do
     before{@user.save}
 
+    it "user has one friend" do
+      friend = create(:user)
+      @user.friendships << create(:friendship, user: @user, status: "accepted")
+      expect(@user.friends.count).to eq 1
+    end
   end
 
-  describe "pending friendship associations" do
+  describe "pending friendships" do
+     before{@user.save}
 
+    it "user has one pending friendship" do
+      pending_friend = create(:user)
+      @user.friendships << create(:friendship, user: @user, status: "pending")
+
+      expect(@user.pending_friends.count).to eq 1
+    end
   end
 
-  describe "requested friendship associations" do
+  describe "requested friendships" do
+    before{@user.save}
 
+    it "user has one requested friendship" do
+      requested_friend = create(:user)
+      @user.friendships << create(:friendship, user: @user, status: "requested")
+
+      expect(@user.requested_friends.count).to eq 1
+    end
   end
 
   describe "#open_votes" do
@@ -179,13 +197,13 @@ describe User do
     before{@user.save}
 
       let!(:open_event_vote) do
-        @user.event_votes << build(:event_vote, {game_event_id: 1, user_id: 1, game_id: 1})
+        @user.event_votes << build(:event_vote, {game_event_id: 1, user: @user, game_id: 1})
       end
       let!(:closed_passing_event_vote) do
-        @user.event_votes << build(:passing_event_vote, {game_event_id: 2, user_id: 1, game_id: 1})
+        @user.event_votes << build(:passing_event_vote, {game_event_id: 2, user: @user, game_id: 1})
       end
       let!(:closed_failing_event_vote) do
-        @user.event_votes << build(:passing_event_vote, {game_event_id: 3, user_id: 1, game_id: 1})
+        @user.event_votes << build(:passing_event_vote, {game_event_id: 3, user: @user, game_id: 1})
       end
 
 
