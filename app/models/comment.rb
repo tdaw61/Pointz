@@ -3,7 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   has_many :likes
 
-  mount_uploader :picture, PictureUploader
+  has_one  :photo, as: :picture
+  accepts_nested_attributes_for :photo
 
   def positive_likes
     likes.where(like: true).count

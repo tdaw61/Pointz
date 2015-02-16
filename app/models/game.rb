@@ -11,17 +11,8 @@ class Game < ActiveRecord::Base
   validates_presence_of :name
   validates_length_of :name, maximum: 30, message: "30 characters max for game name"
 
-
-  def belongs_to_game?(user_id)
-      users.find(user_id)
-  end
-
   def leader
     self.scores.order('points desc').first
-  end
-
-  def ordered_scores
-    scores.order('points DESC')
   end
 
   def points user

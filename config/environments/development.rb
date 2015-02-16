@@ -18,13 +18,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.mail.yahoo.com',
+      address:              'smtp.mailgun.org',
       port:                 587,
-      domain:               'anythingworks',
-      user_name:            'tdaw6134@yahoo.com',
-      password:             'Rolled6!',
+      domain:               'manpoints.heroku.com',
+      user_name:            'postmaster@app26967816.mailgun.org',
+      password:             'f7718cf002a621f743c1347b10549096',
       authentication:       'plain',
-      enable_starttls_auto:  true        }
+      enable_starttls_auto:  true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

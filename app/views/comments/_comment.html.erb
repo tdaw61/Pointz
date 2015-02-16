@@ -1,13 +1,13 @@
 <li id="comment_<%=comment.id%>">
     <div>
-        <%= link_to image_tag(comment.user.picture.thumb.url.to_s, class: 'comment-gravatar'), comment.user %>
+        <%= link_to avatar_for(comment.user, 'thumb','comment-gravatar', nil, nil), comment.user %>
     </div>
     <div>
         <p><%= comment.data %></p>
     </div>
-    <% if comment.picture.url.present? %>
+    <% if comment.photo.present? %>
         <div class="feed-item-attachment">
-            <%= image_tag comment.picture.url.to_s %>
+            <%= image_tag comment.photo.picture.large_avatar.url.to_s %>
         </div>
     <% end %>
     <div class="feed-item-footer">

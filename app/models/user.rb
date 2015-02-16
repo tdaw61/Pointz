@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  # has_and_belongs_to_many :games,
+  has_one  :photo, as: :picture, dependent: :destroy
+  accepts_nested_attributes_for :photo
   has_many :userposts, dependent: :destroy
   has_many :scores
   has_many :games, :through => :scores
@@ -23,9 +24,6 @@ class User < ActiveRecord::Base
            through: :friendships,
            source: :friend
 
-  mount_uploader :picture, PictureUploader
-
-
   before_create :create_remember_token
   before_save { self.email = email.downcase }
 
@@ -47,20 +45,7 @@ class User < ActiveRecord::Base
 
 
   def open_votes
-    self.event_votes.where(has_voted: false).count
-  end
-
-  def open_votes_by_game game
-    self.event_votes.where(game_id: game.id, has_voted: false).count
-  end
-
-  def has_pending_friendship search_user
-    friendship = self.friends.where(friend_id: search_user.id, accepted: false).first
-    if !friendship.nil? && friendship.accepted == false
-      true
-    else
-      false
-    end
+    self.event_votes.where(has_voted: false)
   end
 
   private

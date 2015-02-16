@@ -3,31 +3,40 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.0'
 
+#bootstrap
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails', "~> 5.0"
-gem 'twitter'
-gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'faker'
-gem 'compass'
 gem 'bootstrap-datepicker-rails'
-gem 'mail'
+
+#picture uploader
 gem 'fog'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'carrierwave-crop'
+
+#other gems
+gem 'remotipart'
+gem 'will_paginate'
+gem 'faker'
+gem 'compass'
+gem 'mail'
 gem 'figaro'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.14.0'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
-  gem 'factory_girl_rails', '4.2.0'
-
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda'
+  gem 'shoulda-matchers', require: false
 end
+
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'

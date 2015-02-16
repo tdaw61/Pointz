@@ -7,7 +7,9 @@ class UserpostsController < ApplicationController
     @userpost.game_id = params[:game][:id]
     @userpost.post_type = "userpost"
     @game = Game.find(params[:game][:id])
-    @userpost.picture = params[:userpost][:picture]
+    if params[:picture]
+      @userpost.create_photo(picture: params[:picture])
+    end
 
 
     respond_to do |format|
@@ -15,8 +17,7 @@ class UserpostsController < ApplicationController
         @userpost = Userpost.new
         @user_feed_items = @game.userposts
         @game_event_feed_items = @game.game_events
-        @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
-        @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
+        @feed_items = @game.userposts
 
         format.html { redirect_to request.referer, notice: 'post was successfully created.' }
         format.js
