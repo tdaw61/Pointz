@@ -43,6 +43,15 @@ FactoryGirl.define do
         game.game_events << build(:game_event_with_votes, game: game )
       end
     end
+
+    factory :game_with_scores do
+      after(:create) do |game, evaluator|
+        game.users << create(:user)
+        game.users << (user1 factory: :user)
+        game.scores << create(:score, user, game: game, points: 5)
+        game.scores << create(:score, user1, game: game, points: 5)
+      end
+    end
   end
 
   factory :score do

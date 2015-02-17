@@ -53,5 +53,54 @@ describe Game do
     end
   end
 
+  describe "#points" do
+
+    it "returns N/A for a user with no score" do
+      game = create(:game_with_scores)
+    end
+
+    it "returns the points value for user" do
+
+    end
+
+  end
+
+  describe "#position" do
+
+    it "returns N/A for a nil user position" do
+
+    end
+
+    it "returns the correct user rank in a game" do
+
+    end
+
+  end
+
+  describe "#active_event_votes" do
+    it "returns a users active event votes in a game" do
+
+    end
+
+  end
+
+  describe "#inactive_event_votes" do
+    it "returns a users inactive event votes in a game" do
+
+    end
+  end
+
+  describe "#is_passing?" do
+    it "checks game to see if caps are satisfied to close game" do
+
+    end
+  end
+
+  describe "#deactivate" do
+    it "sets game to active:false and creates userpost to notify users" do
+
+    end
+  end
+
 
 end
