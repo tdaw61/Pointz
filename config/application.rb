@@ -22,7 +22,7 @@ module ManPoints
 
     # config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
-    Rails.application.config.assets.precompile += %w( glyphicons-halflings.png )
+    # Rails.application.config.assets.precompile += %w( glyphicons-halflings.png )
 
   end
 end
