@@ -15,7 +15,7 @@
 /log/*.log
 /tmp
 
-/ManPoints.iml
+/Pointz.iml
 /.idea/*
 
 /out
