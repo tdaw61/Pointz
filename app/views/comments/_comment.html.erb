@@ -20,7 +20,7 @@
                 <%= link_to "", userpost_comment_path(id: comment.id, userpost_id: comment.userpost.id), method: :delete,
                             data: {confirm: "You sure?"},
                             title: "delete post",
-                            class: "icon-trash feed-item-link" %>
+                            class: "glyphicon glyphicon-trash feed-item-link" %>
             <% end %>
 
             <span class=" feed-item-link" id="dislike_count"> <%= comment.negative_likes %></span><span class="glyphicon glyphicon-thumbs-down feed-item-link"></span>

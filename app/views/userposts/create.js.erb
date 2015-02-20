@@ -1,4 +1,7 @@
-$(".feed").html("<%= escape_javascript(render('shared/feed')) %>")
 
-$("#userpost-form").replaceWith('<%=escape_javascript(render('shared/userpost_form')) %>')
+<% @userpost.photo %>
+
+$(".feed").html("<%= escape_javascript(render('shared/feed')) %>");
+
+$("#userpost-form").replaceWith('<%=escape_javascript(render('shared/userpost_form')) %>');
 

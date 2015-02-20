@@ -9,7 +9,7 @@ $btnDangerBackgroundHighlight: #6d0019;
 //$btn-danger-color: #B50300;
 $brand-danger: #B50300;
 
-
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 
@@ -873,8 +873,8 @@ input[type="file"]{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 150px;
-  height: 200px;
+  max-width: 150px;
+  max-height: 200px;
 }
 
 /* navbar */
@@ -965,7 +965,9 @@ input[type="file"]{
 }
 
 .navbar-form{
-  padding-top: 5px;
+  padding-top: 3px;
+  margin: 0px;
+  height: 42px;
   input{
     margin-left: 155px;
     width: 540px;
@@ -974,10 +976,11 @@ input[type="file"]{
   }
 }
 
+
+
 .nav-posts{
   border-bottom: none;
-  margin-left: 5px;
-  margin-bottom: 0px;
+  margin: 0px 4px 0px 4px;
   padding: 0px;
   li{
     width: 50%;
@@ -1050,11 +1053,7 @@ input[type="file"]{
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0088CC', endColorstr='#FF0077B3', GradientType=0)
 }
 
-.navbar-form{
-  padding-top: 5px;
-  margin: 0px;
-  height: 42px;
-}
+
 
 
 .navbar-nav > li > a:hover,

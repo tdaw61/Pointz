@@ -34,39 +34,37 @@
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :end_date, "End Date ?", class: "control-label col-xs-2" %>
+                    <%= f.label :end_date, "End Date ", class: "control-label col-xs-2" %>
                     <div class="col-xs-6">
                         <div class="input-group">
                             <%= f.text_field :end_date, 'data-behaviour' => 'datepicker', :class => "datepicker form-control", :size => "16" %>
                             <span class="input-group-addon" id="datepicker-icon">
-                                    <span class="glyphicon glyphicon-calendar" ></span>
+                                    <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
-
-
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%= f.label :score_cap, "Score Cap ?", class: "control-label col-xs-2" %>
+                    <%= f.label :score_cap, "Score Cap ", class: "control-label col-xs-2" %>
                     <div class="col-xs-6">
                         <%= f.text_field :score_cap, class: "form-control" %>
                     </div>
                 </div>
 
 
-                <div>
+                <div class="col-xs-offset-1">
                     <span><%= f.label :point_tiers, "Fixed point system (Optional)", class: "control-label" %> </span>
 
-                    <div>
-                        <span class="control-label col-xs-2">Fixed Scoring</span>
-                        <%= radio_button :game, :point_tiers, 0, :checked => true %>
-                    </div>
-                    <div>
-                        <span class="control-label col-xs-2">Free Scoring </span>
-                        <%= radio_button :game, :point_tiers, 1 , class: "form-control"%>
-                    </div>
+                    <label class="radio ">
+                        <%= radio_button :game, :point_tiers, 0, :checked => true %> Fixed Scoring
+                    </label>
+                    <label class="radio ">
+                        <%= radio_button :game, :point_tiers, 1 %> Free Scoring
+                    </label>
+
                 </div>
+
                 <div class="form-group ">
                     <div class="danger-box margin-left">
                         <div>Danger zone</div>

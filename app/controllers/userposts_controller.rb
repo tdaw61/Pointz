@@ -8,14 +8,17 @@ class UserpostsController < ApplicationController
     @userpost.post_type = "userpost"
     @game = Game.find(params[:game][:id])
     if params[:picture]
+
+      photo = Photo.new
+      photo.picture = params[:picture]
       @userpost.create_photo(picture: params[:picture])
+
     end
 
 
     respond_to do |format|
       if @userpost.save
         @userpost = Userpost.new
-        @user_feed_items = @game.userposts
         @game_event_feed_items = @game.game_events
         @feed_items = @game.userposts
 
@@ -23,9 +26,8 @@ class UserpostsController < ApplicationController
         format.js
         # format.json { render root_url, status: :created, location: @userpost }
       else
-        @user_feed_items = @game.userposts
         @game_event_feed_items = @game.game_events
-        @feed_items = (@user_feed_items + @game_event_feed_items).sort_by(&:created_at).reverse
+        @feed_items = @game.userposts
         format.html { redirect_to :back  }
         format.json { render json: @user.errors, status: :unprocessable_entity }
         format.js

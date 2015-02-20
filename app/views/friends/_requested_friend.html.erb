@@ -1,5 +1,8 @@
 <li id="friend-request-<%=requested_friend.id%>">
-    <%= avatar_for(requested_friend, 'medium', "float-left", 45, nil) %>
+    <div class="margin-left">
+        <%= avatar_for(requested_friend, 'medium', "float-left", "50", nil) %>
+    </div>
+
     <div class="user-search-content ">
         <%= link_to requested_friend.name, requested_friend, class: "padding-right" %>
     </div>

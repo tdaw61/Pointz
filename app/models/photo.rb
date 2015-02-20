@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   crop_uploaded :picture
 
-  validates_presence_of :picture_id, :picture_type
+  # validates_presence_of :picture_id, :picture_type
 
   def self.update_photo model, picture
      if model.photo.nil?

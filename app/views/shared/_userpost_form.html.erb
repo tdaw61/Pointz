@@ -1,6 +1,6 @@
 <div class="userpost-form " id="userpost-form">
 
-    <%= form_for(Userpost.new, html:{ remote: true, multipart: true, class: 'no-margin no-padding', id: "fileupload"}) do |f| %>
+    <%= form_for(Userpost.new, html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload"}) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="userpost-text">
             <%= f.text_area :data, placeholder: "What's happening", style: "border-radius: none;" %>

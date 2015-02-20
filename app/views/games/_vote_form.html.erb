@@ -1,6 +1,6 @@
 <div class="vote-form">
 
-    <%= form_for([@game, @game_event], html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload", authenticity_token: true}) do |f| %>
+    <%= form_for([@game, @game_event], html:{ multipart: true, class: 'no-margin no-padding', id: "fileupload"}) do |f| %>
 
         <h4>Start a new vote:</h4>
 
@@ -46,8 +46,9 @@
                 </div>
 
             </div>
-            <div class="input-append">
-                <a class="btn btn-small" onclick="$('.status-content').find('input[id=lefile]').click();"> Add Photo <i class="icon-camera"></i></a>
+            <div class="form-btns">
+                <%= f.submit "Create vote", class: "btn btn-sm btn-primary btn-danger  " %>
+
             </div>
 
         </span>
@@ -55,7 +56,6 @@
         <%= f.hidden_field :game_id, :value => @game.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
 
-        <%= f.submit "Create vote", class: "btn btn-sm btn-primary btn-danger margin-top" %>
         <% if flash[:alert] %>
             <div id="error_explanation"><%= flash[:alert] %></div>
         <% end %>
