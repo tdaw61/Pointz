@@ -60,7 +60,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
+        begin
         EmailSender.welcome(@user)
+        rescue  EOFError,IOError,TimeoutError,Errno::ECONNRESET,Errno::ECONNABORTED,Errno::EPIPE, Errno::ETIMEDOUT, Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPUnknownError, OpenSSL::SSL::SSLError => e
+          #ignore and move on
+        end
         format.html { redirect_to root_path, user_id: @user.id }
         format.json { render :show, status: :created, location: @user }
       else
