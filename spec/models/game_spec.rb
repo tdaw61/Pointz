@@ -56,11 +56,18 @@ describe Game do
   describe "#points" do
 
     it "returns N/A for a user with no score" do
-      game = create(:game_with_scores)
+      user = build_stubbed(:user)
+      game = create(:game)
+      game.scores << build(:score, game: game, points: 3)
+      expect(game.points(user)).to eq "N/A"
     end
 
     it "returns the points value for user" do
-
+      user = build_stubbed(:user)
+      game = create(:game)
+      game.scores << build(:score, game: game, points: 3, user: user)
+      
+      expect(game.points(user)).to eq 3
     end
 
   end
@@ -68,11 +75,21 @@ describe Game do
   describe "#position" do
 
     it "returns N/A for a nil user position" do
-
+      user = build_stubbed(:user)
+      game = create(:game)
+      game.scores << build(:score, game: game, points: 3)
+      expect(game.position(user)).to eq "N/A"
     end
 
     it "returns the correct user rank in a game" do
+      user_leader = create(:user)
+      user_last = create(:user)
 
+      game = create(:game)
+      game.scores << build(:score, game: game, points: 3, user: user_leader)
+      game.scores << build(:score, game: game, points: 2, user: user_last)
+
+      expect(game.position(:user_leader)).to eq 1
     end
 
   end
