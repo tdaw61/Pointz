@@ -25,7 +25,7 @@ FactoryGirl.define do
     end
 
     factory :league_with_votes do
-      after(:build) do |league, evaluator|
+      after(:create) do |league, evaluator|
         league.games << build(:game_with_votes, league: league)
       end
     end
@@ -35,8 +35,8 @@ FactoryGirl.define do
     name "RSpec game"
     league
 
-    factory :game_with_votes do
-      after(:build) do |game, evaluator|
+    factory :game_with_events_and_votes do
+      after(:create) do |game, evaluator|
         user = build(:user)
         game.users << user
         game.scores << build(:score, user: user, game: game)

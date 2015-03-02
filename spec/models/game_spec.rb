@@ -115,7 +115,13 @@ describe Game do
 
   describe "#deactivate" do
     it "sets game to active:false and creates userpost to notify users" do
-
+      game = create(:game)
+      user = create(:user)
+      event_one = create(:event_vote, game: game, user: user, active: false)
+      event_two = create(:event_vote, game: game, user: user, active: false)
+      game.event_votes << event_one
+      game.event_votes << event_two
+      expect(game.active_event_votes(user.id)).to eq [event_one]
     end
   end
 
