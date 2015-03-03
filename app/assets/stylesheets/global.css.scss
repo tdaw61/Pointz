@@ -613,7 +613,7 @@ input[type="file"]{
 
 .userposts {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 0px;
   padding-left: 0px;
 
   li {
@@ -668,11 +668,9 @@ input[type="file"]{
   margin: 0px;
   background: #E5E4E4;
   list-style: none;
-  padding-left: 5px;
   li{
     padding: 5px;
   }
-
   p{
     margin-bottom: 3px;
   }
@@ -825,15 +823,26 @@ input[type="file"]{
 
 /* feed */
 
-.feed{
+.feed-post-wrapper{
   border: 1px solid #d2d2d2;
-  padding-top:10px;
   background-color: white;
-  -moz-border-radius: 5px;    /* Firefox 3.6-, removed in Firefox 13 */
-  -webkit-border-radius: 5px; /* Safari 4-, Chrome 3- */
-  border-radius: 5px;     /* Firefox 4+, Safari 5+, Chrome 4+, Opera 10.5+, IE9+ */
-  padding-right: 10px;
-  padding-bottom: 10px;
+  border-radius: 3px;
+  margin-bottom: 4px;
+  p{
+    font-size: 1em;
+  }
+}
+
+.feed-list-header{
+  border: 1px solid #d2d2d2;
+  background-color: white;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 0px;
+}
+
+.feed-post-inner{
+  padding: 10px;
 }
 
 .status-content{

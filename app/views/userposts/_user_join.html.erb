@@ -1,4 +1,4 @@
-<li id="userpost_<%= feed_item.id %>">
+<div id="userpost_<%= feed_item.id %>">
     <div>
         <%= link_to avatar_for(feed_item.user, 'small', 'userpost-gravatar', "45", nil), feed_item.user %>
     </div>
@@ -7,4 +7,4 @@
     </div>
     <div class="feed-item-content">
         <p class="feed-item-text"><%= feed_item.user.name %> has joined the league </p></div>
-</li>
+</div>

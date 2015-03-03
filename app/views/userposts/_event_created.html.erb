@@ -1,34 +1,34 @@
-<li id="userpost_<%= feed_item.id %>">
+<div class="feed-post-wrapper" id="userpost_<%= feed_item.id %>">
+    <div class="feed-post-inner">
+        <div>
+            <%= link_to avatar_for(feed_item.user, 'small', 'userpost-gravatar', "45", nil), feed_item.user %>
+        </div>
+        <div class="feed-item-header">
+            <p class="feed-item-text"><%= link_to feed_item.user.name, feed_item.user %> started a vote
+                for <%= link_to feed_item.target_username, feed_item.target_user %>
+                in <%= link_to feed_item.game.name, feed_item.game %> </p>
+        </div>
+        <div class="feed-item-content">
+            <p class="feed-item-text">Points: <%= feed_item.points %></p>
 
-    <div>
-        <%= link_to avatar_for(feed_item.user, 'small', 'userpost-gravatar', "45", nil), feed_item.user %>
-    </div>
-    <div class="feed-item-header">
-        <p class="feed-item-text"><%= link_to feed_item.user.name, feed_item.user %> started a vote
-            for <%= link_to feed_item.target_username, feed_item.target_user %>
-            in <%= link_to feed_item.game.name, feed_item.game %> </p>
-    </div>
-    <div class="feed-item-content">
-        <p class="feed-item-text">Points: <%= feed_item.points %></p>
+            <p class="feed-item-text"><%= feed_item.data %></p></div>
 
-        <p class="feed-item-text"><%= feed_item.data %></p></div>
+        <div class="feed-item-footer">
+            <p class="feed-item-text inline">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</p>
 
-    <div class="feed-item-footer">
-        <p class="feed-item-text inline">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</p>
-
-        <div class="inline">
+            <div class="inline">
 
 
-            <% if current_user?(feed_item.user) %>
-                <%= link_to "", feed_item, method: :delete,
-                            data: {confirm: "You sure?"},
-                            title: "delete post",
-                            class: "glyphicon glyphicon-trash feed-item-link" %>
-            <% end %>
+                <% if current_user?(feed_item.user) %>
+                    <%= link_to "", feed_item, method: :delete,
+                                data: {confirm: "You sure?"},
+                                title: "delete post",
+                                class: "glyphicon glyphicon-trash feed-item-link" %>
+                <% end %>
 
-            <span class=" feed-item-link" id="dislike_count"> <%= feed_item.negative_likes %></span><span class="glyphicon glyphicon-thumbs-down feed-item-link"></span>
-            <span class=" feed-item-link" id="like_count"><%= feed_item.positive_likes %>  </span><span class="glyphicon glyphicon-thumbs-up feed-item-link"></span>
-            <span class=" feed-item-link" id="comment_count"><%= feed_item.comments.count%>  </span><span class="glyphicon glyphicon-comment feed-item-link "></span>
+                <span class=" feed-item-link" id="dislike_count"> <%= feed_item.negative_likes %></span><span class="glyphicon glyphicon-thumbs-down feed-item-link"></span>
+                <span class=" feed-item-link" id="like_count"><%= feed_item.positive_likes %>  </span><span class="glyphicon glyphicon-thumbs-up feed-item-link"></span>
+                <span class=" feed-item-link" id="comment_count"><%= feed_item.comments.count %>  </span><span class="glyphicon glyphicon-comment feed-item-link "></span>
 
 
                     <span id="like_links">
@@ -41,8 +41,10 @@
                         <% end %>
                     </span>
 
+            </div>
         </div>
     </div>
-    <%= render 'comments/comment_list', {comments:  feed_item.comments.reverse, userpost: feed_item} %>
 
-</li>
+    <%= render 'comments/comment_list', {comments: feed_item.comments.reverse, userpost: feed_item} %>
+
+</div>

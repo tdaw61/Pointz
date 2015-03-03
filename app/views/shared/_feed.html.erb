@@ -1,17 +1,17 @@
 <% if @feed_items.any? %>
-    <div class="feed feed-left">
-        <h5> What's Happening</h5>
-        <ol class="userposts">
+    <div>
+        <h5 class="feed-list-header"> What's Happening</h5>
+        <div class="userposts">
             <%= render partial: 'shared/feed_item', collection: @feed_items %>
-        </ol>
+        </div>
     </div>
 <% else %>
-    <div class="feed feed-left margin-top">
+    <div class="feed">
         <h5> What's Happening</h5>
-        <ol class="userposts">
-            <li>
+        <div class="userposts">
+            <div>
                 There have been no posts yet.
-            </li>
-        </ol>
+            </div>
+        </div>
     </div>
 <% end %>

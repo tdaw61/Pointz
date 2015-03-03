@@ -3,7 +3,7 @@
         <%= link_to avatar_for(comment.user, 'thumb','comment-gravatar', nil, nil), comment.user %>
     </div>
     <div>
-        <p><%= comment.data %></p>
+        <p><%= link_to comment.user.name, comment.user%>- <%= comment.data %></p>
     </div>
     <% if comment.photo.present? %>
         <div class="feed-item-attachment">
