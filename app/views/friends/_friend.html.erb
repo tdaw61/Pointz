@@ -1,1 +1,8 @@
-<li> <%= link_to avatar_for(friend, 'medium', nil, nil, nil), user_path(friend), title: friend.name %></li>
+<li>
+    <div class="friend-wrapper">
+        <a href="<%= user_path(friend) %>" title="<%= friend.name %>">
+            <%= avatar_for(friend, 'medium', nil, nil, nil) %>
+            <div class="friend-name"> <%= friend.name %> </div>
+        </a>
+    </div>
+</li>

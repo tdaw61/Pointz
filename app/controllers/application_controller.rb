@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
   #TODO pictures could be made polymorphic
   #TODO redo dates to make it all mm/dd/yyyy - game settings have that problem
 
+  #TODO add a new font
+  #TODO lightbox for viewing photos
+  #TODO adjust photo in feed to maximize space with caption at bottom
+  #TODO change any words up top so they arent lost in the background
+  #TODO add names to friends photo boxes
+
 end

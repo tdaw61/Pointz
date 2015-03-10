@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   match '/leagues/:id/end_league', to: 'leagues#end_league', via: 'get', as: 'end_league'
   match '/leagues/:id/end_league', to: 'leagues#end_league_save', via: 'post', as: 'end_league_save'
 
+  #userposts
+  match '/userposts/:id/ajax_view_photo', to: 'userposts#ajax_view_photo', via: 'get', as: 'ajax_view_photo'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

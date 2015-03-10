@@ -187,9 +187,9 @@ input[type="text"] {
   display: block;
 }
 
-.row {
-  padding-top: 20px;
-}
+//.row {
+//  padding-top: 20px;
+//}
 
 .mrg_btm_3px{
   margin-bottom: 3px;
@@ -489,7 +489,7 @@ aside {
 
 }
 
-.user-profile-gravatar, .league-profile-gravatar{
+.user-info-gravatar, .league-profile-gravatar{
   float: left;
   margin-right: 10px;
   border: 3px solid white;
@@ -497,7 +497,7 @@ aside {
 }
 
 
-.user_avatars {
+.user-avatars {
   overflow: auto;
   margin-top: 10px;
   .gravatar {
@@ -505,7 +505,7 @@ aside {
   }
 }
 
-.profile_avatar, .league-avatar {
+.user-info-avatar-wrapper, .league-avatar {
   height: 0px;
   margin: -35px;
   padding-left: 45px;
@@ -531,6 +531,7 @@ aside {
   margin: 5px;
 }
 
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -550,16 +551,14 @@ input[type="file"]{
 }
 
 .userpost-form{
-  padding-top: 10px;
-  padding-right: 10px;
-  padding-bottom: 20px;
-  padding-left: 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .vote-form{
   background: white;
   padding: 10px;
   margin-bottom: 5px;
+  border-radius: 5px;
 
   .input-half{
     float: left;
@@ -627,27 +626,28 @@ input[type="file"]{
   display: block;
 }
 
-.game-form, .user-form, .input-form, .league-form{
+.game-form, .user-form, .input-form, .league-form {
   width: 700px;
   background: white;
   border: 1px solid #808080;
   padding: 20px;
 
-  input{
+  input {
     padding-top: 5px;
     vertical-align: inherit;
   }
 
-  label{
+  label {
     max-width: 300px;
     padding-top: 15px;
     font-weight: bold;
   }
 
-  .btn{
+  .btn {
     margin-top: 10px;
     padding-bottom: 5px;
   }
+}
 
   .form-btns{
     input{
@@ -655,6 +655,7 @@ input[type="file"]{
       vertical-align: middle;
       width: auto;
     }
+    overflow: hidden;
   }
 
   .danger-box{
@@ -666,7 +667,7 @@ input[type="file"]{
     border: 1px solid black;
     float: left;
   }
-}
+
 
 /* Users */
 
@@ -768,6 +769,7 @@ input[type="file"]{
 }
 
 .container .game-header{
+  color: black;
   width: 100%;
   overflow-x: visible;
   -webkit-background-size: cover;
@@ -779,6 +781,12 @@ input[type="file"]{
   padding-top: 10px;
   h1{
     text-align: left;
+  }
+  a{
+    color: #000000;
+    &:hover, &:focus {
+      color: #000000;
+    }
   }
 }
 
@@ -1175,6 +1183,30 @@ input[type="file"]{
   background-color: #e5e5e5;
 }
 
+.nav-tabs > li > a:hover {
+  border-color: #eeeeee #eeeeee #dddddd;
+}
+/* line 98, /usr/local/rvm/gems/ruby-2.1.1/gems/bootstrap-sass-3.3.3/assets/stylesheets/bootstrap/_navs.scss */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #555555;
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+
+.nav-tabs > li.inactive > a {
+  &:hover, &:focus{
+    background-color: darken(lightgray, 20%);
+    color: whitesmoke;
+  }
+  color: #555555;
+  background-color: lightgray;
+  border: 1px solid #dddddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+
 
 /* user/league profile info block */
 
@@ -1196,6 +1228,38 @@ input[type="file"]{
     }
   }
 
+  .user-profile{
+    background: white;
+    border: 1px solid rgb(90, 90, 90);
+    scroll: false;
+    min-height: 175px;
+    margin-bottom: 2px;
+
+    .topframe{
+      height: 75px;
+      background: #B50300;
+      color: white;
+      padding-left: 20px;
+    }
+    .profile-container{
+      margin-left: 200px;
+      padding-top: 15px;
+      padding-left: 5px;
+      padding-bottom: 10px;
+      height: 125px;
+    }
+    .avatar-wrapper {
+      height: 200px;
+      width: 200px;
+      position: absolute;
+    }
+    .name{
+      font-size: 24px;
+      margin: 10px 0px 15px 0px;
+      text-align: center;
+    }
+   }
+
   .topframe-user {
     height: 60px;
     background: #B50300;
@@ -1212,22 +1276,27 @@ input[type="file"]{
   padding-left: 20px;
 }
 
-  .profile_container {
+  .user-info-container, .league-info-container{
     padding-top: 15px;
     padding-left: 5px;
     padding-bottom: 10px;
   }
 
-  .profile_name, .league-name {
+  .user-info-name, .profile-name, .league-name {
     padding-top: 20px;
     a{
       color: black;
     }
   }
 
-  .profile_stats {
+  .user-info-stats{
     padding: 10px;
     padding-top: 30px;
+  }
+
+  .profile-stats{
+    width: 100%;
+    text-align: center;
   }
 
   .username{
@@ -1245,6 +1314,160 @@ input[type="file"]{
   vertical-align: inherit;
 }
 
+/* CSS used here will be applied after bootstrap.css */
+
+html, body { height: 100%;}
+
+/* So that the modal is displayed in the preview.. You can probably remove this and the above rule */
+.img-modal {
+  display: block;
+  height: 430px;
+
+
+}
+
+.img-modal .modal-dialog {
+  /* An arbitrary minimum height. Feel free to modify this one as well */
+  min-height: 350px;
+  height: 80%;
+}
+
+.img-modal .modal-content, .img-modal .modal-body, .img-modal .row, .img-modal .modal-image {
+  height: 100%;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modal-image {
+  background: #000;
+  padding :0;
+}
+
+.modal-image img {
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.img-modal .img-modal-btn {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0;
+  font-size: 1.5em;
+  width: 45px;
+  color: #fff;
+  transition: opacity .2s ease-in;
+}
+
+.img-modal .modal-image:hover .img-modal-btn {
+  opacity: 0.4;
+}
+
+.img-modal .modal-image:hover .img-modal-btn:hover {
+  opacity: 0.75;
+}
+
+.img-modal .img-modal-btn.right {
+  right: 0;
+}
+
+.img-modal .img-modal-btn i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-top: -.75em;
+}
+
+.img-modal .modal-meta {
+  position: relative;
+  height: 100%;
+}
+
+.img-modal .modal-meta-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  padding: 5px 10px;
+  overflow-y: auto;
+}
+
+.img-modal .modal-meta-top .img-poster img {
+  height: 70px;
+  width: 70px;
+  float: left;
+  margin-right: 15px;
+}
+
+.img-modal .modal-meta-top .img-poster strong {
+  display: block;
+  padding-top: 15px;
+}
+
+.img-modal .modal-meta-top .img-poster span {
+  display: block;
+  color: #aaa;
+  font-size:.9em;
+}
+
+.img-modal .modal-meta-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  border-top: solid 1px #ccc;
+}
+
+.img-modal .img-comment-list {
+  list-style: none;
+  padding: 0;
+}
+.img-modal .img-comment-list li {
+  margin:0;
+  margin-top:10px;
+}
+
+.img-modal .img-comment-list li > div {
+  display:table-cell;
+}
+
+.img-modal .img-comment-list img {
+  border-radius:50%;
+  width: 42px;
+  height: 42px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.img-modal .img-comment-list p {
+  margin: 0;
+}
+
+.img-modal .img-comment-list span {
+  font-size: .8em;
+  color: #aaa;
+}
+
 .jcrop-keymgr{
   opacity: 0;
 }
@@ -1259,6 +1482,57 @@ input[type="file"]{
   background: #B50300;
   color: whitesmoke;
   border: 1px solid rgb(90, 90, 90);
+}
+
+//.fbTimelineFriendsBoxLarge .friendPhoto {
+//  display: block;
+//  height: 103px;
+//  width: 103px
+//}
+
+
+
+.cover-card {
+  border: 2px solid white;
+  background: silver;
+  padding: 0px;
+  margin: 0px;
+  height:65px;
+  width:65px;
+}
+
+.cover-card > p {
+  text-align: center;
+  background-color: rgba(6,6,6,0.0);
+  color: rgba(6,6,6,0.0);
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  font-size: 20px;
+}
+.cover-card:hover > p {
+  background-color: rgba(6,6,6,0.3);
+  color: white;
+  text-shadow: 3px 3px 10px #000;
+}
+
+  .friend-wrapper{
+    height: 65px;
+    width: 65px;
+    position: relative;
+  }
+
+ .friend-name {
+  background: #000;
+  background: -webkit-gradient(linear, center top, center bottom, from(transparent), to(rgba(0, 0, 0, .7)));
+  background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .85));
+  color: #fff;
+  display: block;
+  padding: 5px 0px 0px 5px;
+  width: 100%;
+  word-wrap: break-word;
+  position: absolute;
+  bottom: 0px;
 }
 
 .search-results{
@@ -1291,7 +1565,7 @@ input[type="file"]{
   padding: 5px;
 }
 
-.friend_list{
+.friend-list{
   padding:0px;
   margin: 0px;
   li{

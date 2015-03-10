@@ -63,3 +63,12 @@ function resizePreview(){
         marginTop: '-' + Math.round(100 / coordh * coordy) + 'px'
     });
 }
+
+$(document).ready(function(){
+    $('.modal-backdrop').on('click', function(){
+        $('#photo-lightbox').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    });
+
+});
