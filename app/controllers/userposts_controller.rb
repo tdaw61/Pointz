@@ -64,9 +64,12 @@ class UserpostsController < ApplicationController
 
   end
 
+  def ajax_view_photo
+    @userpost = Userpost.find(params[:id])
+  end
+
   private
   def userpost_params
     params.require(:userpost).permit(:data, :picture)
-    # params.require(:game).permit(:id)
   end
 end

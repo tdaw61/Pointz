@@ -1,24 +1,14 @@
 <% provide(:title, @user.name) %>
-<div class="row">
+<div class="row padding-top">
     <div class="ele-ctr container-small">
-
-
         <%= render 'shared/user_profile_box' %>
-
-
         <div>
-
             <div class="col-md-4 margin-top">
                 <%= render 'league_table' %>
-
             </div>
             <div class="col-md-7 margin-top">
                 <%= render 'shared/feed' %>
             </div>
-
         </div>
-
-
     </div>
-
 </div>

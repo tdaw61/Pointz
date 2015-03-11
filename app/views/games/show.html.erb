@@ -1,12 +1,12 @@
 <% if signed_in? %>
-    <div class="game-header">
+    <div class="game-header ">
         <h1 class="no-margin"> <%= link_to @game.league.name, @game.league %> >> <%= @game.name %>
             <% unless @game.active %> (Inactive)
             <% end %>
         </h1>
     </div>
 
-    <div class="row">
+    <div class="row padding-top">
         <aside class="col-md-5">
             <%= render 'points_table' %>
 
