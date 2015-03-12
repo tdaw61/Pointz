@@ -1,6 +1,6 @@
 <li id="comment_<%=comment.id%>">
-    <div>
-        <%= link_to avatar_for(comment.user, 'thumb','comment-gravatar', nil, nil), comment.user %>
+    <div class="comment-gravatar">
+        <%= link_to avatar_for(comment.user, 'thumb',nil, nil, nil), comment.user %>
     </div>
     <div>
         <p><%= link_to comment.user.name, comment.user%>- <%= comment.data %></p>

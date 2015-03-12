@@ -520,10 +520,17 @@ aside {
 }
 
 .comment-gravatar{
-  @include gravatar_boxing;
-  max-height: 32px;
-  max-width: 32px;
-  width: 100%;
+  float: left;
+  height: 32px;
+  width: 32px;
+  margin: 5px 8px 2px 0px;
+  img{
+    border: 3px solid white;
+    outline: 1px solid #c4c4c4;
+    max-height: 32px;
+    max-width: 32px;
+    width: 100%;
+  }
 }
 
 .league-index-gravatar {
@@ -1464,6 +1471,11 @@ html, body { height: 100%;}
 .img-modal .img-comment-list span {
   font-size: .8em;
   color: #aaa;
+}
+
+.img-modal .post-content {
+  padding: 10px;
+  word-wrap: break-word;
 }
 
 .jcrop-keymgr{

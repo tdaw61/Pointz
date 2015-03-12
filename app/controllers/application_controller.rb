@@ -13,9 +13,13 @@ class ApplicationController < ActionController::Base
   #TODO redo dates to make it all mm/dd/yyyy - game settings have that problem
 
   #TODO add a new font
+  #TODO find picture for splash
+  #TODO redo background image
   #TODO lightbox for viewing photos
   #TODO adjust photo in feed to maximize space with caption at bottom
   #TODO change any words up top so they arent lost in the background
   #TODO add names to friends photo boxes
+  #TODO lightbox needs to clear image or render all at once
+  #TODO find how to render background first, or render images better
 
 end
