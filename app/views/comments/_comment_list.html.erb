@@ -1,6 +1,6 @@
 <ul class="comments-list">
     <%= render 'comments/comment_form', {userpost: userpost} %>
     <% if !comments.empty? %>
-        <%= render partial:'comments/comment', collection: comments || "empty collection" %>
+        <%= render partial:'comments/comment', collection: comments , locals: {modal: modal} %>
     <% end %>
 </ul>

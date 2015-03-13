@@ -237,6 +237,10 @@ input[type="text"] {
   float: right;
 }
 
+.float-overflow{
+  overflow: hidden;
+}
+
 .inline{
   display: inline;
 }
@@ -752,6 +756,7 @@ input[type="file"]{
   list-style: none;
   li{
     padding: 5px;
+    word-wrap: break-word;
   }
   p{
     margin-bottom: 3px;

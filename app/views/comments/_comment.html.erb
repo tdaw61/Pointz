@@ -7,24 +7,17 @@
     </div>
     <% if comment.photo.present? %>
         <div class="feed-item-attachment">
-            <%= link_to (image_tag comment.photo.picture.large_avatar.url.to_s), ajax_view_photo_url(comment), {remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
-            <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
-                <div class=" img-modal">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div>
-
-            </div>
+            <%= image_tag comment.photo.picture.large_avatar.url.to_s %>
         </div>
     <% end %>
     <div class="feed-item-footer">
-        <p class="feed-item-text inline">Posted <%= time_ago_in_words(comment.created_at) %> ago.</p>
+        <% if modal %>
+            <p class="feed-item-text inline"><%= time_ago_in_words(comment.created_at, locale: :en_abbrev) %></p>
+        <% else %>
+            <p class="feed-item-text inline">Posted <%= time_ago_in_words(comment.created_at) %> ago.</p>
+        <% end %>
 
         <div class="inline">
-
-
             <% if current_user?(comment.user) %>
                 <%= link_to "", userpost_comment_path(id: comment.id, userpost_id: comment.userpost.id), method: :delete,
                             data: {confirm: "You sure?"},

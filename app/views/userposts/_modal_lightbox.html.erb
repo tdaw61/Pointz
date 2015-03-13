@@ -9,18 +9,29 @@
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <div>
+                    <div class="img-poster clearfix">
+                        <%= link_to avatar_for(@userpost.user, 'medium', nil, nil, nil), @userpost.user %>
+                        <strong><%= link_to @userpost.user.name, @userpost.user %></strong>
+                        <span><%= time_ago_in_words @userpost.created_at %> ago</span>
+                    </div>
+                    <div class="post-content">
+                        <%= @userpost.data %>
+                    </div>
+                    <div class="float-overflow">
+                        <span class=" feed-item-link" id="dislike_count"> <%= @userpost.negative_likes %></span><span class="glyphicon glyphicon-thumbs-down feed-item-link"></span>
+                        <span class=" feed-item-link" id="like_count"><%= @userpost.positive_likes %>  </span><span class="glyphicon glyphicon-thumbs-up feed-item-link"></span>
 
-
-                <div class="img-poster clearfix">
-                    <%= link_to avatar_for(@userpost.user, 'medium', nil, nil, nil), @userpost.user %>
-                    <strong><%= link_to @userpost.user.name, @userpost.user %></strong>
-                    <span><%= time_ago_in_words @userpost.created_at %> ago</span>
+                        <span id="like_links">
+                        <% if has_liked_userpost(@userpost) %>
+                            <%= has_liked_link %>
+                        <% else %>
+                            <%= link_to "Dislike", likes_path(like: 0, userpost_id: @userpost.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "dislike_link" %>
+                                <%= link_to "Like", likes_path(like: 1, userpost_id: @userpost.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "like_link" %>
+                        <% end %>
+                        </span>
+                    </div>
                 </div>
-                <div class="post-content">
-                    <%= @userpost.data %>
-                </div>
-                </div>
-                <%= render 'comments/comment_list', {comments: @userpost.comments.reverse, userpost: @userpost} %>
+                <%= render 'comments/comment_list', {comments: @userpost.comments.reverse, userpost: @userpost, modal: true} %>
             </div>
         </div>
     </div>

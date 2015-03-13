@@ -1,10 +1,10 @@
 <li class="comment-form">
+    <div class="comment-gravatar">
+        <%= link_to avatar_for(current_user, 'thumb', nil, "32X32", nil), current_user %>
+    </div>
     <%= form_for([userpost, Comment.new], remote: true) do |f| %>
 
         <div>
-            <div class="comment-gravatar">
-                <%= link_to avatar_for(current_user, 'thumb', nil, "32X32", nil), current_user %>
-            </div>
             <span style="width: 88%">
                 <div class="input-group">
                     <%= f.text_field :data, placeholder: "Write comment here" %>
