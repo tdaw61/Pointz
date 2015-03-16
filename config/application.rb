@@ -22,6 +22,7 @@ module Pointz
 
     # config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     # Rails.application.config.assets.precompile += %w( glyphicons-halflings.png )
 
   end

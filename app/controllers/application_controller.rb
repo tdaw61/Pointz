@@ -21,5 +21,6 @@ class ApplicationController < ActionController::Base
   #TODO add names to friends photo boxes
   #TODO lightbox needs to clear image or render all at once
   #TODO find how to render background first, or render images better
+  #TODO change friend box to be below user info, build a search bar into the header of the box. get rid of background color and make image full squares
 
 end

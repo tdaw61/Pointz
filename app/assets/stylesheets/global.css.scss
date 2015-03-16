@@ -92,8 +92,9 @@ html {
 }
 
 body {
+  font-family: 'Ubuntu', sans-serif;
   padding-top: 42px;
-  background-image: url(bg-test2.jpg);
+  background-image: url(real_background.jpg);
   background-position: left 40px;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -346,14 +347,12 @@ p {
   padding-bottom: 50px;
   text-align: center;
   color: #f8f8f8;
-  background: url(intro-bg.jpg) no-repeat center center;
+  background: url(beer_background.jpg) no-repeat center center;
   background-size: cover;
 }
 
 .intro-message {
-  position: relative;
-  padding-top: 20%;
-  padding-bottom: 20%;
+  padding-top: 5%;
 }
 
 .intro-message > h1 {
@@ -621,7 +620,7 @@ input[type="file"]{
 }
 
 .input-group-addon {
-  padding: 5px 12px;
+  padding: 4px 12px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
@@ -997,10 +996,13 @@ input[type="file"]{
 
 .feed-item-attachment{
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 150px;
-  max-height: 200px;
+  margin: 10px auto 10px auto;
+  max-width: 400px;
+  max-height: 450px;
+  img{
+    max-width: 400px;
+    max-height: 450px;
+  }
 }
 
 /* navbar */
@@ -1302,8 +1304,10 @@ input[type="file"]{
   }
 
   .user-info-stats{
-    padding: 10px;
-    padding-top: 30px;
+    padding: 37px 10px 10px 10px;
+    tr{
+      text-align: center;
+    }
   }
 
   .profile-stats{
@@ -1483,6 +1487,10 @@ html, body { height: 100%;}
   word-wrap: break-word;
 }
 
+.image-caption{
+  padding-left: 10%;
+}
+
 .jcrop-keymgr{
   opacity: 0;
 }
@@ -1490,7 +1498,7 @@ html, body { height: 100%;}
 /* friends/search */
 
 .friend-box .header, .friend-requests-box .header{
-  background: #8c8c8c;
+  background: #9E9E9E;
 }
 
 .friend-box, .friend-requests-box {
@@ -1498,14 +1506,6 @@ html, body { height: 100%;}
   color: whitesmoke;
   border: 1px solid rgb(90, 90, 90);
 }
-
-//.fbTimelineFriendsBoxLarge .friendPhoto {
-//  display: block;
-//  height: 103px;
-//  width: 103px
-//}
-
-
 
 .cover-card {
   border: 2px solid white;

@@ -60,7 +60,10 @@ Rails.application.routes.draw do
   match '/leagues/:id/end_league', to: 'leagues#end_league_save', via: 'post', as: 'end_league_save'
 
   #userposts
-  match '/userposts/:id/ajax_view_photo', to: 'userposts#ajax_view_photo', via: 'get', as: 'ajax_view_photo'
+  match '/userposts/:id/ajax_view_photo', to: 'userposts#ajax_view_photo', via: 'get', as: 'ajax_view_post_photo'
+
+  #comments
+  match '/comments/:id/ajax_view_photo', to: 'comments#ajax_view_photo', via: 'get', as: 'ajax_view_comment_photo'
 
 
 

@@ -9,6 +9,10 @@ class CommentsController < ApplicationController
     @comment.save
   end
 
+  def ajax_view_photo
+    @post = Comment.find(params[:id])
+  end
+
 
   private
   

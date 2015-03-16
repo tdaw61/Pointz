@@ -65,7 +65,7 @@ class UserpostsController < ApplicationController
   end
 
   def ajax_view_photo
-    @userpost = Userpost.find(params[:id])
+    @post = Userpost.find(params[:id])
   end
 
   private

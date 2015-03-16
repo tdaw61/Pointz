@@ -1,13 +1,29 @@
-<li id="comment_<%=comment.id%>">
+<li id="comment_<%= comment.id %>">
     <div class="comment-gravatar">
-        <%= link_to avatar_for(comment.user, 'thumb',nil, nil, nil), comment.user %>
-    </div>
-    <div>
-        <p><%= link_to comment.user.name, comment.user%>- <%= comment.data %></p>
+        <%= link_to avatar_for(comment.user, 'thumb', nil, nil, nil), comment.user %>
     </div>
     <% if comment.photo.present? %>
+        <div>
+            <p><%= link_to comment.user.name, comment.user %></p>
+        </div>
         <div class="feed-item-attachment">
-            <%= image_tag comment.photo.picture.large_avatar.url.to_s %>
+            <%= link_to (image_tag comment.photo.picture.url.to_s), ajax_view_comment_photo_url(comment), {remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
+            <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
+                <div class=" img-modal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <p class="image-caption"><%= comment.data %></p>
+        </div>
+    <% else %>
+        <div>
+            <p><%= link_to comment.user.name, comment.user %>- <%= comment.data %></p>
         </div>
     <% end %>
     <div class="feed-item-footer">
@@ -34,7 +50,7 @@
                 <%= has_liked_link %>
             <% else %>
                 <%= link_to "Dislike", likes_path(like: 0, comment_id: comment.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "dislike_link" %>
-                <%= link_to "Like", likes_path(like: 1, comment_id: comment.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "like_link" %>
+                    <%= link_to "Like", likes_path(like: 1, comment_id: comment.id, user_id: current_user.id), method: :post, remote: true, class: "feed-item-link", id: "like_link" %>
             <% end %>
             </span>
 

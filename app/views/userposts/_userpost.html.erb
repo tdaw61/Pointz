@@ -11,7 +11,7 @@
 
             <% if feed_item.photo.present? %>
                 <div class="feed-item-attachment">
-                    <%= link_to (image_tag feed_item.photo.picture.large_avatar.url.to_s), ajax_view_photo_url(feed_item), {remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
+                    <%= link_to (image_tag feed_item.photo.picture.url.to_s), ajax_view_post_photo_url(feed_item), {remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
                         <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
                             <div class=" img-modal">
                                 <div class="modal-dialog modal-lg">
@@ -19,7 +19,6 @@
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
                             </div>
-
                         </div>
                 </div>
             <% end %>
