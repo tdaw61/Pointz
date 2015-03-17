@@ -22,5 +22,7 @@ class ApplicationController < ActionController::Base
   #TODO lightbox needs to clear image or render all at once
   #TODO find how to render background first, or render images better
   #TODO change friend box to be below user info, build a search bar into the header of the box. get rid of background color and make image full squares
+  #TODO fix width on columns so resizing to a small screen doesn't look terrible.
+  #TODO images take too long to upload
 
 end

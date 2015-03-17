@@ -38,8 +38,8 @@ class Userpost < ActiveRecord::Base
     Userpost.create!(data: post_data, target_user_id: game_event.target_user_id, user_id: game_event.user_id, post_type: "vote_ended", game_id: game_event.game_id, points: game_event.point_value)
   end
 
-  def self.create_event_created(game_event)
-    Userpost.create!({points: game_event.point_value, data: game_event.data, user_id: game_event.user_id, game_id: game_event.game_id, target_user_id: game_event.target_user_id, post_type: "event_created"})
+  def self.create_event_created(game_event, photo)
+    Userpost.create!({points: game_event.point_value, data: game_event.data, user_id: game_event.user_id, game_id: game_event.game_id, target_user_id: game_event.target_user_id, post_type: "event_created", photo: photo})
   end
 
   def self.create_game_winner(game)

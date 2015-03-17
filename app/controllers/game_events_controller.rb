@@ -9,11 +9,15 @@ class GameEventsController < ApplicationController
 
   def create
     @game_event = GameEvent.new(game_event_params)
+    if params[:picture]
+      photo = Photo.new(picture: params[:picture])
+    end
     @game = Game.find(params[:game_id])
     @users = @game.users
 
     if @game_event.save
       @game_event.init_votes params, current_user.id
+      Userpost.create_event_created(@game_event, photo)
 
       respond_to do |format|
         @event_votes = @game.active_event_votes(current_user.id)

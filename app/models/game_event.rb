@@ -3,6 +3,7 @@ class GameEvent < ActiveRecord::Base
   belongs_to :game
   belongs_to :user
   belongs_to :target_user, class_name: "User"
+  has_one  :photo, as: :picture
 
   has_many :inactive_event_votes, -> {where(active: false)}, class_name: "EventVote"
 
@@ -37,7 +38,6 @@ class GameEvent < ActiveRecord::Base
       end
       reload
 
-    Userpost.create_event_created(self)
 
   end
 

@@ -3,7 +3,15 @@ $(document).ready(function(){
     $('body').on('click', '.img-prev-del', function(){
         element = this.getAttribute("data-target");
         removePhoto(element);
+        event.preventDefault();
     })
+});
+
+$(document).ready(function(){
+   $('body').on('change', '#lefile', function(){
+       form = this.getAttribute("data-target");
+       addPhoto(this, form);
+   })
 });
 
 $(document).ready(function(){
@@ -15,7 +23,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#apply-crop-btn").on('click', function(){
-//        var file = $("#lefile").prop("files")[0]
         var src = $("#user_picture_previewbox").attr("src");
         $("#img-prev").attr('src', src);
         resizePreview();
@@ -23,18 +30,15 @@ $(document).ready(function(){
 });
 
 
-function addPhoto(input, id) {
+function addPhoto(input, ele) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            ele= $(id);
-            ele.find("#img-prev")
-                .attr('src', e.target.result)
-                .width(75)
-                .height(90);
-            ele.find("#img-prev").show();
-            ele.find('.post-extras').show();
+            img_prev = $('<img />', { id: "img-prev", src: e.target.result, alt: "imgage preview", width: 75, height: 90});
+            del_link = $('<a />', {html: "X", class: "img-prev-del", attr: {'data-target': ele}});
+            $(ele).find(".post-picture").append(img_prev).append($('<div/>', {class: "center", html: del_link}));
+            $(ele).find(".post-extras").show();
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -55,11 +59,11 @@ function addAvatar(input, id) {
 }
 
 function removePhoto(ele){
-
-    ele.find("#img-prev").hide();
-    ele.find('.post-extras').hide();
-    ele.find('#img-prev').attr('src', '');
-    ele.find('#lefile').val("");
+    $(ele).find("#img-prev").remove();
+    $(ele).find(".img-prev-del").remove();
+    $(ele).find('.post-extras').hide();
+    $(ele).find('#lefile').val("");
+    $(ele).find(".center").remove();
 }
 
 function resizePreview(){

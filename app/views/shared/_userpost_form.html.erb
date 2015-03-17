@@ -6,11 +6,9 @@
             <%= f.text_area :data, placeholder: "What's happening", style: "border-radius: none;" %>
         </div>
         <div class="post-extras">
-            <%= file_field_tag :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '#userpost-form')"%>
+            <%= file_field_tag :picture , class: "display-none", id: "lefile", data: {target: "#userpost-form"}%>
 
             <div class="post-picture">
-                <img id="img-prev" src="#dummy" alt="your image" style="display: none" />
-                <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img-prev_del" %> </div>
             </div>
 
         </div>

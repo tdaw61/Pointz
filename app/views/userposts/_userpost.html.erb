@@ -7,25 +7,30 @@
             <%= link_to feed_item.user.name, feed_item.user %>
         </div>
         <div class="feed-item-content">
-            <p class="feed-item-text"><%= feed_item.data %></p>
-
             <% if feed_item.photo.present? %>
                 <div class="feed-item-attachment">
-                    <%= link_to (image_tag feed_item.photo.picture.url.to_s), ajax_view_post_photo_url(feed_item), {remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
-                        <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
-                            <div class=" img-modal">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
+                    <%= link_to (image_tag feed_item.photo.picture.url.to_s), ajax_view_post_photo_url(feed_item), {class: "attachment-wrapper", remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
+                    <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
+                        <div class=" img-modal">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                </div>
+                                <!-- /.modal-content -->
                             </div>
+                            <!-- /.modal-dialog -->
                         </div>
+                    </div>
                 </div>
+                <p class="image-caption"><%= feed_item.data %></p>
+
+            <% else %>
+                <p class="feed-item-text"><%= feed_item.data %></p>
             <% end %>
         </div>
 
         <div class="feed-item-footer">
             <p class="feed-item-text inline">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</p>
+
             <div class="inline">
                 <% if current_user?(feed_item.user) %>
                     <%= link_to "", feed_item, method: :delete,
@@ -48,5 +53,5 @@
             </div>
         </div>
     </div>
-    <%= render 'comments/comment_list', {comments: feed_item.comments.reverse, userpost: feed_item,  modal: false} %>
+    <%= render 'comments/comment_list', {comments: feed_item.comments.reverse, userpost: feed_item, modal: false} %>
 </div>

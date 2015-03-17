@@ -39,10 +39,9 @@
             <%= f.text_area :data, class: "no-margin", rows: 3 %>
 
             <div class="post-extras">
-                <%= file_field_tag :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '.vote-form')"%>
+                <%= file_field_tag :picture , class: "display-none", id: "lefile", data: {target: ".vote-form"}%>
                 <div class="post-picture">
-                    <img id="img-prev" src="#" alt="your image" style="display: none" />
-                    <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", data: {target: ".vote-form"}, class: "img-prev-del" %> </div>
+
                 </div>
 
             </div>

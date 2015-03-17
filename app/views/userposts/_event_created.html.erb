@@ -9,9 +9,30 @@
                 in <%= link_to feed_item.game.name, feed_item.game %> </p>
         </div>
         <div class="feed-item-content">
-            <p class="feed-item-text">Points: <%= feed_item.points %></p>
+            <% if feed_item.photo.present? %>
+                <div class="feed-item-attachment">
+                    <%= link_to (image_tag feed_item.photo.picture.url.to_s), ajax_view_post_photo_url(feed_item), {class: "attachment-wrapper", remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
+                    <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
+                        <div class=" img-modal">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                </div>
+                <p class="image-caption">Point(s): <%= feed_item.points %></p>
 
-            <p class="feed-item-text"><%= feed_item.data %></p></div>
+                <p class="image-caption"><%= feed_item.data %></p>
+
+            <% else %>
+                <p class="feed-item-text">Points: <%= feed_item.points %></p>
+
+                <p class="feed-item-text"><%= feed_item.data %></p></div>
+            <% end %>
+
 
         <div class="feed-item-footer">
             <p class="feed-item-text inline">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</p>

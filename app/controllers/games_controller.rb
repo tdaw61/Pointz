@@ -116,10 +116,6 @@ class GamesController < ApplicationController
     @game_event = GameEvent.new
   end
 
-
-
-
-
   #When the user wants to change the point value of another player
   def create_event
     @game_event = GameEvent.new

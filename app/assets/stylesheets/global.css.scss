@@ -739,8 +739,18 @@ input[type="file"]{
 }
 
 .post-picture{
-  width: 75px;
-  padding: 5px;
+  width: 80px;
+  img{
+    margin: 5px 0px 0px 5px;
+  }
+  .center{
+    text-align: center;
+    margin: 5px 0px 0px 5px;
+  }
+}
+
+.img-prev-del{
+  cursor: pointer;
 }
 
 .data {
@@ -999,10 +1009,15 @@ input[type="file"]{
   margin: 10px auto 10px auto;
   max-width: 400px;
   max-height: 450px;
-  img{
+  .modal-image img{
+    max-width: 97%;
+    max-height: 97%;
+  }
+}
+
+.attachment-wrapper img{
     max-width: 400px;
     max-height: 450px;
-  }
 }
 
 /* navbar */

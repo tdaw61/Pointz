@@ -1,13 +1,13 @@
 <li id="comment_<%= comment.id %>">
     <div class="comment-gravatar">
-        <%= link_to avatar_for(comment.user, 'thumb', nil, nil, nil), comment.user %>
+        <%= link_to avatar_for(comment.user, 'thumb', '32X32', nil, nil), comment.user %>
     </div>
     <% if comment.photo.present? %>
         <div>
             <p><%= link_to comment.user.name, comment.user %></p>
         </div>
         <div class="feed-item-attachment">
-            <%= link_to (image_tag comment.photo.picture.url.to_s), ajax_view_comment_photo_url(comment), {remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
+            <%= link_to (image_tag comment.photo.picture.url.to_s), ajax_view_comment_photo_url(comment), {class: "attachment-wrapper", remote: true, 'data-toggle' => 'modal', 'data-target' => '#photo-lightbox'} %>
             <div id="photo-lightbox" class="modal fade" role="img" aria-labelledby="photoLightbox" aria-hidden="true">
                 <div class=" img-modal">
                     <div class="modal-dialog modal-lg">

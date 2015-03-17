@@ -10,7 +10,7 @@
                     <span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                 <div>
                     <div class="img-poster clearfix">
-                        <%= link_to avatar_for(@post.user, 'medium', nil, nil, nil), @post.user %>
+                        <%= link_to avatar_for(@post.user, 'medium', nil, '32X32', nil), @post.user %>
                         <strong><%= link_to @post.user.name, @post.user %></strong>
                         <span><%= time_ago_in_words @post.created_at %> ago</span>
                     </div>
