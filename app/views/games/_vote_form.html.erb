@@ -39,14 +39,15 @@
             <%= f.text_area :data, class: "no-margin", rows: 3 %>
 
             <div class="post-extras">
-                <%= file_field_tag :picture , class: "display-none", id: "lefile", onchange: "readURL(this)"%>
+                <%= file_field_tag :picture , class: "display-none", id: "lefile", onchange: "addPhoto(this, '.vote-form')"%>
                 <div class="post-picture">
-                    <img id="img_prev" src="#" alt="your image" style="display: none" />
-                    <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", class: "img_prev_del" %> </div>
+                    <img id="img-prev" src="#" alt="your image" style="display: none" />
+                    <div class="center"> <%= link_to "X", "#", onclick: "removePhoto()", data: {target: ".vote-form"}, class: "img-prev-del" %> </div>
                 </div>
 
             </div>
             <div class="form-btns">
+                <a class="btn btn-sm btn-primary btn-danger photo-btn" data-target=".vote-form" > Add Photo <span class="glyphicon glyphicon-camera"></span></a>
                 <%= f.submit "Create vote", class: "btn btn-sm btn-primary btn-danger btn-right" %>
 
             </div>
@@ -62,4 +63,7 @@
     <% end %>
 
 
+    <script>
+        $("#game_event_data").autogrow();
+    </script>
 </div>
