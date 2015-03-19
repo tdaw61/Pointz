@@ -637,7 +637,7 @@ input[type="file"]{
 }
 
 .game-form, .user-form, .input-form, .league-form {
-  width: 700px;
+//  width: 700px;
   background: white;
   border: 1px solid #808080;
   padding: 20px;
@@ -670,12 +670,13 @@ input[type="file"]{
 
   .danger-box{
     div{
+      color: #B50300;
       padding-left: 10px;
     }
     padding: 10px;
     margin-top: 10px;
-    border: 1px solid black;
-    float: left;
+    border-top: 1px solid #B50300;
+    border-bottom: 1px solid #B50300;
   }
 
 

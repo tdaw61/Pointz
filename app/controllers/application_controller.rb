@@ -25,4 +25,7 @@ class ApplicationController < ActionController::Base
   #TODO fix width on columns so resizing to a small screen doesn't look terrible.
   #TODO images take too long to upload
 
+  #TODO FEATURE - Let admin alter scores for players
+  #TODO FEATURE - Starting points for a user when they join the game.
+
 end

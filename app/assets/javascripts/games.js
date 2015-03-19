@@ -1,9 +1,11 @@
 $(document).on("focus", "[data-behaviour~='datepicker']", function (e) {
-    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true, "orientation": "bottom right"})
+    $(this).datepicker({"format": "mm/dd/yyyy", "weekStart": 1, "autoclose": true, "orientation": "bottom right"})
 });
 
 $(document).ready(function(){
-    $("#datepicker-icon").datepicker();
+    $("#datepicker-icon").on("click", function(){
+        $("[data-behaviour~='datepicker']").datepicker('show');
+    })
 });
 
 function clickable()

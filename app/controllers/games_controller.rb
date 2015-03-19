@@ -63,7 +63,7 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
-      @scores = Score.where(game_id: params[:id])
+      DateTime.strptime(params[:game][:end_date], '%m/%d/%y')
       redirect_to 'show', id: params[:id]
     else
       render edit
