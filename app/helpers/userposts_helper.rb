@@ -5,7 +5,7 @@ module UserpostsHelper
   end
 
   #Returns true if the user has not liked/disliked this userpost.
-  #TODO refactor to use userpost likes so it can be eager loaded
+  #TODO REFACTOR - refactor to use userpost likes so it can be eager loaded
   def has_liked_userpost(feed_item)
     feed_item.likes.map(&:user_id).include? current_user.id
   end

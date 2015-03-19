@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  #TODO add reactivate for games & leagues, might make sense for leagues only
+  #TODO FEATURE - add reactivate for games & leagues, might make sense for leagues only
 
   before_action :set_league, only: [:show, :edit, :update, :destroy, :add_user, :add_user_save, :expand_league_games, :expand_league_users, :remove_user, :remove_user_save, :end_league_save]
   before_action :signed_in_user
@@ -66,8 +66,8 @@ class LeaguesController < ApplicationController
   end
 
   def add_user_save
-    #TODO add find user by email or username with live search on friends list.
-    #TODO userpost for user joining league never is seen because feed items are found by game_id
+    #TODO FEATURE - add find user by email or username with live search on friends list.
+    #TODO BUG - userpost for user joining league never is seen because feed items are found by game_id
     user = User.find_by email: params[:email]
     if user
       begin

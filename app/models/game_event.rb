@@ -1,5 +1,5 @@
 class GameEvent < ActiveRecord::Base
-  #TODO add event expand option on click to table cell. should give date and more detail.
+  #TODO FEATURE - add event expand option on click to table cell. should give date and more detail.
   belongs_to :game
   belongs_to :user
   belongs_to :target_user, class_name: "User"
@@ -30,7 +30,7 @@ class GameEvent < ActiveRecord::Base
     true
   end
 
-  #TODO move to a service?
+  #TODO - REFACTOR move to a service?
   def init_votes params, current_user_id
     #create votes for each user in the game
       game.users.each do |user|
