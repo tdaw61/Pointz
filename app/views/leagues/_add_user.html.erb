@@ -1,13 +1,13 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><%= @league.name %> >> Add User</h3>
+    <h5 id="myModalLabel"><%= @league.name %> >> Add User</h5>
 </div>
-<div class="modal-body">
+<div class="modal-body padding-bottom">
         <% if flash[:alert] %>
             <div id="error_explanation"><%= flash[:alert] %></div>
         <% end %>
 
-        <%= form_tag add_user_save_path, id: "form" do %>
+        <%= form_tag add_user_save_path, id: "form", class: "padding-bottom" do %>
 
             <p>
                 <%= label_tag "User email" %>

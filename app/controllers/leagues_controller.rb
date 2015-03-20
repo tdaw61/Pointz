@@ -35,7 +35,11 @@ class LeaguesController < ApplicationController
     @league_users = @league.users
     @games = @league.games
     @feed_items = @league.feed_items
-    @feed_items = @feed_items.paginate(page: params[:page], per_page: 15)
+    @feed_items = @feed_items.paginate(page: params[:page], per_page: 10)
+    respond_to do |format|
+      format.js {render 'userposts/paginate'}
+      format.html
+    end
 
   end
 

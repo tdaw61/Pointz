@@ -19,4 +19,6 @@ class ApplicationController < ActionController::Base
   #TODO FEATURE - Let admin alter scores for players
   #TODO FEATURE - Starting points for a user when they join the game.
 
+  #TODO REFACTOR - Service objects and service layer needs to be implemented, controllers are out of hand and logic is everywhere.
+
 end

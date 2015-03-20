@@ -21,13 +21,18 @@ class UsersController < ApplicationController
   def home
     if signed_in?
       @userpost  = current_user.userposts.build
-      @user = User.includes(:userposts, {userposts: [:comments, :likes]}, :leagues, {leagues: [:games]}, :friends, :requested_friends ).where(id: current_user.id).first
-      @feed_items = @user.userposts
+      # @user = User.includes(:photo, :userposts, {userposts: [:comments, :likes]}, :leagues, {leagues: [:games]}, :friends, :requested_friends ).where(id: current_user.id).first
+      @user = User.find(current_user.id)
+      @feed_items = @user.userposts.paginate(page: params[:page], per_page: 10)
       @leagues = current_user.leagues
       @user = current_user
       @comment = Comment.new
       @user_friends = current_user.friends
       @friend_requests = current_user.requested_friends
+      respond_to do |format|
+        format.html
+        format.js {render 'userposts/paginate'}
+      end
     end
   end
 

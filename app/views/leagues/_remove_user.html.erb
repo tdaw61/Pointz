@@ -9,7 +9,7 @@
         <div id="error_explanation"><%= flash[:alert] %></div>
     <% end %>
 
-    <%= form_tag remove_user_path, id: "form" do %>
+    <%= form_tag remove_user_path, id: "form", class: "padding-bottom" do %>
 
         <p>
             <%= label_tag "User" %>

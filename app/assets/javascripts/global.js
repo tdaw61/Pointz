@@ -29,6 +29,12 @@ $(document).ready(function(){
     })
 });
 
+$(document).ready(function(){
+    $('body').on('hidden.bs.modal', '#modal-window', function () {
+        $(this).removeData('#modal-window');
+    });
+});
+
 
 function addPhoto(input, ele) {
     if (input.files && input.files[0]) {

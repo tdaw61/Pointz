@@ -23,7 +23,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.includes(:userposts, {userposts: [:comments, {comments: [:likes]}, :likes]}, :users , :active_game_events, :scores ).where(id: params[:id]).first
     @game.active_game_events.includes(:event_votes).where(user_id: current_user.id)
-    @feed_items = @game.userposts
+    @feed_items = @game.userposts.paginate(page: params[:page], per_page: 10)
     @event_votes = Array.new
     @game.active_game_events.each do |game_event|
       @event_votes += game_event.event_votes
@@ -31,7 +31,7 @@ class GamesController < ApplicationController
     @comment = Comment.new
     @game_event = @game.game_events.build
     respond_to do |format|
-      format.js
+      format.js {render 'userposts/paginate'}
       format.html
     end
 
